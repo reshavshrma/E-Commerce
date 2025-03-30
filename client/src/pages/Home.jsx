@@ -1,14 +1,14 @@
 import React from 'react'
-import Navbar from './components/Navbars/Navbar/Navbar';
-import WelcomeMsg from './components/Home/WelcomeMsg/WelcomeMsg';
-import SlideShow from './components/Home/SlideShow/SlideShow';
-import SearchBox from './components/Home/SearchBox/SearchBox';
-import Categories from './components/Home/Categories/Categories';
-import ProductList from './components/Products/ProductList.jsx/ProductList';
-import VendorList from './components/Vendors/VendorList.jsx/VendorList';
-import FAQs from './components/FAQs/FAQs';
-import Counter from './components/Home/Counter/Counter';
-import Footer from './components/Footer/Footer';
+import Navbar from '../components/Navbars/Navbar/Navbar';
+import WelcomeMsg from '../components/Home/WelcomeMsg/WelcomeMsg';
+import SlideShow from '../components/Home/SlideShow/SlideShow';
+import SearchBox from '../components/Home/SearchBox/SearchBox';
+import Categories from '../components/Home/Categories/Categories';
+import ProductList from '../components/Products/ProductList.jsx/ProductList';
+import VendorList from '../components/Vendors/VendorList.jsx/VendorList';
+import FAQs from '../components/FAQs/FAQs';
+import Counter from '../components/Home/Counter/Counter';
+import Footer from '../components/Footer/Footer';
 const Home = () => {
   return (
     <div>
