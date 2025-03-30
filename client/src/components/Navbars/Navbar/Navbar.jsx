@@ -5,8 +5,10 @@ const Navbar = () => {
   return (
     <div>
       <OfferDetail/>
+
       <DesktopNavbar/>
-    </div>
+      </div>
+
   )
 }
 

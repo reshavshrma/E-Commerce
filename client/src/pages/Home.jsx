@@ -11,8 +11,10 @@ import Counter from '../components/Home/Counter/Counter';
 import Footer from '../components/Footer/Footer';
 const Home = () => {
   return (
-    <div>
+    <div >
+    <div className="bg-[url('/assets/header-img.png')] bg-cover h-72 bg-no-repeat sm:bg-cover md:h-[40rem]">
       <Navbar/>
+    </div>
       <div className='my-20'>
         <WelcomeMsg/>
       </div>
