@@ -12,8 +12,6 @@ import MongoStore from 'connect-mongo';
 const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
 
-console.log("MongoDB URI:", process.env.MONGODB_URI);
-
 //  Set trust proxy before session middleware
 app.set("trust proxy", 1);  // Required for Render & secure cookies
 
