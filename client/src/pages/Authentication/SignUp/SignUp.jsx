@@ -1,5 +1,5 @@
 import React from "react";
-import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaPhoneAlt, FaLock, FaEnvelope } from "react-icons/fa";
 
 const Signup = () => {
   return (
@@ -12,6 +12,14 @@ const Signup = () => {
             <input
               type="text"
               placeholder="Username"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div className="relative">
+            <FaPhoneAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              type="number"
+              placeholder="Contact Number"
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
