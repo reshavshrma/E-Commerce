@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import passport from 'passport';
 import localStrategy from 'passport-local';
-import {User} from '../model/user.model.js';
+import { User } from '../models/user.model.js';
 
 
 // Configure Local Strategy

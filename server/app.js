@@ -7,7 +7,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-
+import passport from './middleware/passport.middleware.js';
 
 const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
@@ -47,7 +47,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session(expressSessionOption));
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Debugging Middleware
 app.use((req, res, next) => {
