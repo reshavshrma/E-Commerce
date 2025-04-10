@@ -4,6 +4,7 @@ import { isLoggedIn } from '../middleware/auth.middleware.js';
 import {validate} from '../middleware/validator.js';
 import {userSchemaValidation} from '../test/user.validator.js' ;
 import { loginUserValidation } from '../test/login.validator.js';
+import { createNewUser } from '../controller/userAuth.controller.js';
 const router = express.Router();
 
 
@@ -12,7 +13,7 @@ const router = express.Router();
 // Register a New user Route
 router
      .route('/register')
-     .post();
+     .post(validate(userSchemaValidation) , createNewUser);
 
 
 // Login of the registered user Route
