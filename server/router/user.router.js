@@ -4,7 +4,7 @@ import { isLoggedIn } from '../middleware/auth.middleware.js';
 import {validate} from '../middleware/validator.js';
 import {userSchemaValidation} from '../test/user.validator.js' ;
 import { loginUserValidation } from '../test/login.validator.js';
-import { createNewUser } from '../controller/userAuth.controller.js';
+import { createNewUser , loginUser , logOutUser } from '../controller/userAuth.controller.js';
 const router = express.Router();
 
 
@@ -19,13 +19,13 @@ router
 // Login of the registered user Route
 router
      .route('/login')
-     .post();
+     .post(validate(loginUserValidation) , loginUser);
 
 
 // Logout of the registered user Route
 router
      .route('/logout')
-     .post();
+     .post(isLoggedIn , logOutUser);
 
 
 // Check for the user authentication Route

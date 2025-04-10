@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
-
+import passport from "passport";
 // Register a New User
 const createNewUser = asyncHandler(async (req, res) => {
   try {
@@ -78,4 +78,114 @@ const createNewUser = asyncHandler(async (req, res) => {
   }
 });
 
-export { createNewUser };
+
+// Login the Registered User
+const loginUser = asyncHandler(async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      console.log("📥 Login attempt:", email, password);
+  
+      // Step 1: Check if fields are present
+      if (!email || !password) {
+        return res.status(400).json({
+          status: 400,
+          message: "Validation Error",
+          details: ["Email and Password are required!"],
+        });
+      }
+  
+      // Step 2: Check if user exists
+      const existingUser = await User.findOne({ email: email.toLowerCase() });
+      if (!existingUser) {
+        return res.status(401).json({
+          status: 401,
+          message: "Invalid Credentials!",
+          details: ["Email not found!"],
+        });
+      }
+  
+      // Step 3: Authenticate using passport-local strategy
+      passport.authenticate("local", (err, user, info) => {
+        if (err) {
+          console.error("❌ Error during passport authentication:", err);
+          return res.status(500).json(
+            new ApiError(500, [err.message], "Unexpected server error occurred!")
+          );
+        }
+  
+        if (!user) {
+          return res.status(401).json({
+            status: 401,
+            message: "Invalid Credentials!",
+            details: [info?.message || "Authentication failed."],
+          });
+        }
+  
+        // Step 4: Log in the user using req.login
+        req.login(user, { session: true }, (err) => {
+          if (err) {
+            return res.status(500).json(
+              new ApiError(500, [err.message], "Login failed!")
+            );
+          }
+  
+          console.log("✅ Login successful:", user.email);
+          return res.status(200).json(
+            new ApiResponse(200, { user }, "Successfully logged in the User!")
+          );
+        });
+      })(req, res); // Call the middleware with req/res
+  
+    } catch (error) {
+      console.error("❌ Login error:", error);
+      return res.status(500).json(
+        new ApiError(500, [error.message], "Failed to log in!")
+      );
+    }
+  });
+
+  // Logout User Controller Code
+const logOutUser = asyncHandler(async (req, res) => {
+    try {
+      // Passport logout
+      req.logout((err) => {
+        if (err) {
+          console.error("❌ Error during logout:", err);
+          return res.status(400).json(
+            new ApiError(400, [err.message], "Failed to log out!")
+          );
+        }
+  
+        // Destroy session
+        req.session.destroy((err) => {
+          if (err) {
+            console.error("❌ Session destruction failed:", err);
+            return res.status(500).json(
+              new ApiError(500, [err.message], "Failed to destroy session!")
+            );
+          }
+  
+          // Clear session cookie
+          res.clearCookie("connect.sid", {
+            path: "/",
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production", // true in production
+            sameSite: "lax",
+          });
+  
+          console.log("✅ Logout successful");
+          return res
+            .status(200)
+            .json(new ApiResponse(200, null, "Logged out successfully!"));
+        });
+      });
+    } catch (error) {
+      console.error("❌ Logout error:", error);
+      return res
+        .status(500)
+        .json(new ApiError(500, [error.message], "Logout failed!"));
+    }
+  });
+  
+
+export { createNewUser , loginUser , logOutUser };
