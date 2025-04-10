@@ -65,7 +65,18 @@ app.get("/" , (req , res) => {
 
 import userRouter from "./router/user.router.js";
 import vendorRouter from "./router/vendor.router.js";
+import adminRouter from "./router/admin.router.js";
+import categoryRouter from "./router/category.router.js";
+import productRouter from "./router/product.router.js";
+import navigationRouter from "./router/navigation.router.js";
+
+
 app.use('/api/user' , userRouter);
 app.use('/api/vendor' , vendorRouter);
+app.use('/api/admin' , adminRouter);
+app.use('/api/category' , categoryRouter);
+app.use('/api/product' , productRouter);
+app.use('/api/navigation' , navigationRouter);
+
 
 export { app };
