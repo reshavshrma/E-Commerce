@@ -39,14 +39,14 @@ const vendorSchema = new Schema(
       area: { type: String, required: true },
       city: { type: String, required: true },
       pincode: { type: String, required: true },
-      image: {
+      state: { type: String, required: true },
+      country: { type: String, required: true },
+    },
+    image: {
         type: String,
         default:
           "https://media-hosting.imagekit.io//4bc72ff0889f4681/demo.png",
       },
-      state: { type: String, required: true },
-      country: { type: String, required: true },
-    },
     role: {
       type: String,
       enum: ["vendor"],

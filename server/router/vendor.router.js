@@ -3,14 +3,18 @@ import { Vendor } from '../models/vendor.model.js';
 import { isLoggedIn } from '../middleware/auth.middleware.js';
 import {validate} from '../middleware/validator.js';
 import {vendorSchemaValidation} from '../test/vendor.validator.js' ;
-
+import {vendorAccountDetails} from "../controller/vendor.controller.js";
 const router = express.Router();
 
 //Core router - /api/vendor
 
 router
      .route("/:id/account")
-     .get()
+     .get(isLoggedIn , vendorAccountDetails)
+
+router
+     .route("/add-vendor")
+     .post(isLoggedIn , vendorAccountDetails)
 
 router
      .route("/:id/categories")
