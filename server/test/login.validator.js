@@ -1,5 +1,5 @@
 import Joi from "joi";
-import {User} from "../model/user.model.js"; // Assuming you have a User model
+
 
 const loginUserValidation = Joi.object({
 

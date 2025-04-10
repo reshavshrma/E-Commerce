@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { Vendor } from "../model/vendor.model.js";
+import { Vendor } from "../models/vendor.model.js";
 
 const vendorSchemaValidation = Joi.object({
   name: Joi.string().trim().required().messages({

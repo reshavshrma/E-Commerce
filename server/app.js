@@ -62,4 +62,10 @@ app.use((req, res, next) => {
 app.get("/" , (req , res) => {
     res.status(200).json({"message" : "Everything working well ! Lets Go !"})
 })
+
+import userRouter from "./router/user.router.js";
+import vendorRouter from "./router/vendor.router.js";
+app.use('/api/user' , userRouter);
+app.use('/api/vendor' , vendorRouter);
+
 export { app };

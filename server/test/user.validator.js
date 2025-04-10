@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { User } from "../model/user.model.js";
+import { User } from "../models/user.model.js";
 
 // Validation Schema for User Creation
 const userSchemaValidation = Joi.object({
