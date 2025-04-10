@@ -1,44 +1,132 @@
-import React from "react";
-import { FaUser, FaLock } from "react-icons/fa";
+import React, { useState, useRef } from "react";
+import axios from "axios";
+import { useNavigate, NavLink } from "react-router-dom";
+import InputField from "./InputField";
+import { useUser } from "../../../components/UserContext/UserContext";
+import { FaEnvelope } from "react-icons/fa";
+import { BsShieldLockFill } from "react-icons/bs";
+import { validateLoginForm } from "./validateForm";
 
-const Login = () => {
+const LoginForm = () => {
+  const navigate = useNavigate();
+  const { setUser } = useUser();
+  const [loginUser, setLoginUser] = useState({ email: "", password: "" });
+  const [formErrors, setFormErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  const inputRefs = {
+    email: useRef(),
+    password: useRef(),
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setLoginUser((prev) => ({ ...prev, [name]: value }));
+
+    if (inputRefs[name]?.current) {
+      inputRefs[name].current.style.color = value ? "white" : "black";
+      inputRefs[name].current.style.textAlign = "center";
+      inputRefs[name].current.style.backgroundColor = "#5454544f";
+    }
+  };
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+    const errors = validateLoginForm(loginUser);
+    setFormErrors(errors);
+    if (Object.keys(errors).length !== 0) return;
+
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/user/login`,
+        loginUser,
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        const userData = response.data.data.user;
+        setUser(userData);
+        localStorage.setItem("user", JSON.stringify(userData));
+        setLoginUser({ email: "", password: "" });
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response?.data?.details) {
+        const backendErrors = error.response.data.details.reduce((acc, msg) => {
+          if (msg.toLowerCase().includes("email")) acc.email = msg;
+          else if (msg.toLowerCase().includes("password")) acc.password = msg;
+          else acc.global = msg;
+          return acc;
+        }, {});
+        setFormErrors(backendErrors);
+      } else {
+        setFormErrors({
+          global: error.response?.data?.message || "Failed to login! Please try again later.",
+        });
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-      <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-2xl">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
-        <form className="space-y-5">
-          <div className="relative">
-            <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Username"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-          <div className="relative">
-            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-          <div className="flex justify-between text-sm text-gray-600">
-            <label className="flex items-center">
-              <input type="checkbox" className="mr-2" /> Remember me
-            </label>
-            <a href="#" className="hover:text-blue-500">Forgot password?</a>
-          </div>
-          <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all">
-            Login
-          </button>
-          <p className="text-center text-gray-600 text-sm">
-            Don't have an account? <a href="#" className="text-blue-500">Sign up</a>
-          </p>
-        </form>
+    <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
+      {formErrors.global && <ErrorMessage message={formErrors.global} />}
+
+      <InputField
+        type="email"
+        name="email"
+        placeholder="please enter your email"
+        value={loginUser.email}
+        onChange={handleInputChange}
+        error={formErrors.email}
+        icon={<FaEnvelope />}
+        ref={inputRefs.email}
+      />
+      {formErrors.email && (
+        <p className="text-red-500 text-sm text-center">{formErrors.email}</p>
+      )}
+
+      <InputField
+        type="password"
+        name="password"
+        placeholder="please enter your password"
+        value={loginUser.password}
+        onChange={handleInputChange}
+        error={formErrors.password}
+        icon={<BsShieldLockFill />}
+        ref={inputRefs.password}
+      />
+      {formErrors.password && (
+        <p className="text-red-500 text-sm text-center">{formErrors.password}</p>
+      )}
+
+      <div className="text-center text-gray-400 mt-2 text-sm sm:text-base">
+        <span>Don’t have an account? </span>
+        <NavLink to="/user/register" className="text-sky-500 hover:underline">
+          Register
+        </NavLink>
       </div>
-    </div>
+
+      <button
+        type="submit"
+        disabled={isLoading}
+        className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
+          isLoading ? "bg-gray-800 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+        } flex items-center justify-center gap-2`}
+      >
+        {isLoading ? (
+          <>
+            <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
+            <span className="text-green-400 animate-pulse">Verifying...</span>
+          </>
+        ) : (
+          "Verify Now"
+        )}
+      </button>
+    </form>
   );
 };
 
-export default Login;
+export default LoginForm;

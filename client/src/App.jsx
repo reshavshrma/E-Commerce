@@ -6,6 +6,7 @@ import Contact from "./components/Navigation/Contact/Contact";
 import Policies from "./components/Navigation/Policies/Policies";
 import Login from "./pages/Authentication/Login/Login";
 import SignUp from "./pages/Authentication/SignUp/SignUp";
+import Logout from "./components/Logout/Logout";
 function App() {
 
 
@@ -18,6 +19,7 @@ function App() {
     <Route path="/policies" element={<Policies/>} />
     <Route path="/login" element={<Login/>} />
     <Route path="/register" element={<SignUp/>} />
+    <Route path="/logout" element={<Logout/>} />
 
 
       </Routes>

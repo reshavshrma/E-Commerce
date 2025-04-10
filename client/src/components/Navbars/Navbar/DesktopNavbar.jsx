@@ -25,14 +25,14 @@ const DesktopNavbar = () => {
             </NavLink>
         </li>
       ))}
-      <li>
+      
       <li  className="  hover:scale-110 hover:font-semibold">
             <NavLink to="/cart" className=" flex gap-1 justify-center items-center ">
               Cart <TiShoppingCart className="flex justify-center items-center"/>
             </NavLink>
         </li>
       
-      </li>
+      
  <li className="">
   <FaUserCircle className=" text-2xl"/>
  </li>

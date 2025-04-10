@@ -1,57 +1,108 @@
-import React from "react";
-import { FaUser, FaPhoneAlt, FaLock, FaEnvelope } from "react-icons/fa";
+import React, { useState } from "react";
+import InputField from "./InputField";
+import  {validateForm}  from "./validateForm";
+import { FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: ""
+  });
+
+  const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setServerError("");
+
+    const validationErrors = validateForm(formData, ["name", "email", "phone", "password"]);
+    if (Object.keys(validationErrors).length > 0) {
+      return setErrors(validationErrors);
+    }
+
+    try {
+      setLoading(true);
+      const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/user/register`,
+         formData,
+         {withCredentials : true}
+        );
+      console.log("User registered:", res.data);
+      navigate('/');
+      // Optional: navigate to login or home page here
+    } catch (err) {
+      setServerError(err.response?.data?.message || "Registration failed. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 px-4">
-      <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-2xl">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
-        <form className="space-y-5">
-          <div className="relative">
-            <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Username"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-          <div className="relative">
-            <FaPhoneAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="number"
-              placeholder="Contact Number"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-          <div className="relative">
-            <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-          <div className="relative">
-            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
-          <div className="flex justify-between text-sm text-gray-600">
-            <label className="flex items-center">
-              <input type="checkbox" className="mr-2" /> I agree to the terms & conditions
-            </label>
-          </div>
-          <button className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all">
-            Sign Up
-          </button>
-          <p className="text-center text-gray-600 text-sm">
-            Already have an account? <a href="#" className="text-blue-500">Login</a>
-          </p>
-        </form>
-      </div>
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-xl">
+      <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+      <form onSubmit={handleSubmit} noValidate>
+        <InputField
+          label="Full Name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Enter your name"
+          icon={FaUser}
+          error={errors.name}
+        />
+        <InputField
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="example@email.com"
+          icon={FaEnvelope}
+          error={errors.email}
+        />
+        <InputField
+          label="Phone"
+          name="phone"
+          type="tel"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="1234567890"
+          icon={FaPhone}
+          error={errors.phone}
+        />
+        <InputField
+          label="Password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="••••••••"
+          icon={FaLock}
+          error={errors.password}
+        />
+
+        {serverError && <p className="text-red-500 text-sm text-center mb-4">{serverError}</p>}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+          {loading ? "Signing up..." : "Sign Up"}
+        </button>
+      </form>
     </div>
   );
 };
