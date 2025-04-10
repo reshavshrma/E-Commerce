@@ -1,5 +1,4 @@
 import Joi from "joi";
-import { Category } from "../model/category.model.js";
 
 const categorySchemaValidation = Joi.object({
   title: Joi.string().trim().required().messages({

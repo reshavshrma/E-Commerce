@@ -1,31 +1,34 @@
 import express from 'express' ;
-import { Category } from '../models/category.model.js';
 import { isLoggedIn } from '../middleware/auth.middleware.js';
 import {validate} from '../middleware/validator.js';
-
+import {upload} from "../multer.js";
+import { categorySchemaValidation } from "../test/category.validator.js";
+import { updateCategorySchemaValidation } from "../test/categoryEdit.validator.js";
+import { createCategory , getAllCategories ,editCategory, deleteCategory } from '../controller/category.controller.js';
 const router = express.Router();
 
 // Core router - /api/category
 
 router
      .route("/")
-     .get()
+     .get(isLoggedIn , getAllCategories)
+
+router
+     .route("/add-category")
+     .post(isLoggedIn , upload.single('image') , validate(categorySchemaValidation) , createCategory)
 
 router
      .route("/:id/products")
      .get()
 
-router
-     .route("/category")
-     .post()
 
 router
-     .route("/category/:id/edit")
-     .put()
+     .route("/:id/edit")
+     .put(isLoggedIn , upload.single('image') , validate(updateCategorySchemaValidation) , editCategory)
 
 router
-     .route("/category/:id/delete")
-     .delete()
+     .route("/:id/delete")
+     .delete(isLoggedIn , deleteCategory)
 
 
 export default router ;
