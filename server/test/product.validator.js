@@ -48,14 +48,6 @@ const productSchemaValidation = Joi.object({
       "any.required": "Tag (male or female) is required.",
     }),
 
-  owner: Joi.string()
-    .regex(/^[0-9a-fA-F]{24}$/)
-    .required()
-    .messages({
-      "string.pattern.base": "Invalid vendor ID format.",
-      "any.required": "Product must have an owner (vendor).",
-    }),
-
   wishlists: Joi.array()
     .items(Joi.string().regex(/^[0-9a-fA-F]{24}$/))
     .optional(),

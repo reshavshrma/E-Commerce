@@ -11,7 +11,6 @@ const addProductController = async (req, res) => {
       sizes,
       category,
       tag,
-      owner,
     } = req.body;
 
     // Check if category exists
@@ -42,7 +41,7 @@ const addProductController = async (req, res) => {
       sizes,
       category,
       tag,
-      owner,
+
     });
 
     await newProduct.save();

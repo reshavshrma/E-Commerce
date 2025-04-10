@@ -29,12 +29,7 @@ const categorySchema = new Schema(
         ref: "Product",
       },
     ],
-    owner: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Vendor",
-      },
-    ],
+
   },
   {
     timestamps: true,

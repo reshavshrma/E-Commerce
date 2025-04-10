@@ -7,6 +7,9 @@ import Policies from "./components/Navigation/Policies/Policies";
 import Login from "./pages/Authentication/Login/Login";
 import SignUp from "./pages/Authentication/SignUp/SignUp";
 import Logout from "./components/Logout/Logout";
+import AddCategoryForm from "./pages/Category/AddCategoryForm";
+import AddProductForm from "./pages/Product/AddProductForm";
+
 function App() {
 
 
@@ -20,7 +23,8 @@ function App() {
     <Route path="/login" element={<Login/>} />
     <Route path="/register" element={<SignUp/>} />
     <Route path="/logout" element={<Logout/>} />
-
+    <Route path="/add-category" element={<AddCategoryForm />}  />
+    <Route path="/add-product" element={<AddProductForm />}  />
 
       </Routes>
     </>

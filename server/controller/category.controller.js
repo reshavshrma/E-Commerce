@@ -13,7 +13,6 @@ const createCategory = asyncHandler(async (req, res) => {
       image,
       tag,
       products,
-      owner,
     } = req.body;
 
     // 🔍 Check if category with the same title already exists
@@ -34,7 +33,6 @@ const createCategory = asyncHandler(async (req, res) => {
       tag,
       image: imageUrl?.url || image || "https://media-hosting.imagekit.io//4bc72ff0889f4681/demo.png",
       products: products || [],
-      owner: owner || [],
     });
 
     const savedCategory = await newCategory.save();
@@ -54,8 +52,7 @@ const createCategory = asyncHandler(async (req, res) => {
 const getAllCategories = asyncHandler(async (req, res) => {
     try {
       const categories = await Category.find({})
-        .populate("products") // optional: remove if not needed
-        .populate("owner")    // optional: remove if not needed
+        .populate("products") // optional: remove if not needed  // optional: remove if not needed
         .sort({ createdAt: -1 }); // newest first
   
       if (!categories || categories.length === 0) {

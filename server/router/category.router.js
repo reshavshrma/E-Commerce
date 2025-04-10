@@ -11,7 +11,7 @@ const router = express.Router();
 
 router
      .route("/")
-     .get(isLoggedIn , getAllCategories)
+     .get(  getAllCategories)
 
 router
      .route("/add-category")
