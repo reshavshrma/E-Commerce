@@ -1,10 +1,12 @@
 import express from 'express' ;
-import { User } from '../models/user.model.js';
 import { isLoggedIn } from '../middleware/auth.middleware.js';
+import {upload} from "../multer.js";
 import {validate} from '../middleware/validator.js';
 import {userSchemaValidation} from '../test/user.validator.js' ;
+import {userEditValidationSchema} from '../test/userEdit.validator.js' ;
 import { loginUserValidation } from '../test/login.validator.js';
 import { createNewUser , loginUser , logOutUser , checkAuthentication } from '../controller/userAuth.controller.js';
+import {userAccountDetails , getUserWishlists , toggleProductWishlist , editUserDetails , deleteUserAccount} from "../controller/user.controller.js";
 const router = express.Router();
 
 
@@ -35,11 +37,16 @@ router
 
 router
      .route('/:id/account')
-     .get();
+     .get(isLoggedIn , userAccountDetails);
 
 router
      .route('/:id/account/wishlists')
-     .get();
+     .get(isLoggedIn , getUserWishlists);
+
+router
+     .route('/:id/account/wishlist')
+     .post( isLoggedIn,toggleProductWishlist)
+
 
 router
      .route('/:id/account/bookings')
@@ -47,11 +54,11 @@ router
 
 router
      .route('/:id/account/edit')
-     .put();
+     .put(isLoggedIn , upload.single("image"), validate(userEditValidationSchema) , editUserDetails);
 
 router
      .route('/:id/account/delete')
-     .delete();
+     .delete(isLoggedIn , deleteUserAccount);
 
 
 export default router;
