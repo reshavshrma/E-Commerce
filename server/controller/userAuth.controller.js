@@ -186,6 +186,27 @@ const logOutUser = asyncHandler(async (req, res) => {
         .json(new ApiError(500, [error.message], "Logout failed!"));
     }
   });
-  
 
-export { createNewUser , loginUser , logOutUser };
+  // Check if User is Authenticated (Login check)
+const checkAuthentication = asyncHandler(async (req, res) => {
+    try {
+      if (req.isAuthenticated()) {
+        console.log("✅ User is authenticated:", req.user);
+        return res
+          .status(200)
+          .json(new ApiResponse(200, { isAuthenticated: true, user: req.user }, "User is authenticated."));
+      } else {
+        console.log("❌ User is not authenticated.");
+        return res
+          .status(200)
+          .json(new ApiResponse(200, { isAuthenticated: false }, "User is not authenticated."));
+      }
+    } catch (error) {
+      console.error("❌ Error checking authentication:", error);
+      return res
+        .status(400)
+        .json(new ApiError(400, error.message || error, "Failed to check authentication."));
+    }
+  });
+
+export { createNewUser , loginUser , logOutUser , checkAuthentication };

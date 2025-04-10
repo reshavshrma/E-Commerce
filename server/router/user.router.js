@@ -4,7 +4,7 @@ import { isLoggedIn } from '../middleware/auth.middleware.js';
 import {validate} from '../middleware/validator.js';
 import {userSchemaValidation} from '../test/user.validator.js' ;
 import { loginUserValidation } from '../test/login.validator.js';
-import { createNewUser , loginUser , logOutUser } from '../controller/userAuth.controller.js';
+import { createNewUser , loginUser , logOutUser , checkAuthentication } from '../controller/userAuth.controller.js';
 const router = express.Router();
 
 
@@ -31,7 +31,7 @@ router
 // Check for the user authentication Route
 router
      .route('/auth')
-     .get()
+     .get(checkAuthentication)
 
 router
      .route('/:id/account')
