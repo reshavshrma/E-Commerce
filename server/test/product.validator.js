@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { Product } from "../model/product.model.js";
+
 const productSchemaValidation = Joi.object({
   title: Joi.string().trim().required().messages({
     "string.empty": "Product title is required!",
