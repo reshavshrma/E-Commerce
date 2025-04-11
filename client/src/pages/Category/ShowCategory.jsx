@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import ProductCard from "../../components/Products/ProductCard.jsx/ProductCard"; // Adjust path if needed
 
 const ShowCategory = () => {
   const { id, tag } = useParams();
@@ -16,8 +17,8 @@ const ShowCategory = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/category/${id}/${tag}/products` , 
-          {withCredentials : true},
+          `${import.meta.env.VITE_API_URL}/api/category/${id}/${tag}/products`,
+          { withCredentials: true }
         );
         setCategory(data.data.category);
         setProducts(data.data.products);
@@ -51,25 +52,7 @@ const ShowCategory = () => {
           {products.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {products.map((product) => (
-                <div
-                  key={product._id}
-                  className="border rounded-lg shadow-md overflow-hidden"
-                >
-                  <img
-                    src={product.images?.[0]}
-                    alt={product.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold">
-                      {product.title}
-                    </h3>
-                    <p className="text-gray-600 mb-1">
-                      ₹{product.price}
-                    </p>
-                    <p className="text-sm text-gray-500">{product.description}</p>
-                  </div>
-                </div>
+                <ProductCard key={product._id} product={product} />
               ))}
             </div>
           ) : (

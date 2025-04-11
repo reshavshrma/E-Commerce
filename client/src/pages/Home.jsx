@@ -25,9 +25,6 @@ const Home = () => {
         <AllCategories/>
       </div>
       <div className='my-20'>
-        <ProductList/>
-      </div>
-      <div className='my-20'>
         <VendorList/>
       </div>
       <div className='my-20'>

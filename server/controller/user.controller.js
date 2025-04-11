@@ -74,7 +74,7 @@ const getUserWishlists = asyncHandler(async (req, res) => {
         .populate({
           path: "wishlists",
           populate: {
-            path: "category owner", // optional: if you want full info
+            path: "category", // optional: if you want full info
             select: "-__v", // customize as needed
           },
           select: "-__v", // remove unwanted fields from product
