@@ -51,17 +51,17 @@ const Slideshow = () => {
       {/* Left Arrow */}
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-75 transition"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-600 bg-opacity-50 p-1 rounded-full text-white hover:bg-opacity-75 transition"
       >
-        <FaArrowLeft size={24} />
+        <FaArrowLeft size={16} />
       </button>
 
       {/* Right Arrow */}
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-900 bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-75 transition"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-600 bg-opacity-50 p-1 rounded-full text-white hover:bg-opacity-75 transition"
       >
-        <FaArrowRight size={24} />
+        <FaArrowRight size={16} />
       </button>
 
       {/* Indicator Dots */}
@@ -70,8 +70,8 @@ const Slideshow = () => {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-3 h-3 rounded-full transition ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
+            className={`w-1 h-1 rounded-full transition ${
+              index === currentIndex ? "bg-white" : "bg-gray-700"
             }`}
           ></button>
         ))}

@@ -1,10 +1,13 @@
 import React from 'react'
-
+import { useUser } from '../../UserContext/UserContext';
 const WelcomeMsg = () => {
+    const {user} = useUser();
   return (
-    <div className='bg-green-600'>
-      <h1 className='text-white text-center'> Welcome to The Shopzo Store</h1>
-    </div>
+   <>
+   <h1 className="text-base mt-10 sm:text-2xl p-2   xs:hidden lg:block lg:mt-10 xl:hidden text-center text-gray-800 font-semibold ">
+   <p >Welcome <span className='text-yellow-700 capitalize'>{user ? user.name : null}</span> to The Shopzo ! </p>
+ </h1>
+   </>
   )
 }
 

@@ -12,7 +12,7 @@ import AllCategories from '../components/Category/AllCategory/AllCategory';
 const Home = () => {
   return (
     <div >
-    <div className="bg-[url('/assets/header-img.png')] bg-cover h-72 bg-no-repeat sm:bg-cover md:h-[40rem]">
+    <div className="bg-[url('/assets/header-img.png')] bg-cover h-72 bg-no-repeat  md:h-[40rem]">
       <Navbar/>
     </div>
       <div className='my-20'>
@@ -20,9 +20,6 @@ const Home = () => {
       </div>
       <div className='my-20'>
         <SlideShow/>
-      </div>
-      <div className='my-20'>
-        <SearchBox/>
       </div>
       <div className='my-20'>
         <AllCategories/>

@@ -3,19 +3,23 @@ import OfferDetail from './OfferDetail'
 import DesktopNavbar from './DesktopNavbar'
 import NavImg from './NavImg'
 import NavHeader from './NavHeader'
+import MobileNavbar from './MobileNavbar'
 const Navbar = () => {
   return (
     <div>
       <OfferDetail/>
 
-      <div className="flex  items-center  xs:-ml-5 space-x-5">
+      <div className=" flex justify-center items-center px-6 sm:justify-between  lg:px-8">
+        <div className="flex  items-center  xs:-ml-5 space-x-5">
           <NavImg />
           <NavHeader />
-
-      <DesktopNavbar/>
         </div>
-      </div>
 
+        <DesktopNavbar />
+
+        <MobileNavbar />
+      </div>
+        </div>
   )
 }
 
