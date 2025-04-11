@@ -1,9 +1,12 @@
 import express from 'express' ;
 import { Vendor } from '../models/vendor.model.js';
 import { isLoggedIn } from '../middleware/auth.middleware.js';
+import {upload} from "../multer.js";
 import {validate} from '../middleware/validator.js';
 import {vendorSchemaValidation} from '../test/vendor.validator.js' ;
-import {vendorAccountDetails} from "../controller/vendor.controller.js";
+import {editVendorValidation} from '../test/vendorEdit.validator.js' ;
+import {vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById} from "../controller/vendor.controller.js";
+
 const router = express.Router();
 
 //Core router - /api/vendor
@@ -14,7 +17,7 @@ router
 
 router
      .route("/add-vendor")
-     .post(isLoggedIn , vendorAccountDetails)
+     .post(isLoggedIn , upload.single("image") ,  validate(vendorSchemaValidation) , addNewVendor)
 
 router
      .route("/:id/categories")
@@ -32,4 +35,12 @@ router
      .route("/:id/all-reviews")
      .get()
 
+router
+     .route("/:id/account/edit")
+     .put( isLoggedIn, upload.single("image"), validate(editVendorValidation),updateVendorById);
+
+router
+     .route("/:id/account/delete")
+     .delete(isLoggedIn, deleteVendorById);
+   
 export default router;
