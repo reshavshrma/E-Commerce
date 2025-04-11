@@ -22,12 +22,6 @@ const LoginForm = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLoginUser((prev) => ({ ...prev, [name]: value }));
-
-    if (inputRefs[name]?.current) {
-      inputRefs[name].current.style.color = value ? "white" : "black";
-      inputRefs[name].current.style.textAlign = "center";
-      inputRefs[name].current.style.backgroundColor = "#5454544f";
-    }
   };
 
   const handleSubmitForm = async (e) => {
@@ -62,7 +56,7 @@ const LoginForm = () => {
         setFormErrors(backendErrors);
       } else {
         setFormErrors({
-          global: error.response?.data?.message || "Failed to login! Please try again later.",
+          global: error.response?.data?.message || "Login failed! Try again later.",
         });
       }
     } finally {
@@ -71,61 +65,69 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="flex flex-col gap-y-4 lg:p-5" onSubmit={handleSubmitForm}>
-      {formErrors.global && <ErrorMessage message={formErrors.global} />}
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black px-4">
+      <div className="bg-white max-w-md w-full p-8 rounded-2xl shadow-2xl space-y-6">
+        <h2 className="text-3xl font-bold text-center text-gray-800">Welcome Back</h2>
+        <p className="text-sm text-center text-gray-500">Please login to your account</p>
 
-      <InputField
-        type="email"
-        name="email"
-        placeholder="please enter your email"
-        value={loginUser.email}
-        onChange={handleInputChange}
-        error={formErrors.email}
-        icon={<FaEnvelope />}
-        ref={inputRefs.email}
-      />
-      {formErrors.email && (
-        <p className="text-red-500 text-sm text-center">{formErrors.email}</p>
-      )}
-
-      <InputField
-        type="password"
-        name="password"
-        placeholder="please enter your password"
-        value={loginUser.password}
-        onChange={handleInputChange}
-        error={formErrors.password}
-        icon={<BsShieldLockFill />}
-        ref={inputRefs.password}
-      />
-      {formErrors.password && (
-        <p className="text-red-500 text-sm text-center">{formErrors.password}</p>
-      )}
-
-      <div className="text-center text-gray-400 mt-2 text-sm sm:text-base">
-        <span>Don’t have an account? </span>
-        <NavLink to="/user/register" className="text-sky-500 hover:underline">
-          Register
-        </NavLink>
-      </div>
-
-      <button
-        type="submit"
-        disabled={isLoading}
-        className={`w-full border-gray-500 border-2 font-semibold px-4 py-2 text-white rounded-xl mt-4 ${
-          isLoading ? "bg-gray-800 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
-        } flex items-center justify-center gap-2`}
-      >
-        {isLoading ? (
-          <>
-            <div className="w-5 h-5 border-2 border-green-400 border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-green-400 animate-pulse">Verifying...</span>
-          </>
-        ) : (
-          "Verify Now"
+        {formErrors.global && (
+          <p className="text-center text-red-500 font-medium text-sm">{formErrors.global}</p>
         )}
-      </button>
-    </form>
+
+        <form onSubmit={handleSubmitForm} className="space-y-5">
+          <InputField
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={loginUser.email}
+            onChange={handleInputChange}
+            error={formErrors.email}
+            icon={<FaEnvelope />}
+            ref={inputRefs.email}
+          />
+
+          <InputField
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            value={loginUser.password}
+            onChange={handleInputChange}
+            error={formErrors.password}
+            icon={<BsShieldLockFill />}
+            ref={inputRefs.password}
+          />
+
+          <div className="text-sm text-center text-gray-600">
+            Don’t have an account?{" "}
+            <NavLink
+              to="/user/register"
+              className="text-blue-600 hover:underline hover:text-blue-800 transition duration-200"
+            >
+              Sign Up
+            </NavLink>
+          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full py-2 rounded-xl text-white font-semibold transition duration-300 ${
+              isLoading
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700"
+            } flex items-center justify-center gap-2`}
+          >
+            {isLoading ? (
+              <>
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span className="animate-pulse">Verifying...</span>
+              </>
+            ) : (
+              "Login"
+            )}
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

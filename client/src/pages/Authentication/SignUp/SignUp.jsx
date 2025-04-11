@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputField from "./InputField";
-import  {validateForm}  from "./validateForm";
+import { validateForm } from "./validateForm";
 import { FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -10,16 +10,21 @@ const Signup = () => {
     name: "",
     email: "",
     phone: "",
-    password: ""
+    password: "",
+    agreeToTerms: false,
   });
 
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
@@ -27,20 +32,28 @@ const Signup = () => {
     e.preventDefault();
     setServerError("");
 
-    const validationErrors = validateForm(formData, ["name", "email", "phone", "password"]);
+    const validationErrors = validateForm(
+      formData,
+      ["name", "email", "phone", "password"]
+    );
+
+    if (!formData.agreeToTerms) {
+      validationErrors.agreeToTerms = "You must agree to the terms.";
+    }
+
     if (Object.keys(validationErrors).length > 0) {
       return setErrors(validationErrors);
     }
 
     try {
       setLoading(true);
-      const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/user/register`,
-         formData,
-         {withCredentials : true}
-        );
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/user/register`,
+        formData,
+        { withCredentials: true }
+      );
       console.log("User registered:", res.data);
-      navigate('/');
-      // Optional: navigate to login or home page here
+      navigate("/");
     } catch (err) {
       setServerError(err.response?.data?.message || "Registration failed. Try again.");
     } finally {
@@ -49,60 +62,107 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-xl">
-      <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
-      <form onSubmit={handleSubmit} noValidate>
-        <InputField
-          label="Full Name"
-          name="name"
-          type="text"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          icon={FaUser}
-          error={errors.name}
-        />
-        <InputField
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="example@email.com"
-          icon={FaEnvelope}
-          error={errors.email}
-        />
-        <InputField
-          label="Phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="1234567890"
-          icon={FaPhone}
-          error={errors.phone}
-        />
-        <InputField
-          label="Password"
-          name="password"
-          type="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="••••••••"
-          icon={FaLock}
-          error={errors.password}
-        />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+      <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl border border-gray-100">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          Create your Account
+        </h2>
 
-        {serverError && <p className="text-red-500 text-sm text-center mb-4">{serverError}</p>}
+        <form onSubmit={handleSubmit} noValidate className="space-y-5">
+          <InputField
+            label="Full Name"
+            name="name"
+            type="text"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="John Doe"
+            icon={FaUser}
+            error={errors.name}
+          />
+          <InputField
+            label="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="you@example.com"
+            icon={FaEnvelope}
+            error={errors.email}
+          />
+          <InputField
+            label="Phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="1234567890"
+            icon={FaPhone}
+            error={errors.phone}
+          />
+          <InputField
+            label="Password"
+            name="password"
+            type="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="••••••••"
+            icon={FaLock}
+            error={errors.password}
+          />
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-        >
-          {loading ? "Signing up..." : "Sign Up"}
-        </button>
-      </form>
+          {/* Terms & Conditions */}
+          <div className="flex items-start gap-2 text-sm">
+            <input
+              type="checkbox"
+              name="agreeToTerms"
+              id="agreeToTerms"
+              checked={formData.agreeToTerms}
+              onChange={handleChange}
+              className="mt-1"
+            />
+            <label htmlFor="agreeToTerms" className="text-gray-600">
+              I agree to the{" "}
+              <a
+                href="/policies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                Terms & Conditions
+              </a>
+            </label>
+          </div>
+          {errors.agreeToTerms && (
+            <p className="text-red-500 text-xs mt-1">{errors.agreeToTerms}</p>
+          )}
+
+          {serverError && (
+            <p className="text-red-500 text-sm text-center">{serverError}</p>
+          )}
+
+          <button
+  type="submit"
+  disabled={loading}
+  className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
+>
+  {loading ? (
+    <>
+      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+      Signing up...
+    </>
+  ) : (
+    "Sign Up"
+  )}
+</button>
+        </form>
+
+        <p className="text-sm text-center text-gray-500 mt-6">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-600 hover:underline">
+            Log in
+          </a>
+        </p>
+      </div>
     </div>
   );
 };
