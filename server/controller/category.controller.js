@@ -1,4 +1,5 @@
 import { Category } from "../models/category.model.js";
+import { Product } from "../models/product.model.js";
 import {asyncHandler} from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js"; // assuming you use this for image upload
 import { ApiResponse } from "../utils/ApiResponse.js";
@@ -72,6 +73,43 @@ const getAllCategories = asyncHandler(async (req, res) => {
     }
   });
 
+// Show all products belong to that category and that tag
+const getProductsByCategoryAndTag = asyncHandler(async (req, res) => {
+  const { categoryId, tag } = req.params;
+
+  // Validate tag
+  if (!["male", "female"].includes(tag)) {
+    return res.status(400).json(new ApiError(400, "Invalid tag value."));
+  }
+
+  try {
+    // Check if the category exists
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return res.status(404).json(new ApiError(404, "Category not found"));
+    }
+
+    // Find products matching the category and tag
+    const products = await Product.find({
+      category: categoryId,
+      tag: tag,
+    }).populate("category", "title tag");
+
+    if (!products || products.length === 0) {
+      return res.status(404).json(new ApiError(404, "No products found"));
+    }
+
+    return res.status(200).json(
+      new ApiResponse(200, { category, products }, "Products fetched successfully")
+    );
+  } catch (error) {
+    console.error("❌ Error fetching products by category and tag:", error);
+    return res.status(500).json(
+      new ApiError(500, error.message, "Failed to fetch products")
+    );
+  }
+});
+
 
   const editCategory = asyncHandler(async (req, res) => {
     const { id } = req.params;
@@ -123,4 +161,4 @@ const getAllCategories = asyncHandler(async (req, res) => {
       .status(200)
       .json(new ApiResponse(200, {}, "Category deleted successfully"));
   });
-export { createCategory , getAllCategories , editCategory , deleteCategory };
+export { createCategory , getAllCategories , getProductsByCategoryAndTag , editCategory , deleteCategory };

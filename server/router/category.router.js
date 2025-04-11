@@ -4,7 +4,7 @@ import {validate} from '../middleware/validator.js';
 import {upload} from "../multer.js";
 import { categorySchemaValidation } from "../test/category.validator.js";
 import { updateCategorySchemaValidation } from "../test/categoryEdit.validator.js";
-import { createCategory , getAllCategories ,editCategory, deleteCategory } from '../controller/category.controller.js';
+import { createCategory , getAllCategories , getProductsByCategoryAndTag, editCategory, deleteCategory } from '../controller/category.controller.js';
 const router = express.Router();
 
 // Core router - /api/category
@@ -18,8 +18,8 @@ router
      .post(isLoggedIn , upload.single('image') , validate(categorySchemaValidation) , createCategory)
 
 router
-     .route("/:id/products")
-     .get()
+     .route("/:categoryId/:tag/products")
+     .get(getProductsByCategoryAndTag)
 
 
 router
