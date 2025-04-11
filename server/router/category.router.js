@@ -22,7 +22,7 @@ router
      .post(isLoggedIn , upload.single('image') , validate(categorySchemaValidation) , createCategory)
 
 router
-     .route("/:categoryId/:tag/products")
+     .route("/:id/:tag/products")
      .get(getProductsByCategoryAndTag)
 
 

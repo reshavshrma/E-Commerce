@@ -17,6 +17,8 @@ import AddVendor from "./pages/Vendor/AddVendor";
 import ShowVendor from "./pages/Vendor/ShowVendor";
 import EditVendor from "./pages/Vendor/EditVendor";
 import DeleteVendor from "./pages/Vendor/DeleteVendor";
+import ShowCategory from "./pages/Category/ShowCategory";
+import UserAccount from "./pages/User/UserAccount";
 
 function App() {
 
@@ -41,6 +43,8 @@ function App() {
     <Route path="/vendor/:id/account" element={<ShowVendor />}  />
     <Route path="/vendor/:id/account/edit" element={<EditVendor />}  />
     <Route path="/vendor/:id/account/delete" element={<DeleteVendor />}  />
+    <Route path="/category/:id/:tag/products" element={<ShowCategory />}  />
+    <Route path="/user/:id/account" element={<UserAccount />}  />
 
       </Routes>
     </>

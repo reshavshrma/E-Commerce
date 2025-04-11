@@ -94,7 +94,7 @@ const getAllCategories = asyncHandler(async (req, res) => {
 
 // Show all products belong to that category and that tag
 const getProductsByCategoryAndTag = asyncHandler(async (req, res) => {
-  const { categoryId, tag } = req.params;
+  const { id, tag } = req.params;
 
   // Validate tag
   if (!["male", "female"].includes(tag)) {
@@ -103,14 +103,14 @@ const getProductsByCategoryAndTag = asyncHandler(async (req, res) => {
 
   try {
     // Check if the category exists
-    const category = await Category.findById(categoryId);
+    const category = await Category.findById(id);
     if (!category) {
       return res.status(404).json(new ApiError(404, "Category not found"));
     }
 
     // Find products matching the category and tag
     const products = await Product.find({
-      category: categoryId,
+      category: id,
       tag: tag,
     }).populate("category", "title tag");
 
