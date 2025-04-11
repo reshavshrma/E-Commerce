@@ -11,6 +11,8 @@ import AddCategoryForm from "./pages/Category/AddCategoryForm";
 import AddProductForm from "./pages/Product/AddProductForm";
 import EditCategory from "./pages/Category/EditCategory";
 import DeleteCategory from "./pages/Category/DeleteCategory";
+import ShowProduct from "./pages/Product/ShowProduct";
+import EditProduct from "./pages/Product/EditProduct";
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
     <Route path="/add-product" element={<AddProductForm />}  />
     <Route path="/:id/edit-category" element={<EditCategory />}  />
     <Route path="/:id/delete-category" element={<DeleteCategory />}  />
+    <Route path="/product/:id" element={<ShowProduct />}  />
+    <Route path="/product/:id/edit" element={<EditProduct />}  />
 
       </Routes>
     </>
