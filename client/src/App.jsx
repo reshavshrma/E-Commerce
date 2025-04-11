@@ -9,6 +9,8 @@ import SignUp from "./pages/Authentication/SignUp/SignUp";
 import Logout from "./components/Logout/Logout";
 import AddCategoryForm from "./pages/Category/AddCategoryForm";
 import AddProductForm from "./pages/Product/AddProductForm";
+import EditCategory from "./pages/Category/EditCategory";
+import DeleteCategory from "./pages/Category/DeleteCategory";
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
     <Route path="/logout" element={<Logout/>} />
     <Route path="/add-category" element={<AddCategoryForm />}  />
     <Route path="/add-product" element={<AddProductForm />}  />
+    <Route path="/:id/edit-category" element={<EditCategory />}  />
+    <Route path="/:id/delete-category" element={<DeleteCategory />}  />
 
       </Routes>
     </>

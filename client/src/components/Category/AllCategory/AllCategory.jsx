@@ -42,7 +42,7 @@ const AllCategories = () => {
         {categories.map((category) => (
           <CategoryCard
             key={category._id}
-            title={category.title}
+            category={category}
             // Optionally pass image={category.image} if available
           />
         ))}

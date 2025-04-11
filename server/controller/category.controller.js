@@ -4,7 +4,7 @@ import {asyncHandler} from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js"; // assuming you use this for image upload
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
-
+import mongoose from "mongoose";
 // Controller: Add New Category
 const createCategory = asyncHandler(async (req, res) => {
   try {
@@ -72,6 +72,25 @@ const getAllCategories = asyncHandler(async (req, res) => {
         .json(new ApiError(500, error.message, "Failed to fetch categories"));
     }
   });
+  const getCategoryById = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+  
+    // Check if the ID is a valid Mongo ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new ApiError(400, "Invalid category ID format.");
+    }
+  
+    const category = await Category.findById(id).populate("products");
+  
+    if (!category) {
+      throw new ApiError(404, "Category not found.");
+    }
+  
+    return res
+      .status(200)
+      .json(new ApiResponse(200, { category }, "Category fetched successfully."));
+  });
+  
 
 // Show all products belong to that category and that tag
 const getProductsByCategoryAndTag = asyncHandler(async (req, res) => {
@@ -161,4 +180,4 @@ const getProductsByCategoryAndTag = asyncHandler(async (req, res) => {
       .status(200)
       .json(new ApiResponse(200, {}, "Category deleted successfully"));
   });
-export { createCategory , getAllCategories , getProductsByCategoryAndTag , editCategory , deleteCategory };
+export { createCategory , getAllCategories , getCategoryById, getProductsByCategoryAndTag , editCategory , deleteCategory };
