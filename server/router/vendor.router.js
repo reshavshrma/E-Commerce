@@ -5,11 +5,15 @@ import {upload} from "../multer.js";
 import {validate} from '../middleware/validator.js';
 import {vendorSchemaValidation} from '../test/vendor.validator.js' ;
 import {editVendorValidation} from '../test/vendorEdit.validator.js' ;
-import {vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById} from "../controller/vendor.controller.js";
+import { getAllVendors,vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById} from "../controller/vendor.controller.js";
 
 const router = express.Router();
 
 //Core router - /api/vendor
+
+router
+     .route('/all-vendors')
+     .get(getAllVendors)
 
 router
      .route("/:id/account")

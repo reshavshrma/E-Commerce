@@ -6,6 +6,32 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import mongoose from "mongoose";
 
+
+const getAllVendors = asyncHandler(async (req, res) => {
+  try {
+    const vendors = await Vendor.find({}).select("-password -__v");
+
+    if (!vendors || vendors.length === 0) {
+      throw new ApiError(404, "No vendors found");
+    }
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, vendors, "Fetched all vendors successfully"));
+  } catch (error) {
+    console.error("❌ Error fetching vendors:", error);
+    return res
+      .status(error.statusCode || 500)
+      .json(
+        new ApiError(
+          error.statusCode || 500,
+          error.message || "Failed to fetch vendors"
+        )
+      );
+  }
+});
+
+
 // 📦 Get Vendor Account Details Controller
 const vendorAccountDetails = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -188,4 +214,4 @@ const deleteVendorById = asyncHandler(async (req, res) => {
 
   return res.status(200).json(new ApiResponse(200, {}, "Vendor deleted successfully"));
 });
-export { vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById };
+export {getAllVendors,  vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById };

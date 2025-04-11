@@ -13,6 +13,10 @@ import EditCategory from "./pages/Category/EditCategory";
 import DeleteCategory from "./pages/Category/DeleteCategory";
 import ShowProduct from "./pages/Product/ShowProduct";
 import EditProduct from "./pages/Product/EditProduct";
+import AddVendor from "./pages/Vendor/AddVendor";
+import ShowVendor from "./pages/Vendor/ShowVendor";
+import EditVendor from "./pages/Vendor/EditVendor";
+import DeleteVendor from "./pages/Vendor/DeleteVendor";
 
 function App() {
 
@@ -33,6 +37,10 @@ function App() {
     <Route path="/:id/delete-category" element={<DeleteCategory />}  />
     <Route path="/product/:id" element={<ShowProduct />}  />
     <Route path="/product/:id/edit" element={<EditProduct />}  />
+    <Route path="/add-vendor" element={<AddVendor />}  />
+    <Route path="/vendor/:id/account" element={<ShowVendor />}  />
+    <Route path="/vendor/:id/account/edit" element={<EditVendor />}  />
+    <Route path="/vendor/:id/account/delete" element={<DeleteVendor />}  />
 
       </Routes>
     </>
