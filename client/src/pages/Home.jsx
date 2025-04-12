@@ -2,13 +2,12 @@ import React from 'react'
 import Navbar from '../components/Navbars/Navbar/Navbar';
 import WelcomeMsg from '../components/Home/WelcomeMsg/WelcomeMsg';
 import SlideShow from '../components/Home/SlideShow/SlideShow';
-import SearchBox from '../components/Home/SearchBox/SearchBox';
-import ProductList from '../components/Products/ProductList.jsx/ProductList';
 import VendorList from '../components/Vendors/VendorList.jsx/VendorList';
-import FAQs from '../components/FAQs/FAQs';
-import Counter from '../components/Home/Counter/Counter';
 import Footer from '../components/Footer/Footer';
 import AllCategories from '../components/Category/AllCategory/AllCategory';
+import Counter from '../components/Home/Counter/Counter';
+import { FaHotel } from 'react-icons/fa';
+import ScrollComponent from '../components/Home/ScrollComponent/ScrollComponent';
 const Home = () => {
   return (
     <div >
@@ -25,15 +24,15 @@ const Home = () => {
         <AllCategories/>
       </div>
       <div className='my-20'>
+    <Counter start={0} end={300} duration={2000} value="Hotels Listed" color="red" icon={<FaHotel className="text-red-500 text-2xl md:text-3xl lg:text-5xl" />}/>
+      </div>
+      <div className='my-20'>
+        <ScrollComponent/>
+      </div>
+      <div className='my-20'>
         <VendorList/>
       </div>
-      <div className='my-20'>
-        <FAQs/>
-      </div>
-      <div className='my-20'>
-        <Counter/>
-      </div>
-      <div className='my-20'>
+      <div className='mt-20'>
         <Footer/>
       </div>
     </div>
