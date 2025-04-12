@@ -19,6 +19,9 @@ import EditVendor from "./pages/Vendor/EditVendor";
 import DeleteVendor from "./pages/Vendor/DeleteVendor";
 import ShowCategory from "./pages/Category/ShowCategory";
 import UserAccount from "./pages/User/UserAccount";
+import AdminHome from "./pages/Admin/AdminHome";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminUser from "./pages/Admin/AdminUser";
 
 function App() {
 
@@ -45,6 +48,23 @@ function App() {
     <Route path="/vendor/:id/account/delete" element={<DeleteVendor />}  />
     <Route path="/category/:id/:tag/products" element={<ShowCategory />}  />
     <Route path="/user/:id/account" element={<UserAccount />}  />
+
+    <Route path="/admin/dashboard" element={<AdminDashboard />}  />
+
+    <Route
+            path="/admin"
+            element={
+                  <AdminHome />
+            }
+          >
+            <Route path="users" element={<AdminUser />} />
+            <Route path="vendors" element={<AdminHome />} />
+            <Route path="bookings" element={<AdminHome />} />
+            <Route path="categories" element={<AdminHome />} />
+            <Route path="products" element={<AdminHome />} />
+            <Route path="feedbacks" element={<AdminHome />} />
+            
+          </Route>
 
       </Routes>
     </>
