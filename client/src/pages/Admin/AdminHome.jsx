@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Outlet , NavLink} from "react-router-dom";
-import Navbar from "../../components/Navbars/Navbar/Navbar"
+import AdminNavbar from '../../components/Navbars/AdminNavbar/AdminNavbar';
 import { ImStatsDots } from "react-icons/im";
 import { IoStatsChartSharp } from "react-icons/io5";
 
@@ -8,7 +8,7 @@ const AdminHome = () => {
 
   return (
     <>
-      <Navbar />
+      <AdminNavbar />
       <div className="min-h-screen bg-gray-100 py-10 px-5 sm:px-20 flex flex-col items-center justify-center">
         {/* Welcome Section */}
         <div className="bg-white shadow-lg rounded-xl p-6 md:p-10 text-center max-w-4xl mx-auto">
