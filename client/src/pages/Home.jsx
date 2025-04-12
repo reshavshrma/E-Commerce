@@ -2,12 +2,12 @@ import React from 'react'
 import Navbar from '../components/Navbars/Navbar/Navbar';
 import WelcomeMsg from '../components/Home/WelcomeMsg/WelcomeMsg';
 import SlideShow from '../components/Home/SlideShow/SlideShow';
-import VendorList from '../components/Vendors/VendorList.jsx/VendorList';
 import Footer from '../components/Footer/Footer';
 import AllCategories from '../components/Category/AllCategory/AllCategory';
 import Counter from '../components/Home/Counter/Counter';
 import { FaHotel } from 'react-icons/fa';
 import ScrollComponent from '../components/Home/ScrollComponent/ScrollComponent';
+import AllVendors from './Vendor/AllVendors';
 const Home = () => {
   return (
     <div >
@@ -30,7 +30,7 @@ const Home = () => {
         <ScrollComponent/>
       </div>
       <div className='my-20'>
-        <VendorList/>
+        <AllVendors/>
       </div>
       <div className='mt-20'>
         <Footer/>

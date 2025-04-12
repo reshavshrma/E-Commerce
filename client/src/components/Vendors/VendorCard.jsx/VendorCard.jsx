@@ -1,30 +1,35 @@
 import React from "react";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
-const VendorCard = ({  title="My Vendor", location="Noida , Uttar Pradesh , India" }) => {
+const VendorCard = ({ vendor }) => {
   return (
-    <div className="relative group w-full max-w-xs md:max-w-sm lg:max-w-md bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
-      {/* Vendor Image */}
-      <div className="relative w-full h-64 overflow-hidden">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmF2jNtgxOyCxkdiyOLX9b9abyWQKlBd2aug&s"
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        
-        {/* Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-      </div>
-      
-      {/* Vendor Info */}
-      <div className="absolute bottom-5 left-5 text-white">
-        <h3 className="text-2xl font-bold tracking-wide">{title}</h3>
-        <p className="flex items-center text-sm text-gray-300 mt-1">
-          <FaMapMarkerAlt className="mr-1" /> {location}
-        </p>
-        <button className="mt-3 px-4 py-2 bg-white text-gray-900 font-semibold rounded-full shadow-md hover:bg-gray-100 transition-all duration-300">
+    <div className="bg-white shadow-xl rounded-2xl overflow-hidden transition-transform transform hover:-translate-y-1 hover:shadow-2xl duration-300 w-full max-w-sm mx-auto">
+      <img
+        src={vendor.image}
+        alt={vendor.name}
+        className="w-full h-48 object-cover"
+      />
+
+      <div className="p-5 space-y-2">
+        <h2 className="text-xl font-semibold text-gray-800">{vendor.name}</h2>
+
+        <div className="flex items-center text-sm text-gray-600">
+          <FaPhoneAlt className="mr-2 text-blue-500" />
+          <span>{vendor.phone}</span>
+        </div>
+
+        <div className="flex items-center text-sm text-gray-600">
+          <FaMapMarkerAlt className="mr-2 text-red-500" />
+          <span>{vendor?.address?.city}, {vendor?.address?.state}</span>
+        </div>
+
+        <Link
+          to={`/vendor/${vendor._id}/account`}
+          className="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 text-sm"
+        >
           View Now
-        </button>
+        </Link>
       </div>
     </div>
   );

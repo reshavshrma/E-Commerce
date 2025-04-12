@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
+import ToggleGender from "../../ToggleGender/ToggleGender"; // adjust path as needed
 
 const AllCategories = () => {
   const [categories, setCategories] = useState([]);
+  const [selectedGender, setSelectedGender] = useState("male");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -31,18 +33,25 @@ const AllCategories = () => {
     fetchCategories();
   }, []);
 
+  const filteredCategories = categories.filter(
+    (category) => category.tag.toLowerCase() === selectedGender
+  );
+
   return (
     <div className="py-12 px-4 sm:px-8 bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
-      <div className="max-w-7xl mx-auto text-center mb-10">
+      <div className="max-w-7xl mx-auto text-center mb-6">
         <h2 className="text-4xl font-extrabold text-gray-800 mb-2">Explore Categories</h2>
-        <p className="text-gray-600 text-lg">Find products by your interest</p>
+        <p className="text-gray-600 text-lg mb-4">Find products by your interest</p>
+
+        {/* 🔘 Toggle Gender Button */}
+        <ToggleGender onToggle={(gender) => setSelectedGender(gender)} />
       </div>
 
       {loading && <p className="text-center text-gray-600">Loading categories...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-10">
-        {categories.map((category) => (
+        {filteredCategories.map((category) => (
           <CategoryCard key={category._id} category={category} />
         ))}
       </div>
