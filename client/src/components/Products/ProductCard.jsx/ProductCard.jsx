@@ -4,6 +4,7 @@ import { FaTag, FaRupeeSign, FaShareAlt } from "react-icons/fa";
 import ShareBtn from "../../ShareBtn/ShareBtn"; // Adjust path as needed
 import { useUser } from "../../UserContext/UserContext";
 import LikeBtn from "../../LikeBtn/LikeBtn";
+
 const ProductCard = ({ product }) => {
   const {user} = useUser();
   const navigate = useNavigate();
