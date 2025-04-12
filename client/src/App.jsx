@@ -32,6 +32,9 @@ import UserAccountDelete from "./pages/User/UserAccountDelete";
 import UserAccountEdit from "./pages/User/UserAccountEdit";
 import AllCategories from "./components/Category/AllCategory/AllCategory";
 import UserWishlists from "./pages/User/UserWishLists";
+import PrivateRoute from "./components/UserContext/PrivateRoute";
+import IsAdmin from "./components/UserContext/IsAdmin";
+import AdminRoute from "./components/UserContext/AdminRoute";
 
 function App() {
 
@@ -43,31 +46,43 @@ function App() {
     <Route path="/about" element={<About/>} />
     <Route path="/contact" element={<Contact/>} />
     <Route path="/policies" element={<Policies/>} />
+
     <Route path="/login" element={<Login/>} />
     <Route path="/register" element={<SignUp/>} />
     <Route path="/logout" element={<Logout/>} />
-    <Route path="/add-category" element={<AddCategoryForm />}  />
-    <Route path="/add-product" element={<AddProductForm />}  />
-    <Route path="/:id/edit-category" element={<EditCategory />}  />
-    <Route path="/:id/delete-category" element={<DeleteCategory />}  />
+
+
+    
+
+
     <Route path="/product/:id" element={<ShowProduct />}  />
-    <Route path="/product/:id/edit" element={<EditProduct />}  />
-    <Route path="/add-vendor" element={<AddVendor />}  />
+
+  
     <Route path="/vendor/:id/account" element={<ShowVendor />}  />
     <Route path="/vendor/:id/account/edit" element={<EditVendor />}  />
-    <Route path="/vendor/:id/account/delete" element={<DeleteVendor />}  />
+
     <Route path="/category/:id/:tag/products" element={<ShowCategory />}  />
     <Route path="/user/:id/account/delete" element={<UserAccountDelete />}  />
     <Route path="/user/:id/account" element={<UserAccount />}  />
     <Route path="/user/:id/account/edit" element={<UserAccountEdit />}  />
     <Route path="/user/:id/account/wishlists" element={<UserWishlists />}  />
 
-    <Route path="/admin/dashboard" element={<AdminDashboard />}  />
+    <Route path="/admin/dashboard" element={
+      <PrivateRoute>
+      <AdminRoute>
+      <AdminDashboard />
+      </AdminRoute>
+      </PrivateRoute>
+      }  />
 
     <Route
             path="/admin"
             element={
+              <PrivateRoute>
+              <IsAdmin>
                   <AdminHome />
+              </IsAdmin>
+              </PrivateRoute>
             }
           >
             <Route path="users" element={<AdminUser />} />
@@ -76,7 +91,13 @@ function App() {
             <Route path="products" element={<AdminProduct />} />
             <Route path="bookings" element={<AdminBooking />} />
             <Route path="feedbacks" element={<AdminFeedback />} />
-            
+            <Route path="add-category" element={<AddCategoryForm />}  />
+            <Route path="category/:id/edit-category" element={<EditCategory />}  />
+            <Route path="category/:id/delete-category" element={<DeleteCategory />}  />
+            <Route path="add-product" element={<AddProductForm />}  />
+            <Route path="product/:id/edit" element={<EditProduct />}  />
+            <Route path="add-vendor" element={<AddVendor />}  />
+            <Route path="vendor/:id/account/delete" element={<DeleteVendor />}  />
           </Route>
             <Route path="/vendor" element={<AllVendors />} />
             <Route path="/categories" element={<AllCategories />} />

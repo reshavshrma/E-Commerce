@@ -1,10 +1,6 @@
 import express from 'express' ;
-import { isLoggedIn } from '../middleware/auth.middleware.js';
-import {validate} from '../middleware/validator.js';
-import {upload} from "../multer.js";
-import { categorySchemaValidation } from "../test/category.validator.js";
-import { updateCategorySchemaValidation } from "../test/categoryEdit.validator.js";
-import { createCategory , getAllCategories , getCategoryById, getProductsByCategoryAndTag, editCategory, deleteCategory } from '../controller/category.controller.js';
+
+import {  getAllCategories , getCategoryById, getProductsByCategoryAndTag } from '../controller/category.controller.js';
 const router = express.Router();
 
 // Core router - /api/category
@@ -17,22 +13,12 @@ router
      .route("/:id")
      .get( getCategoryById )
 
-router
-     .route("/add-category")
-     .post(isLoggedIn , upload.single('image') , validate(categorySchemaValidation) , createCategory)
 
 router
      .route("/:id/:tag/products")
      .get(getProductsByCategoryAndTag)
 
 
-router
-     .route("/:id/edit")
-     .put(isLoggedIn , upload.single('image') , validate(updateCategorySchemaValidation) , editCategory)
-
-router
-     .route("/:id/delete")
-     .delete(isLoggedIn , deleteCategory)
 
 
 export default router ;
