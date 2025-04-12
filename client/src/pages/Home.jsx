@@ -11,8 +11,10 @@ import AllVendors from './Vendor/AllVendors';
 const Home = () => {
   return (
     <div >
-    <div className="bg-[url('/assets/header-img.png')] bg-cover h-72 bg-no-repeat  md:h-[40rem]">
+    <div className='-mb-2'>
       <Navbar/>
+    </div>
+    <div className="bg-[url('/assets/header-img.png')] bg-cover h-72 bg-no-repeat  md:h-[40rem]">
     </div>
       <div className='my-20'>
         <WelcomeMsg/>

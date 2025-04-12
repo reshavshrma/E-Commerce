@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff} from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff , FaStoreAlt } from "react-icons/fa";
 import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-icons/ri";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
@@ -17,9 +17,9 @@ const MobileNavbar = () => {
 
 
   const menuItems = [
-    { to: "/", label: "All hotels", icon: <IoHomeSharp /> },
-    { to: "/contact", label: "Contact us", icon: <FaPaperPlane /> },
-    { to: "/about", label: "About us", icon: <RiQuestionAnswerFill /> },
+    { to: "/", label: "All Products", icon: <IoHomeSharp /> },
+    { to: "/category", label: "Category", icon: <FaPaperPlane /> },
+    { to: "/cart", label: "About us", icon: <RiQuestionAnswerFill /> },
     { to: "/all-blogs", label: "Our Blogs", icon: <RiArticleFill /> },
   ];
 
@@ -50,6 +50,14 @@ const MobileNavbar = () => {
                 </NavLink>
               </li>
             )}
+            {user?.role === "vendor" && (
+              <li className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
+                <FaStoreAlt className="text-xl" />
+                <NavLink to="/vendor" onClick={toggleMenu}>
+                  Vendor Panel
+                </NavLink>
+              </li>
+            )}
 
             {menuItems.map(({ to, label, icon }) => (
               <li key={to} className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
@@ -66,14 +74,14 @@ const MobileNavbar = () => {
               ) : (
                 <FaUserCircle className="text-xl" />
               )}
-              <NavLink to={user ? `/user/${user._id}/account` : "/user/login"} onClick={toggleMenu}>
+              <NavLink to={user ? `/user/${user._id}/account` : "/login"} onClick={toggleMenu}>
                 My Profile
               </NavLink>
             </li>
 
             {user ? (
               <button
-                onClick={() => navigate("/user/logout")}
+                onClick={() => navigate("/logout")}
                 className="bg-red-500 px-4 py-2 rounded-lg w-48 hover:bg-red-600 flex justify-center items-center gap-2 sm:w-60"
               >
                 Logout <FaPowerOff className="text-white w-5 h-5" />
@@ -81,13 +89,13 @@ const MobileNavbar = () => {
             ) : (
               <div className="flex flex-col space-y-6">
                 <button
-                  onClick={() => navigate("/user/login")}
+                  onClick={() => navigate("/login")}
                   className="bg-green-500 px-4 py-2 rounded-lg w-40 hover:bg-green-600 flex justify-center items-center gap-2 sm:w-60"
                 >
                   Login <RiShieldUserLine className="text-white w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => navigate("/user/register")}
+                  onClick={() => navigate("/register")}
                   className="bg-blue-500 px-4 py-2 rounded-lg w-40 hover:bg-blue-600 flex justify-center items-center gap-2 sm:w-60"
                 >
                   Sign Up <PiUserCirclePlusBold className="text-white w-5 h-5" />
