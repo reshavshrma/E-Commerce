@@ -2,6 +2,7 @@ import express from 'express';
 import { validate } from '../middleware/validator.js';
 import { isLoggedIn } from '../middleware/auth.middleware.js';
 import { isAdmin } from '../middleware/admin.middleware.js';
+import { adminBookingData, adminCategoryData, adminDashboardData, adminFeedbackData, adminProductData, adminUserData, adminVendorData } from '../controller/admin.controller.js';
 
 const router = express.Router();
 
@@ -9,31 +10,31 @@ const router = express.Router();
 
 router
      .route("/dashboard")
-     .get()
+     .get(isLoggedIn , adminDashboardData)
 
 router
      .route("/users")
-     .get()
+     .get(isLoggedIn , adminUserData)
 
 router
      .route("/vendors")
-     .get()
+     .get(isLoggedIn , adminVendorData)
 
 router
      .route("/categories")
-     .get()
+     .get(isLoggedIn , adminCategoryData)
 
 router
      .route("/products")
-     .get()
+     .get(isLoggedIn , adminProductData)
 
 router
      .route("/bookings")
-     .get()
+     .get(isLoggedIn , adminBookingData)
 
 router
      .route("/feedbacks")
-     .get()
+     .get(isLoggedIn , adminFeedbackData)
 
 
 
