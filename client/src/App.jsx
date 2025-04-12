@@ -31,6 +31,7 @@ import AllVendors from "./pages/Vendor/AllVendors";
 import UserAccountDelete from "./pages/User/UserAccountDelete";
 import UserAccountEdit from "./pages/User/UserAccountEdit";
 import AllCategories from "./components/Category/AllCategory/AllCategory";
+import UserWishlists from "./pages/User/UserWishLists";
 
 function App() {
 
@@ -58,7 +59,8 @@ function App() {
     <Route path="/category/:id/:tag/products" element={<ShowCategory />}  />
     <Route path="/user/:id/account/delete" element={<UserAccountDelete />}  />
     <Route path="/user/:id/account" element={<UserAccount />}  />
-    <Route path="/user/:id/account/EDIT" element={<UserAccountEdit />}  />
+    <Route path="/user/:id/account/edit" element={<UserAccountEdit />}  />
+    <Route path="/user/:id/account/wishlists" element={<UserWishlists />}  />
 
     <Route path="/admin/dashboard" element={<AdminDashboard />}  />
 
