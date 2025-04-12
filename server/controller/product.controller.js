@@ -14,6 +14,7 @@ const addProductController = async (req, res) => {
       sizes,
       category,
       tag,
+      vendor
     } = req.body;
 
     // Check if category exists
@@ -44,7 +45,7 @@ const addProductController = async (req, res) => {
       sizes,
       category,
       tag,
-
+      vendor
     });
 
     await newProduct.save();
@@ -90,6 +91,7 @@ const getProductById = asyncHandler(async (req, res) => {
           sizes: product.sizes,
           tag: product.tag,
           category: product.category,
+          vendor: product.vendor,
         },
         "Product fetched successfully"
       )

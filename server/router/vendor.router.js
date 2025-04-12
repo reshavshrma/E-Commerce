@@ -24,8 +24,8 @@ router
      .post(isLoggedIn , upload.single("image") ,  validate(vendorSchemaValidation) , addNewVendor)
 
 router
-     .route("/:id/categories")
-     .get()
+     .route("/:id/account/add-categories")
+     .post()
 
 router
      .route("/:id/products")
