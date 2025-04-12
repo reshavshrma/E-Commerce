@@ -1,5 +1,7 @@
 import { Vendor } from "../models/vendor.model.js";
 import { Product } from "../models/product.model.js";
+import { Category } from "../models/category.model.js";
+import { Booking } from "../models/booking.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -214,4 +216,86 @@ const deleteVendorById = asyncHandler(async (req, res) => {
 
   return res.status(200).json(new ApiResponse(200, {}, "Vendor deleted successfully"));
 });
-export {getAllVendors,  vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById };
+
+// 2️⃣ Fetch products by vendor, category, and tag
+const getVendorProductsByCategoryAndTag = async (req, res) => {
+  const { vendorId } = req.params;
+  const { categoryTitle, tag } = req.query; // Ex: ?categoryTitle=hoodies&tag=male
+
+  try {
+    // Find the correct category
+    const category = await Category.findOne({ title: categoryTitle, tag });
+    if (!category) return res.status(404).json({ success: false, message: "Category not found." });
+
+    // Fetch products based on vendor + category + tag
+    const products = await Product.find({
+      vendor: vendorId,
+      category: category._id,
+      tag: tag,
+    }).populate("category").populate("vendor");
+
+    return res.status(200).json({
+      success: true,
+      count: products.length,
+      products,
+    });
+  } catch (error) {
+    console.error("Error fetching vendor's products by category and tag:", error);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+};
+
+const getVendorCounts = async (req, res) => {
+  const vendorId = req.params.vendorId;
+
+  try {
+    const productCount = await Product.countDocuments({ vendor: vendorId });
+    const categoryCount = await Category.countDocuments({
+      _id: { $in: (await Product.find({ vendor: vendorId }).distinct("category")) }
+    });
+    const bookingCount = await Booking.countDocuments({ vendor: vendorId });
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        productCount,
+        categoryCount,
+        bookingCount,
+      },
+    });
+  } catch (err) {
+    console.error("Error getting vendor counts", err);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch vendor counts.",
+    });
+  }
+};
+
+const getVendorDashboardData = async (req, res) => {
+  const vendorId = req.params.vendorId;
+
+  try {
+    const products = await Product.find({ vendor: vendorId }).populate("category");
+    const bookings = await Booking.find({ vendor: vendorId }).populate("product user");
+
+    const categoryIds = await Product.find({ vendor: vendorId }).distinct("category");
+    const categories = await Category.find({ _id: { $in: categoryIds } });
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        products,
+        categories,
+        bookings,
+      },
+    });
+  } catch (err) {
+    console.error("Error fetching vendor data", err);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch vendor dashboard data.",
+    });
+  }
+};
+export {getAllVendors,  vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById ,getVendorProductsByCategoryAndTag , getVendorCounts , getVendorDashboardData };

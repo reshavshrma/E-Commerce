@@ -203,5 +203,40 @@ const adminFeedbackData = asyncHandler(async (req, res) => {
     }
 });
 
-
-export { adminDashboardData , adminUserData , adminVendorData , adminCategoryData , adminProductData , adminBookingData , adminFeedbackData};
+// 1️⃣ Admin adds a category to a vendor with tag
+const addCategoryToVendor = async (req, res) => {
+    const { vendorId } = req.params;
+    const { title, description, image, tag } = req.body;
+  
+    try {
+      // Ensure vendor exists
+      const vendor = await Vendor.findById(vendorId);
+      if (!vendor) return res.status(404).json({ success: false, message: "Vendor not found." });
+  
+      // Check if category with same title and tag exists
+      let category = await Category.findOne({ title, tag });
+  
+      // If not, create it
+      if (!category) {
+        category = new Category({ title, description, image, tag });
+        await category.save();
+      }
+  
+      // Add category to vendor if not already added
+      if (!vendor.categories.includes(category._id)) {
+        vendor.categories.push(category._id);
+        await vendor.save();
+      }
+  
+      return res.status(200).json({
+        success: true,
+        message: "Category added to vendor successfully.",
+        category,
+        vendorId: vendor._id,
+      });
+    } catch (error) {
+      console.error("Error adding category to vendor:", error);
+      return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+  };
+export { adminDashboardData , adminUserData , adminVendorData , adminCategoryData , adminProductData , adminBookingData , adminFeedbackData , addCategoryToVendor};

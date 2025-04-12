@@ -1,41 +1,46 @@
 import { Booking } from "../models/booking.model.js";
 import { Product } from "../models/product.model.js";
-
+import { User } from "../models/user.model.js";
+import mongoose from "mongoose";
 const createBooking = async (req, res) => {
-    try {
-      const { user, vendor, product, category, quantity } = req.body;
-  
-      // Find product to get the price
-      const foundProduct = await Product.findById(product);
-      if (!foundProduct) {
-        return res.status(404).json({ success: false, message: "Product not found." });
-      }
-  
-      const totalPrice = quantity * foundProduct.price;
-  
-      const newBooking = new Booking({
-        user,
-        vendor,
-        product,
-        category,
-        quantity,
-        totalPrice,
-      });
-  
-      const savedBooking = await newBooking.save();
-  
-      return res.status(201).json({
-        success: true,
-        message: "Booking created successfully.",
-        data: savedBooking,
-      });
-  
-    } catch (err) {
-      console.error("Booking error:", err);
-      return res.status(500).json({ success: false, message: "Internal server error." });
-    }
-  };
+  try {
+    const { product, quantity } = req.body;
+    const user = req.user._id;
 
+    if (!product || !quantity || quantity < 1) {
+      return res.status(400).json({ success: false, message: "Invalid input." });
+    }
+
+    const foundProduct = await Product.findById(product).populate("vendor category");
+    if (!foundProduct) {
+      return res.status(404).json({ success: false, message: "Product not found." });
+    }
+
+    const totalPrice = quantity * foundProduct.price;
+
+    const newBooking = await Booking.create({
+      user,
+      vendor: foundProduct.vendor._id,
+      product,
+      category: foundProduct.category._id,
+      quantity,
+      totalPrice,
+    });
+
+    await User.findByIdAndUpdate(user, {
+      $push: { bookings: newBooking._id },
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "Booking created successfully.",
+      data: newBooking,
+    });
+  } catch (err) {
+    console.error("Booking error:", err);
+    return res.status(500).json({ success: false, message: "Internal server error." });
+  }
+};
   const getAllBookings = async (req, res) => {
     try {
       const bookings = await Booking.find()

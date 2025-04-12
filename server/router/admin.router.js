@@ -3,7 +3,7 @@ import { validate } from '../middleware/validator.js';
 import { isLoggedIn } from '../middleware/auth.middleware.js';
 import {upload} from "../multer.js";
 import { isAdmin } from '../middleware/admin.middleware.js';
-import { adminBookingData, adminCategoryData, adminDashboardData, adminFeedbackData, adminProductData, adminUserData, adminVendorData } from '../controller/admin.controller.js';
+import { adminBookingData, adminCategoryData, adminDashboardData, adminFeedbackData, adminProductData, adminUserData, adminVendorData , addCategoryToVendor} from '../controller/admin.controller.js';
 import { createCategory ,  editCategory, deleteCategory } from '../controller/category.controller.js';
 import {addProductController  , updateProductById , deleteProductById} from "../controller/product.controller.js";
 import {   addNewVendor  , deleteVendorById} from "../controller/vendor.controller.js";
@@ -74,6 +74,11 @@ router
 router
      .route("/add-vendor")
      .post(isLoggedIn , upload.single("image") ,  validate(vendorSchemaValidation) , addNewVendor)
+
+// Admin adds a category to a specific vendor
+router
+      .route("/add-category-to-vendor/:vendorId")
+      .post( isAdmin, addCategoryToVendor);
 
 router
      .route("/:id/account/delete")
