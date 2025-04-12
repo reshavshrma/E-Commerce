@@ -16,4 +16,4 @@ const faqSchema = new Schema (
 
 const Faq = new mongoose.model ("Faq", faqSchema);
 
-export default Faq ;
+export  {Faq} ;

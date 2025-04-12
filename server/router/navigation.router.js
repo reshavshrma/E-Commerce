@@ -1,6 +1,6 @@
-import e from "express";
-import express from "express";
 
+import express from "express";
+import  {faqData} from "../controller/navigation.controller.js" ;
 const router = express.Router();
 
 // CORE router - /api/navigation
@@ -11,7 +11,7 @@ router
 
 router
      .route('/faqs')
-     .get()
+     .get(faqData)
 
 
 

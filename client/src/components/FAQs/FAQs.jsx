@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp, FaQuestionCircle } from "react-icons/fa";
 import { IoMdHelpCircleOutline } from "react-icons/io"; // Fancy question icon
 import { MdOutlineQuestionAnswer } from "react-icons/md"; // Answer icon
-import ErrorPopup from "../PopUps/ErrorPopup/ErrorPopup";
+
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [faqs, setFaqs] = useState([]);
@@ -14,7 +14,7 @@ const FAQs = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/v1/navigate/faqs`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/navigation/faqs`, {
         withCredentials: true,
       });
       if (response.status === 200) {
@@ -31,10 +31,7 @@ const FAQs = () => {
 
   return (
     <>
-<div className="text-center ">
-          {error && <ErrorPopup message={error} onClose={() => setError("")} />} 
-         </div>
-    <section className="w-full flex flex-col items-center justify-center text-center py-36  bg-[url('/assets/faq_bg.jpg')]  bg-cover  bg-left-top      bg-no-repeat text-white shadow-lg px-5 sm:px-20">
+    <section className="w-full flex flex-col items-center justify-center text-center py-36  bg-[url('/assets/type.jpg')]  bg-cover  bg-left-top      bg-no-repeat text-white shadow-lg px-5 sm:px-20">
       {/* Title */}
       <div className=" text-center mb-12">
         <h2 className="text-lg xs:text-2xl sm:text-3xl md:text-4xl font-extrabold text-white drop-shadow-lg flex items-center justify-center gap-2">

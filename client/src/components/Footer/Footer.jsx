@@ -7,30 +7,30 @@ import Logo from "../../assets/white-website-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-black to-gray-800 text-gray-300 py-10 px-5 sm:px-10 lg:px-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-gradient-to-br from-black to-gray-900 text-gray-300 py-12 px-4 sm:px-8 lg:px-20 transition-all">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
 
-        {/* About Us */}
-        <div>
+        {/* 🌐 About Section */}
+        <div className="flex flex-col items-start space-y-4">
           <img
             src={Logo}
             alt="UrbanHaven Logo"
-            className="w-28 mb-3 transition-transform duration-300 hover:scale-105"
+            className="w-24 sm:w-28 object-contain transition-transform duration-300 hover:scale-105"
           />
-          <p className="text-sm text-gray-400 leading-relaxed">
-            UrbanHaven is your perfect getaway to luxurious yet affordable hotel experiences. Book top-rated accommodations from trusted vendors.
+          <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
+            UrbanHaven is your perfect getaway to luxurious yet affordable hotel experiences. Book top-rated accommodations from trusted vendors across India.
           </p>
         </div>
 
-        {/* Our Links */}
+        {/* 🔗 Links Section */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-3">Our Links</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">Our Links</h3>
           <ul className="space-y-2 text-sm">
             {["Home", "Vendors", "About", "Contact", "Blogs", "Policies"].map((item, i) => (
               <li key={i}>
                 <NavLink
                   to={`/${item.toLowerCase()}`}
-                  className="hover:text-blue-400 transition-all duration-300"
+                  className="hover:text-blue-400 transition-colors duration-300"
                 >
                   {item}
                 </NavLink>
@@ -39,48 +39,56 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Our Location */}
+        {/* 📍 Location Section */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-3">Our Location</h3>
-          <p className="text-sm text-gray-400">
+          <h3 className="text-lg font-semibold text-white mb-4">Our Location</h3>
+          <p className="text-sm text-gray-400 leading-relaxed">
             Sant Longowal Institute of Engineering and Technology,<br />
             Longowal, Punjab, India - 148106
           </p>
-          <p className="mt-2 text-sm text-gray-400">Email: <a href="mailto:aniket08official@gmail.com" className="text-blue-400 hover:underline">aniket08official@gmail.com</a></p>
+          <p className="mt-3 text-sm text-gray-400">
+            Email:{" "}
+            <a
+              href="mailto:aniket08official@gmail.com"
+              className="text-blue-400 hover:underline"
+            >
+              aniket08official@gmail.com
+            </a>
+          </p>
         </div>
 
-        {/* Social Media */}
+        {/* 📱 Social Section */}
         <div className="flex flex-col items-start">
-          <h3 className="text-lg font-semibold text-white mb-3">Follow Us</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
           <div className="flex space-x-4">
             {[
               {
                 icon: FaLinkedin,
                 url: "https://www.linkedin.com/in/aniket-srivastava-0141b22b8/",
-                color: "hover:bg-blue-600",
+                hover: "hover:bg-blue-600",
               },
               {
                 icon: CgMail,
                 url: "mailto:aniket08official@gmail.com",
-                color: "hover:bg-red-600",
+                hover: "hover:bg-red-600",
               },
               {
                 icon: GrInstagram,
                 url: "https://www.instagram.com/aniket_sriv_0810/",
-                color: "hover:bg-pink-600",
+                hover: "hover:bg-pink-600",
               },
               {
                 icon: FaGithub,
                 url: "https://github.com/aniket-sriv-0810",
-                color: "hover:bg-gray-700",
+                hover: "hover:bg-gray-700",
               },
-            ].map(({ icon: Icon, url, color }, i) => (
+            ].map(({ icon: Icon, url, hover }, i) => (
               <a
                 key={i}
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`p-2 bg-zinc-700 rounded-full transition-all duration-300 ${color}`}
+                className={`p-2 bg-zinc-700 rounded-full transition-all duration-300 ${hover}`}
               >
                 <Icon className="w-5 h-5 text-white" />
               </a>
@@ -90,24 +98,24 @@ const Footer = () => {
       </div>
 
       {/* Divider */}
-      <div className="my-6 border-t border-gray-700"></div>
+      <div className="my-10 border-t border-gray-700"></div>
 
-      {/* Bottom Text */}
-      <div className="text-center space-y-2 text-sm text-gray-500">
+      {/* Bottom Section */}
+      <div className="text-center text-sm text-gray-500 space-y-2">
         <p>
           © {new Date().getFullYear()}{" "}
-          <Link to="/about" className="text-blue-400 hover:text-cyan-500">
+          <Link to="/about" className="text-blue-400 hover:text-cyan-500 transition">
             UrbanHaven Hotels
           </Link>
           . All rights reserved.
         </p>
         <p>
-          Developed and Maintained by{" "}
+          Developed and maintained by{" "}
           <a
             href="https://www.linkedin.com/in/aniket-srivastava-0141b22b8/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-cyan-400 hover:underline"
+            className="text-cyan-400 hover:underline transition"
           >
             Aniket Srivastava
           </a>

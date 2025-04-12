@@ -40,14 +40,14 @@ const Slideshow = () => {
   };
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-lg">
-      <div className="relative w-full h-[350px] md:h-[600px]">
+    <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+      <div className="relative w-full h-80 sm:h-[400px] md:h-[550px] lg:h-[650px]">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Slide ${index + 1}`}
-            className={`absolute w-full h-full object-contain transition-opacity duration-700 ease-in-out ${
+            className={`absolute w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           />
