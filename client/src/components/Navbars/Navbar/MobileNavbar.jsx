@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff , FaStoreAlt } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff , FaStoreAlt , FaStore, FaTags } from "react-icons/fa";
 import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-icons/ri";
+import { TiShoppingCart } from "react-icons/ti";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../UserContext/UserContext";
@@ -18,9 +19,9 @@ const MobileNavbar = () => {
 
   const menuItems = [
     { to: "/", label: "All Products", icon: <IoHomeSharp /> },
-    { to: "/category", label: "Category", icon: <FaPaperPlane /> },
-    { to: "/cart", label: "About us", icon: <RiQuestionAnswerFill /> },
-    { to: "/all-blogs", label: "Our Blogs", icon: <RiArticleFill /> },
+    { to: "/category", label: "Categories", icon: <FaTags /> },
+    { to: "/cart", label: "View Cart", icon: <TiShoppingCart /> },
+    { to: "/vendors", label: "Vendors", icon: <FaStore /> },
   ];
 
   return (
@@ -60,7 +61,7 @@ const MobileNavbar = () => {
             )}
 
             {menuItems.map(({ to, label, icon }) => (
-              <li key={to} className="opacity-80 flex items-center justify-center p-2.5 gap-2 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
+              <li key={to} className="opacity-80 flex items-center justify-center p-2.5 gap-2.5 bg-gray-800 rounded-2xl w-60 hover:text-yellow-400">
                 {icon}
                 <NavLink to={to} onClick={toggleMenu}>
                   {label}
