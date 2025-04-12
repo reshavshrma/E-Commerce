@@ -1,7 +1,7 @@
 import React from "react"
 import Home from "./pages/Home"
 import {Routes , Route} from "react-router-dom";
-import About from "./components/Navigation/About/About";
+import About from "./pages/Navigation/About/About";
 import Contact from "./components/Navigation/Contact/Contact";
 import Policies from "./components/Navigation/Policies/Policies";
 import Login from "./pages/Authentication/Login/Login";
@@ -28,6 +28,8 @@ import AdminProduct from "./pages/Admin/AdminProduct";
 import AdminFeedback from "./pages/Admin/AdminFeedback";
 import AdminBooking from "./pages/Admin/AdminBooking";
 import AllVendors from "./pages/Vendor/AllVendors";
+import UserAccountDelete from "./pages/User/UserAccountDelete";
+import UserAccountEdit from "./pages/User/UserAccountEdit";
 
 function App() {
 
@@ -53,7 +55,9 @@ function App() {
     <Route path="/vendor/:id/account/edit" element={<EditVendor />}  />
     <Route path="/vendor/:id/account/delete" element={<DeleteVendor />}  />
     <Route path="/category/:id/:tag/products" element={<ShowCategory />}  />
+    <Route path="/user/:id/account/delete" element={<UserAccountDelete />}  />
     <Route path="/user/:id/account" element={<UserAccount />}  />
+    <Route path="/user/:id/account/EDIT" element={<UserAccountEdit />}  />
 
     <Route path="/admin/dashboard" element={<AdminDashboard />}  />
 

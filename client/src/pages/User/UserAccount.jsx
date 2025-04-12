@@ -1,63 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "../../components/Navbars/Navbar/Navbar";
+import UserProfile from "../../components/User/UserAccount/UserProfile";
+import UserDetailsForm from "../../components/User/UserAccount/UserDetailsForm";
+import UserActions from "../../components/User/UserAccount/UserActions";
+
 
 const UserAccount = () => {
-  const { id } = useParams();
-  const [user, setUser] = useState(null);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [showUser, setShowUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const userDetails = async () => {
+    setLoading(true);
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/user/${id}/account`,
+        { withCredentials: true }
+      );
+      setShowUser(data.data.userInfo);
+    } catch (err) {
+      setError("Error in fetching user details");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/${id}/account`, {
-          withCredentials: true, // Include session cookies if needed
-        });
-
-        setUser(response.data.data.userInfo);
-        setErrorMsg("");
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setErrorMsg(
-          error.response?.data?.message || "Something went wrong!"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (id) fetchUserDetails();
+    userDetails();
   }, [id]);
 
+
   return (
-    <div className="max-w-3xl mx-auto py-6 px-4">
+    <>
+      <Navbar />
+      
       {loading ? (
-        <p className="text-center text-gray-500">Loading user details...</p>
-      ) : errorMsg ? (
-        <p className="text-center text-red-500">{errorMsg}</p>
+        <div className="flex justify-center items-center h-[70vh]">
+          <p>Loading...</p> 
+        </div>
       ) : (
-        user && (
-          <div className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-2xl font-bold mb-4">User Details</h2>
-            <div className="space-y-3">
-              <p><span className="font-semibold">Name:</span> {user.name}</p>
-              <p><span className="font-semibold">Username:</span> {user.username}</p>
-              <p><span className="font-semibold">Email:</span> {user.email}</p>
-              <p><span className="font-semibold">Phone:</span> {user.phone}</p>
-              {user.address && (
-                <div>
-                  <h4 className="font-semibold mt-4">Address:</h4>
-                  <p>{user.address.area}, {user.address.city}</p>
-                  <p>{user.address.state}, {user.address.country} - {user.address.pincode}</p>
-                </div>
+        <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">
+          <UserProfile user={showUser} />
+
+          <div className="flex-1 bg-white p-6 md:p-12">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-center text-zinc-800 mb-6 tracking-wide" >
+                My Account
+              </h2>
+
+              {showUser ? (
+                <>
+                  <UserDetailsForm user={showUser} />
+                  <UserActions navigate={navigate} />
+                </>
+              ) : (
+                <p className="text-gray-500 text-lg text-center">User details not found.</p>
               )}
             </div>
           </div>
-        )
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
