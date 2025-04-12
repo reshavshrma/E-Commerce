@@ -27,6 +27,7 @@ import AdminCategory from "./pages/Admin/AdminCategory";
 import AdminProduct from "./pages/Admin/AdminProduct";
 import AdminFeedback from "./pages/Admin/AdminFeedback";
 import AdminBooking from "./pages/Admin/AdminBooking";
+import AllVendors from "./pages/Vendor/AllVendors";
 
 function App() {
 
@@ -70,6 +71,7 @@ function App() {
             <Route path="feedbacks" element={<AdminFeedback />} />
             
           </Route>
+            <Route path="/vendor" element={<AllVendors />} />
 
       </Routes>
     </>
