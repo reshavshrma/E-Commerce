@@ -2,9 +2,14 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema ({
-    userDetails:{
+    user:{
         type:Schema.Types.ObjectId,
         ref:"User",
+        required:[true,"User details are required !"]
+    },
+    vendor:{
+        type:Schema.Types.ObjectId,
+        ref:"Vendor",
         required:[true,"User details are required !"]
     },
     rating:{

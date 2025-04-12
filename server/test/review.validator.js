@@ -1,13 +1,20 @@
 import Joi from "joi";
-import { Review } from "../model/review.model.js";
+
 
 const reviewSchemaValidation = Joi.object({
-  userDetails: Joi.string()
+  user: Joi.string()
     .pattern(/^[0-9a-fA-F]{24}$/)
     .required()
     .messages({
       "string.pattern.base": "User ID must be a valid ObjectId.",
       "any.required": "User details are required!",
+    }),
+  vendor: Joi.string()
+    .pattern(/^[0-9a-fA-F]{24}$/)
+    .required()
+    .messages({
+      "string.pattern.base": "vendor ID must be a valid ObjectId.",
+      "any.required": "vendor details are required!",
     }),
 
   rating: Joi.number()

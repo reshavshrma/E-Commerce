@@ -6,6 +6,8 @@ import {validate} from '../middleware/validator.js';
 import {vendorSchemaValidation} from '../test/vendor.validator.js' ;
 import {editVendorValidation} from '../test/vendorEdit.validator.js' ;
 import { getAllVendors,vendorAccountDetails , addNewVendor , updateVendorById , deleteVendorById} from "../controller/vendor.controller.js";
+import { reviewSchemaValidation } from '../test/review.validator.js';
+import { addReviewToVendor, getVendorReviews } from '../controller/review.controller.js';
 
 const router = express.Router();
 
@@ -33,11 +35,11 @@ router
 
 router
      .route("/:id/review")
-     .post()
+     .post(isLoggedIn , validate(reviewSchemaValidation), addReviewToVendor)
 
 router
      .route("/:id/all-reviews")
-     .get()
+     .get(isLoggedIn , getVendorReviews)
 
 router
      .route("/:id/account/edit")
