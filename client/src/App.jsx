@@ -30,6 +30,7 @@ import AdminBooking from "./pages/Admin/AdminBooking";
 import AllVendors from "./pages/Vendor/AllVendors";
 import UserAccountDelete from "./pages/User/UserAccountDelete";
 import UserAccountEdit from "./pages/User/UserAccountEdit";
+import AllCategories from "./components/Category/AllCategory/AllCategory";
 
 function App() {
 
@@ -76,6 +77,7 @@ function App() {
             
           </Route>
             <Route path="/vendor" element={<AllVendors />} />
+            <Route path="/categories" element={<AllCategories />} />
 
       </Routes>
     </>

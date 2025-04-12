@@ -19,7 +19,7 @@ const CategoryCard = ({ category }) => {
 
         {/* Content on Image */}
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-4 sm:p-6">
-          <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-md mb-3">
+          <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-md ml-3 mb-3">
             {category.title}
           </h3>
           <button
