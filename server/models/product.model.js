@@ -35,8 +35,8 @@ const productSchema = new Schema(
     },
     sizes: {
       type: [String],
-      enum: ["xs", "s", "m", "l", "xl", "xxl", "xxxl"],
-      default: ["m"], // optional default
+      enum: ["XS", "S", "M", "L", "XL", "XXL", "XXXL"],
+      default: ["M"], // optional default
     },
     category: {
       type: Schema.Types.ObjectId,
