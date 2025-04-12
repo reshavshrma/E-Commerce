@@ -1,0 +1,26 @@
+import React from "react";
+import CategoryRow from "./CategoryRow";
+
+const CategoryTable = ({ categories }) => {
+  return (
+    <div className="overflow-x-auto bg-white shadow-xl rounded-xl">
+      <table className="min-w-full text-sm md:text-base border border-gray-200">
+        <thead className="bg-gray-800 text-white">
+          <tr>
+            <th className="px-4 py-3 border">Image</th>
+            <th className="px-4 py-3 border">Title</th>
+            <th className="px-4 py-3 border">Category ID</th>
+            <th className="px-4 py-3 border">Tag</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categories.map((category) => (
+            <CategoryRow key={category._id} category={category} />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default CategoryTable;

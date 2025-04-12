@@ -22,6 +22,11 @@ import UserAccount from "./pages/User/UserAccount";
 import AdminHome from "./pages/Admin/AdminHome";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminUser from "./pages/Admin/AdminUser";
+import AdminVendor from "./pages/Admin/AdminVendor";
+import AdminCategory from "./pages/Admin/AdminCategory";
+import AdminProduct from "./pages/Admin/AdminProduct";
+import AdminFeedback from "./pages/Admin/AdminFeedback";
+import AdminBooking from "./pages/Admin/AdminBooking";
 
 function App() {
 
@@ -58,11 +63,11 @@ function App() {
             }
           >
             <Route path="users" element={<AdminUser />} />
-            <Route path="vendors" element={<AdminHome />} />
-            <Route path="bookings" element={<AdminHome />} />
-            <Route path="categories" element={<AdminHome />} />
-            <Route path="products" element={<AdminHome />} />
-            <Route path="feedbacks" element={<AdminHome />} />
+            <Route path="vendors" element={<AdminVendor />} />
+            <Route path="categories" element={<AdminCategory />} />
+            <Route path="products" element={<AdminProduct />} />
+            <Route path="bookings" element={<AdminBooking />} />
+            <Route path="feedbacks" element={<AdminFeedback />} />
             
           </Route>
 
