@@ -6,7 +6,7 @@ import { useUser } from './components/UserContext/userContext';
 import Home from "./pages/Home"
 import {Routes , Route} from "react-router-dom";
 import About from "./pages/Navigation/About/About";
-import Contact from "./components/Navigation/Contact/Contact";
+import Contact from "./pages/Navigation/Contact/Contact";
 import Policies from "./components/Navigation/Policies/Policies";
 import Login from "./pages/Authentication/Login/Login";
 import SignUp from "./pages/Authentication/SignUp/SignUp";
