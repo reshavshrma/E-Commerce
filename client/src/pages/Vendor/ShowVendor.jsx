@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import VendorProduct from "../../components/Vendors/VendorProduct/VendorProduct";
+import AllCategories from "../../components/Category/AllCategory/AllCategory";
 const ShowVendor = () => {
   const { id } = useParams();
   const [vendor, setVendor] = useState(null);
@@ -49,8 +50,8 @@ const ShowVendor = () => {
         Vendor Profile
       </h1>
 
+      {/* Basic Profile */}
       <div className="bg-white rounded-2xl shadow-lg p-8 grid md:grid-cols-2 gap-8">
-        {/* Profile Image + Basic */}
         <div className="flex flex-col items-center gap-4">
           <img
             src={vendor.image}
@@ -65,7 +66,6 @@ const ShowVendor = () => {
           </div>
         </div>
 
-        {/* Contact & Address Info */}
         <div className="space-y-4 text-gray-700">
           <div>
             <p className="text-sm text-gray-500">Email</p>
@@ -86,33 +86,8 @@ const ShowVendor = () => {
         </div>
       </div>
 
-      {/* Products Section */}
-      <div className="bg-white mt-10 rounded-2xl shadow-md p-6">
-        <h3 className="text-xl font-bold mb-4 text-indigo-700">Products</h3>
-        {vendor.products.length > 0 ? (
-          <ul className="list-disc pl-6 space-y-1 text-gray-700">
-            {vendor.products.map((product) => (
-              <li key={product._id}>{product.title}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500">No products listed yet.</p>
-        )}
-      </div>
-
-      {/* Categories Section */}
-      <div className="bg-white mt-6 rounded-2xl shadow-md p-6">
-        <h3 className="text-xl font-bold mb-4 text-indigo-700">Categories</h3>
-        {vendor.categories.length > 0 ? (
-          <ul className="list-disc pl-6 space-y-1 text-gray-700">
-            {vendor.categories.map((cat) => (
-              <li key={cat._id}>{cat.title}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500">No categories available.</p>
-        )}
-      </div>
+    <AllCategories/>
+ 
     </div>
   );
 };

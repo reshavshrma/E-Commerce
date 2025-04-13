@@ -1,142 +1,182 @@
 export const vendors = [
   {
-    name: "Elegant Fashions",
-    username: "elegant_fashions",
-    email: "elegant@example.com",
-    phone: "9123456780",
-    image: "https://picsum.photos/300?random=21",
-    address: {
-      area: "12 MG Road",
-      city: "Mumbai",
-      state: "Maharashtra",
-      pincode: "400001",
-      country: "India"
-    }
-  },
-  {
-    name: "Urban Style Hub",
-    username: "urban_hub",
-    email: "urbanhub@example.com",
+    name: "Aryan Sharma",
+    username: "aryan_sharma",
+    email: "aryan.sharma@example.com",
     phone: "9876543210",
-    image: "https://picsum.photos/300?random=22",
     address: {
-      area: "22 Park area",
-      city: "Kolkata",
-      state: "West Bengal",
-      pincode: "700016",
+      area: "Sector 22",
+      city: "Chandigarh",
+      pincode: "160022",
+      state: "Punjab",
       country: "India"
-    }
+    },
+    image: "https://picsum.photos/300?random=1",
+    role: "vendor"
   },
   {
-    name: "Chic Couture",
-    username: "chiccouture",
-    email: "chic@example.com",
-    phone: "9988776655",
-    image: "https://picsum.photos/300?random=23",
+    name: "Nikita Verma",
+    username: "nikita.verma",
+    email: "nikita.verma@example.com",
+    phone: "9123456789",
     address: {
-      area: "7 Residency Road",
-      city: "Bengaluru",
-      state: "Karnataka",
-      pincode: "560025",
-      country: "India"
-    }
-  },
-  {
-    name: "Trendy Tailors",
-    username: "trendytailors",
-    email: "tailors@example.com",
-    phone: "9012345678",
-    image: "https://picsum.photos/300?random=24",
-    address: {
-      area: "10 Sector 18",
-      city: "Noida",
-      state: "Uttar Pradesh",
-      pincode: "201301",
-      country: "India"
-    }
-  },
-  {
-    name: "Royal Attire",
-    username: "royal_attire",
-    email: "royal@example.com",
-    phone: "9345678910",
-    image: "https://picsum.photos/300?random=25",
-    address: {
-      area: "5 Connaught Place",
-      city: "Delhi",
+      area: "Rajouri Garden",
+      city: "New Delhi",
+      pincode: "110027",
       state: "Delhi",
-      pincode: "110001",
       country: "India"
-    }
+    },
+    image: "https://picsum.photos/300?random=2",
+    role: "vendor"
   },
   {
-    name: "Fusion Trends",
-    username: "fusion_trends",
-    email: "fusion@example.com",
-    phone: "9445566778",
-    image: "https://picsum.photos/300?random=26",
+    name: "Rohit Mehta",
+    username: "rohitmehta99",
+    email: "rohit.mehta@example.com",
+    phone: "9988776655",
     address: {
-      area: "3 T Nagar",
-      city: "Chennai",
-      state: "Tamil Nadu",
-      pincode: "600017",
-      country: "India"
-    }
-  },
-  {
-    name: "Stylearea",
-    username: "style_area",
-    email: "style@example.com",
-    phone: "9556677889",
-    image: "https://picsum.photos/300?random=27",
-    address: {
-      area: "1 Gachibowli",
-      city: "Hyderabad",
-      state: "Telangana",
-      pincode: "500032",
-      country: "India"
-    }
-  },
-  {
-    name: "Fashion Fiesta",
-    username: "fashion_fiesta",
-    email: "fiesta@example.com",
-    phone: "9334455667",
-    image: "https://picsum.photos/300?random=28",
-    address: {
-      area: "4 Civil Lines",
-      city: "Jaipur",
-      state: "Rajasthan",
-      pincode: "302006",
-      country: "India"
-    }
-  },
-  {
-    name: "Classic Wardrobe",
-    username: "classic_wardrobe",
-    email: "classic@example.com",
-    phone: "9223344556",
-    image: "https://picsum.photos/300?random=29",
-    address: {
-      area: "8 Alkapuri",
-      city: "Vadodara",
-      state: "Gujarat",
-      pincode: "390007",
-      country: "India"
-    }
-  },
-  {
-    name: "Modern Vogue",
-    username: "modern_vogue",
-    email: "vogue@example.com",
-    phone: "9447788990",
-    image: "https://picsum.photos/300?random=30",
-    address: {
-      area: "6 Marine Drive",
-      city: "Mumbai",
+      area: "Baner",
+      city: "Pune",
+      pincode: "411045",
       state: "Maharashtra",
-      pincode: "400002",
       country: "India"
-    }
+    },
+    image: "https://picsum.photos/300?random=3",
+    role: "vendor"
+  },
+  {
+    name: "Simran Kaur",
+    username: "simran.kaur",
+    email: "simran.kaur@example.com",
+    phone: "9871234560",
+    address: {
+      area: "Sector 17",
+      city: "Chandigarh",
+      pincode: "160017",
+      state: "Punjab",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=4",
+    role: "vendor"
+  },
+  {
+    name: "Amit Joshi",
+    username: "amit.joshi",
+    email: "amit.joshi@example.com",
+    phone: "9001234567",
+    address: {
+      area: "MG Road",
+      city: "Bengaluru",
+      pincode: "560001",
+      state: "Karnataka",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=5",
+    role: "vendor"
+  },
+  {
+    name: "Priya Desai",
+    username: "priya_d",
+    email: "priya.desai@example.com",
+    phone: "9191919191",
+    address: {
+      area: "Ellis Bridge",
+      city: "Ahmedabad",
+      pincode: "380006",
+      state: "Gujarat",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=6",
+    role: "vendor"
+  },
+  {
+    name: "Manish Patel",
+    username: "manishpatel88",
+    email: "manish.patel@example.com",
+    phone: "9876549876",
+    address: {
+      area: "Bodakdev",
+      city: "Ahmedabad",
+      pincode: "380054",
+      state: "Gujarat",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=7",
+    role: "vendor"
+  },
+  {
+    name: "Alisha Khan",
+    username: "alishakhan",
+    email: "alisha.khan@example.com",
+    phone: "9012345678",
+    address: {
+      area: "Goregaon East",
+      city: "Mumbai",
+      pincode: "400063",
+      state: "Maharashtra",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=8",
+    role: "vendor"
+  },
+  {
+    name: "Rahul Yadav",
+    username: "rahul_yadav",
+    email: "rahul.yadav@example.com",
+    phone: "9988123412",
+    address: {
+      area: "Alambagh",
+      city: "Lucknow",
+      pincode: "226005",
+      state: "Uttar Pradesh",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=9",
+    role: "vendor"
+  },
+  {
+    name: "Meena Kumari",
+    username: "meenakumari",
+    email: "meena.kumari@example.com",
+    phone: "9345678901",
+    address: {
+      area: "Kankarbagh",
+      city: "Patna",
+      pincode: "800020",
+      state: "Bihar",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=10",
+    role: "vendor"
+  },
+  {
+    name: "Kunal Saxena",
+    username: "kunal.saxena",
+    email: "kunal.saxena@example.com",
+    phone: "9877601234",
+    address: {
+      area: "Civil Lines",
+      city: "Prayagraj",
+      pincode: "211001",
+      state: "Uttar Pradesh",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=11",
+    role: "vendor"
+  },
+  {
+    name: "Sneha Reddy",
+    username: "sneha.reddy",
+    email: "sneha.reddy@example.com",
+    phone: "9955443322",
+    address: {
+      area: "Madhapur",
+      city: "Hyderabad",
+      pincode: "500081",
+      state: "Telangana",
+      country: "India"
+    },
+    image: "https://picsum.photos/300?random=12",
+    role: "vendor"
   }
 ];

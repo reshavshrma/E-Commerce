@@ -1,0 +1,1 @@
+in admin panel where i fetch entire vendor data add a btn to add product after that i would be navigated to add prd page where ( particular vendor id is already fetched) and only need to input other details except vendor info. admin vendor code : 

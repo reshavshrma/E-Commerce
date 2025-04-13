@@ -65,8 +65,8 @@ const initDB = async() => {
     // console.log("Data deleted successfully 01 !");
     // await Vendor.deleteMany({});
     // console.log("Data deleted successfully 01 !");
-    await Product.deleteMany({});
-    console.log("Data deleted successfully 01 !");
+    // await Product.deleteMany({});
+    // console.log("Data deleted successfully 01 !");
     // await Hotel.insertMany(sampleData);
     // await Category.insertMany(categories);
     // console.log("Data inserted successfully 01 !");

@@ -1,126 +1,353 @@
 export const products = [
   {
-    title: "Royal Blue Kurta Set",
-    description: "Elegant royal blue kurta with white churidar, perfect for weddings and traditional functions.",
-    price: 1799,
+    title: "Classic White Shirt",
+    description: "A crisp white shirt perfect for formal and casual wear.",
+    price: 999,
+    category: "67fb679503cee6a1eca201ef",
+    tag: "male",
+    sizes: ["S", "M", "L", "XL"],
     images: [
       "https://picsum.photos/300?random=101",
       "https://picsum.photos/300?random=102"
     ],
-    sizes: ["M", "L", "XL"],
-    category: "67fabeb0ae418a00bd11458b", // Kurtas & Sherwanis
-    tag: "male",
-    vendor: "67fabeb1ae418a00bd1145aa"  // Elegant Fashions
+    vendor: "67fb679503cee6a1eca201ff"
   },
   {
-    title: "Silk Saree with Zari Border",
-    description: "Traditional silk saree with intricate zari work and matching blouse piece.",
-    price: 3499,
+    title: "Stretch Fit Jeans",
+    description: "Comfortable stretch-fit jeans for everyday wear.",
+    price: 1499,
+    category: "67fb679503cee6a1eca201f4",
+    tag: "male",
+    sizes: ["XS", "S", "M", "L", "XL"],
     images: [
       "https://picsum.photos/300?random=103",
       "https://picsum.photos/300?random=104"
     ],
-    sizes: ["XS" , "S" , "M"],
-    category: "67fabeb0ae418a00bd11458c", // Sarees
-    tag: "female",
-    vendor: "67fabeb1ae418a00bd1145ab" // Urban Style Hub
+    vendor: "67fb679503cee6a1eca20200"
   },
   {
-    title: "Festive Lehenga Choli Set",
-    description: "Designer lehenga with embroidered choli and dupatta for weddings and parties.",
-    price: 5799,
-    images: [
-      "https://picsum.photos/300?random=105",
-      "https://picsum.photos/300?random=106"
-    ],
+    title: "Red Designer Kurti",
+    description: "Elegant red kurti for festive and ethnic occasions.",
+    price: 1299,
+    category: "67fb679503cee6a1eca201f6",
+    tag: "female",
     sizes: ["S", "M", "L"],
-    category: "67fabeb0ae418a00bd11458d", // Lehenga Choli
-    tag: "female",
-    vendor: "67fabeb1ae418a00bd1145ac" // Chic Couture
+    images: [
+      "https://picsum.photos/300?random=105"
+    ],
+    vendor: "67fb679503cee6a1eca20202"
   },
   {
-    title: "Cotton Kurti Set",
-    description: "Comfortable daily wear cotton kurti with palazzo and dupatta.",
-    price: 1399,
+    title: "Running Sports Shoes",
+    description: "Lightweight and durable sports shoes.",
+    price: 1799,
+    category: "67fb679503cee6a1eca201f5",
+    tag: "male",
+    sizes: ["XS", "S", "M", "L", "XL"],
     images: [
+      "https://picsum.photos/300?random=106",
       "https://picsum.photos/300?random=107"
     ],
-    sizes: ["M", "L", "XL", "XXL"],
-    category: "67fabeb0ae418a00bd11458e", // Kurti Sets
-    tag: "female",
-    vendor: "67fabeb1ae418a00bd1145ad" // Trendy Tailors
+    vendor: "67fb679503cee6a1eca20201"
   },
   {
-    title: "Grey Nehru Jacket",
-    description: "Formal Nehru jacket made from premium fabric, perfect over kurtas or shirts.",
-    price: 1999,
+    title: "Black Office Blazer",
+    description: "Professional black blazer with fine tailoring.",
+    price: 2999,
+    category: "67fb679503cee6a1eca201ef",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
     images: [
       "https://picsum.photos/300?random=108"
     ],
-    sizes: ["M", "L", "XL"],
-    category: "67fabeb0ae418a00bd11458f", // Nehru Jackets
-    tag: "male",
-    vendor: "67fabeb1ae418a00bd1145ae" // Royal Attire
+    vendor: "67fb679503cee6a1eca201ff"
   },
   {
-    title: "Anarkali Gown with Dupatta",
-    description: "Flared anarkali gown in georgette fabric with embroidered neckline.",
-    price: 2599,
+    title: "Embroidered Saree",
+    description: "Beautifully embroidered saree for wedding occasions.",
+    price: 3499,
+    category: "67fb679503cee6a1eca201f6",
+    tag: "female",
+    sizes: ["XS" , "M" ],
     images: [
-      "https://picsum.photos/300?random=109",
+      "https://picsum.photos/300?random=109"
+    ],
+    vendor: "67fb679503cee6a1eca20200"
+  },
+  {
+    title: "Summer Linen Shirt",
+    description: "Breathable linen shirt ideal for summer heat.",
+    price: 1199,
+    category: "67fb679503cee6a1eca201f3",
+    tag: "male",
+    sizes: ["S", "M", "L", "XL"],
+    images: [
       "https://picsum.photos/300?random=110"
     ],
-    sizes: ["S", "M", "L"],
-    category: "67fabeb0ae418a00bd114590", // Anarkali Suits
-    tag: "female",
-    vendor: "67fabeb1ae418a00bd1145af" // Fusion Trends
+    vendor: "67fb679503cee6a1eca20203"
   },
   {
-    title: "Indo-Western Blazer Set",
-    description: "Modern indo-western outfit with blazer and trousers for a fusion look.",
-    price: 4299,
+    title: "Floral Maxi Dress",
+    description: "Long floral dress perfect for casual outings.",
+    price: 1599,
+    category: "67fb679503cee6a1eca201f7",
+    tag: "female",
+    sizes: ["M", "L"],
     images: [
       "https://picsum.photos/300?random=111"
     ],
-    sizes: ["M", "L", "XL"],
-    category: "67fabeb0ae418a00bd114591", // Indo-Western Sets
-    tag: "male",
-    vendor: "67fabeb1ae418a00bd1145b0" // Stylearea
+    vendor: "67fb679503cee6a1eca20201"
   },
   {
-    title: "Embroidered Salwar Suit",
-    description: "Classic Punjabi suit with thread work on kurta and net dupatta.",
-    price: 1799,
+    title: "Warm Quilted Jacket",
+    description: "Stay cozy with this stylish winter jacket.",
+    price: 2499,
+    category: "67fb679503cee6a1eca201f2",
+    tag: "male",
+    sizes: ["M", "L", "XL", "XXL"],
     images: [
       "https://picsum.photos/300?random=112"
     ],
-    sizes: ["S", "M", "L", "XL"],
-    category: "67fabeb0ae418a00bd114592", // Salwar Kameez
-    tag: "female",
-    vendor: "67fabeb1ae418a00bd1145b1" // Fashion Fiesta
+    vendor: "67fb679503cee6a1eca20200"
   },
   {
-    title: "Bold Black Pathani Suit",
-    description: "Black pathani suit with contrast buttons and full sleeves for festive occasions.",
-    price: 2099,
+    title: "Slim Fit Trousers",
+    description: "Modern slim-fit trousers ideal for office and events.",
+    price: 1399,
+    category: "67fb679503cee6a1eca201ef",
+    tag: "male",
+    sizes: ["XS", "S", "M", "L"],
     images: [
       "https://picsum.photos/300?random=113"
     ],
-    sizes: ["M", "L", "XL", "XXL"],
-    category: "67fabeb0ae418a00bd114593", // Pathani Suits
-    tag: "male",
-    vendor: "67fabeb1ae418a00bd1145aa" // Elegant Fashions
+    vendor: "67fb679503cee6a1eca20203"
   },
   {
-    title: "Lightweight Dupatta with Tassels",
-    description: "Soft net dupatta with golden borders and elegant tassels.",
-    price: 499,
+    title: "Yoga Pants",
+    description: "Flexible and comfortable pants for yoga and workouts.",
+    price: 999,
+    category: "67fb679503cee6a1eca201fc",
+    tag: "female",
+    sizes: ["S", "M", "L"],
     images: [
       "https://picsum.photos/300?random=114"
     ],
-    sizes: ["S" , "M"],
-    category: "67fabeb0ae418a00bd114594", // Dupattas
+    vendor: "67fb679503cee6a1eca20202"
+  },
+  {
+    title: "Casual Graphic T-Shirt",
+    description: "Trendy T-shirt with bold prints and soft cotton.",
+    price: 599,
+    category: "67fb679503cee6a1eca201ee",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: [
+      "https://picsum.photos/300?random=115"
+    ],
+    vendor: "67fb679503cee6a1eca20201"
+  },
+  {
+    title: "Block Heel Sandals",
+    description: "Stylish sandals for casual and formal occasions.",
+    price: 1199,
+    category: "67fb679503cee6a1eca201fd",
     tag: "female",
-    vendor: "67fabeb1ae418a00bd1145ac" // Chic Couture
+    sizes: ["XS", "S", "M"],
+    images: [
+      "https://picsum.photos/300?random=116"
+    ],
+    vendor: "67fb679503cee6a1eca20200"
+  },
+  {
+    title: "Nehru Jacket",
+    description: "Traditional jacket for ethnic celebrations.",
+    price: 1899,
+    category: "67fb679503cee6a1eca201f0",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: [
+      "https://picsum.photos/300?random=117"
+    ],
+    vendor: "67fb679503cee6a1eca20202"
+  },
+  {
+    title: "Denim Jacket",
+    description: "Classic blue denim jacket with front pockets.",
+    price: 1599,
+    category: "67fb679503cee6a1eca201f4",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: [
+      "https://picsum.photos/300?random=118"
+    ],
+    vendor: "67fb679503cee6a1eca20201"
+  },
+  {
+    title: "Formal Pencil Skirt",
+    description: "Office wear skirt for a sleek professional look.",
+    price: 999,
+    category: "67fb679503cee6a1eca201f8",
+    tag: "female",
+    sizes: ["S", "M", "L"],
+    images: [
+      "https://picsum.photos/300?random=119"
+    ],
+    vendor: "67fb679503cee6a1eca20203"
+  },
+  // Continuing the array from previous
+  // ... First 15 products (already listed above)
+
+  {
+    title: "Printed Cotton Kurta",
+    description: "Casual and lightweight printed kurta for everyday comfort.",
+    price: 899,
+    category: "67fb679503cee6a1eca201f6",
+    tag: "female",
+    sizes: ["S", "M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=120"],
+    vendor: "67fb679503cee6a1eca20201"
+  },
+  {
+    title: "Cargo Joggers",
+    description: "Trendy jogger pants with side pockets and comfort fit.",
+    price: 1299,
+    category: "67fb679503cee6a1eca201f4",
+    tag: "male",
+    sizes: ["S", "M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=121"],
+    vendor: "67fb679503cee6a1eca20200"
+  },
+  {
+    title: "Ankle Boots",
+    description: "Stylish ankle boots for winter and streetwear looks.",
+    price: 2299,
+    category: "67fb679503cee6a1eca201fd",
+    tag: "female",
+    sizes: ["S", "M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=122"],
+    vendor: "67fb679503cee6a1eca20202"
+  },
+  {
+    title: "Hooded Sweatshirt",
+    description: "Comfortable and cozy hoodie for chilly evenings.",
+    price: 1099,
+    category: "67fb679503cee6a1eca201f2",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=123"],
+    vendor: "67fb679503cee6a1eca20203"
+  },
+  {
+    title: "Party Gown",
+    description: "Shimmery party gown for weddings and celebrations.",
+    price: 2899,
+    category: "67fb679503cee6a1eca201f7",
+    tag: "female",
+    sizes: ["M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=124"],
+    vendor: "67fb679503cee6a1eca20200"
+  },
+  {
+    title: "Fleece Winter Cap",
+    description: "Soft and warm fleece cap for cold weather.",
+    price: 499,
+    category: "67fb679503cee6a1eca201fe",
+    tag: "male",
+    sizes: ["S" , "M" ,"L"],
+    images: ["https://picsum.photos/300?random=125"],
+    vendor: "67fb679503cee6a1eca20201"
+  },
+  {
+    title: "Printed Leggings",
+    description: "Vibrant leggings with trendy patterns and stretch fabric.",
+    price: 799,
+    category: "67fb679503cee6a1eca201fc",
+    tag: "female",
+    sizes: ["S", "M", "L"],
+    images: ["https://picsum.photos/300?random=126"],
+    vendor: "67fb679503cee6a1eca20202"
+  },
+  {
+    title: "Formal Loafers",
+    description: "Elegant leather loafers for business or events.",
+    price: 1999,
+    category: "67fb679503cee6a1eca201f5",
+    tag: "male",
+    sizes: ["XS", "M", "S", "XL"],
+    images: ["https://picsum.photos/300?random=127"],
+    vendor: "67fb679503cee6a1eca20201"
+  },
+  {
+    title: "Ethnic Dupatta Set",
+    description: "Colorful ethnic dupatta paired with matching scarf.",
+    price: 999,
+    category: "67fb679503cee6a1eca201f6",
+    tag: "female",
+    sizes: ["M" ,"S" ,"XL"],
+    images: ["https://picsum.photos/300?random=128"],
+    vendor: "67fb679503cee6a1eca20200"
+  },
+  {
+    title: "Half Sleeve Polo T-shirt",
+    description: "Classic polo T-shirt with breathable fabric.",
+    price: 699,
+    category: "67fb679503cee6a1eca201ee",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=129"],
+    vendor: "67fb679503cee6a1eca20203"
+  },
+  {
+    title: "Faux Fur Jacket",
+    description: "Luxury faux fur jacket for winter elegance.",
+    price: 3199,
+    category: "67fb679503cee6a1eca201f2",
+    tag: "female",
+    sizes: ["S", "M", "L"],
+    images: ["https://picsum.photos/300?random=130"],
+    vendor: "67fb679503cee6a1eca20202"
+  },
+  {
+    title: "High Waist Shorts",
+    description: "Stylish high waist denim shorts for summer fun.",
+    price: 899,
+    category: "67fb679503cee6a1eca201f4",
+    tag: "female",
+    sizes: ["S", "M", "L"],
+    images: ["https://picsum.photos/300?random=131"],
+    vendor: "67fb679503cee6a1eca20201"
+  },
+  {
+    title: "Sherwani Set",
+    description: "Traditional Indian sherwani set with rich embroidery.",
+    price: 4999,
+    category: "67fb679503cee6a1eca201f0",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=132"],
+    vendor: "67fb679503cee6a1eca20200"
+  },
+  {
+    title: "Tank Top",
+    description: "Lightweight tank top for workouts or layering.",
+    price: 499,
+    category: "67fb679503cee6a1eca201fc",
+    tag: "female",
+    sizes: ["S", "M", "L"],
+    images: ["https://picsum.photos/300?random=133"],
+    vendor: "67fb679503cee6a1eca20203"
+  },
+  {
+    title: "Classic Leather Belt",
+    description: "Durable leather belt with metallic buckle.",
+    price: 799,
+    category: "67fb679503cee6a1eca201fe",
+    tag: "male",
+    sizes: ["M", "L", "XL"],
+    images: ["https://picsum.photos/300?random=134"],
+    vendor: "67fb679503cee6a1eca20202"
   }
-]
+
+
+  // Add more products here up to 30 as needed...
+];

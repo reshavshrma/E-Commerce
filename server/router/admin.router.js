@@ -60,7 +60,7 @@ router
 
 router
      .route("/add-product")
-     .post(isLoggedIn , isAdmin , upload.single("image") ,
+     .post(isLoggedIn , isAdmin , upload.array("images" , 7) ,
          validate(productSchemaValidation) , addProductController)
 
 router
