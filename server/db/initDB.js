@@ -72,8 +72,8 @@ const initDB = async() => {
     // console.log("Data inserted successfully 01 !");
     // await Vendor.insertMany(vendors);
     // console.log("Data inserted successfully  02 !");
-    await Product.insertMany(products);
-    console.log("Data inserted successfully 03!");
+    // await Product.insertMany(products);
+    // console.log("Data inserted successfully 03!");
     // await Blog.deleteMany({});
 }
 

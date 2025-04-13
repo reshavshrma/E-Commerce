@@ -5,6 +5,7 @@ import InputField from "../../components/Products/AddProduct/InputField";
 import SizeCheckbox from "../../components/Products/AddProduct/SizeCheckbox";
 import TagSelector from "../../components/Products/AddProduct/TagSelector";
 import CategoryDropdown from "../../components/Products/AddProduct/CategoryDropdown";
+import VendorDropdown from "../../components/Products/AddProduct/VendorDropdown";
 import ImageUploader from "../../components/Products/AddProduct/ImageUploader";
 
 const AddProductForm = () => {
@@ -15,6 +16,7 @@ const AddProductForm = () => {
     sizes: [],
     category: "",
     tag: "",
+    vendor: "", // now a single string
     images: [],
   });
 
@@ -51,7 +53,8 @@ const AddProductForm = () => {
       if (key === "images") {
         value.forEach((img) => productData.append("images", img));
       } else if (key === "sizes") {
-        value.forEach((size) => productData.append("sizes", size));
+        // send as JSON string
+        productData.append("sizes", JSON.stringify(value));
       } else {
         productData.append(key, value);
       }
@@ -71,6 +74,7 @@ const AddProductForm = () => {
         sizes: [],
         category: "",
         tag: "",
+        vendor: "",
         images: [],
       });
 
@@ -90,9 +94,12 @@ const AddProductForm = () => {
         <InputField label="Product Title" name="title" value={formData.title} onChange={handleChange} required />
         <InputField label="Price (₹)" name="price" type="number" value={formData.price} onChange={handleChange} required />
         <InputField label="Description" name="description" value={formData.description} onChange={handleChange} required textarea />
+        
         <CategoryDropdown value={formData.category} onChange={handleChange} />
+        <VendorDropdown value={formData.vendor} onChange={handleChange} />
         <TagSelector value={formData.tag} onChange={handleChange} />
         <SizeCheckbox selectedSizes={formData.sizes} onChange={handleCheckboxChange} />
+        
         <div className="col-span-1 md:col-span-2">
           <ImageUploader onChange={handleImageChange} images={formData.images} />
         </div>

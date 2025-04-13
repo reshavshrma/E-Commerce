@@ -50,10 +50,7 @@ const productSchemaValidation = Joi.object({
 
   vendor: Joi.array()
     .items(Joi.string().regex(/^[0-9a-fA-F]{24}$/))
-    .optional(),
-  wishlists: Joi.array()
-    .items(Joi.string().regex(/^[0-9a-fA-F]{24}$/))
-    .optional(),
+    .required(),
 
   bookings: Joi.array()
     .items(Joi.string().regex(/^[0-9a-fA-F]{24}$/))

@@ -4,42 +4,51 @@ const ImageUploader = ({ onChange, images }) => {
   const [previewUrls, setPreviewUrls] = useState([]);
 
   useEffect(() => {
-    if (images?.length > 0) {
-      const urls = images.map((img) => URL.createObjectURL(img));
-      setPreviewUrls(urls);
+    const urls = images.map((img) => URL.createObjectURL(img));
+    setPreviewUrls(urls);
 
-      // Clean up object URLs to prevent memory leaks
-      return () => urls.forEach((url) => URL.revokeObjectURL(url));
-    } else {
-      setPreviewUrls([]);
-    }
+    return () => urls.forEach((url) => URL.revokeObjectURL(url));
   }, [images]);
 
   const handleImageSelect = (e) => {
-    const selectedFiles = Array.from(e.target.files).slice(0, 7);
-    onChange(selectedFiles);
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Limit to 7 total
+    if (images.length >= 7) {
+      alert("Maximum of 7 images allowed.");
+      return;
+    }
+
+    const updatedImages = [...images, file];
+    onChange(updatedImages);
+  };
+
+  const handleRemove = (index) => {
+    const updatedImages = images.filter((_, i) => i !== index);
+    onChange(updatedImages);
   };
 
   return (
     <div className="w-full">
-      <label className="block font-medium mb-2 text-gray-700">Upload Product Images (Max 7)</label>
+      <label className="block font-medium mb-2 text-gray-700">
+        Upload Product Images (Max 7)
+      </label>
 
       <input
         type="file"
         name="images"
         accept="image/*"
-        multiple
         onChange={handleImageSelect}
+        disabled={images.length >= 7}
         className="w-full border p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
       />
 
-      {/* Image Count Display */}
       <p className="text-sm text-gray-600 mt-1">
-        {images?.length || 0} / 7 images selected
+        {images.length} / 7 images selected
       </p>
 
-      {/* Preview Grid */}
-      {previewUrls?.length > 0 && (
+      {previewUrls.length > 0 && (
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {previewUrls.map((src, idx) => (
             <div
@@ -51,9 +60,13 @@ const ImageUploader = ({ onChange, images }) => {
                 alt={`preview-${idx}`}
                 className="w-full h-32 object-cover"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
-                <span className="text-white text-xs">Image {idx + 1}</span>
-              </div>
+              <button
+                type="button"
+                onClick={() => handleRemove(idx)}
+                className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-full hover:bg-red-700 transition"
+              >
+                ✕
+              </button>
             </div>
           ))}
         </div>

@@ -53,12 +53,7 @@ const productSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Vendor",
-      },
-    ],
-    wishlists: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
+        required: [true, "Vendor is required"],
       },
     ],
     bookings: [

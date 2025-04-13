@@ -7,7 +7,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"; // Adjust the path 
 
 const addProductController = async (req, res) => {
   try {
-    const {
+    let {
       title,
       description,
       price,
@@ -16,6 +16,22 @@ const addProductController = async (req, res) => {
       tag,
       vendor
     } = req.body;
+
+    // Convert price to number
+    price = Number(price);
+
+    // Fix for sizes: multer/form-data sends string if only one value selected
+    if (typeof sizes === "string") {
+      sizes = [sizes];
+    }
+
+    // Check required fields
+    if (!title || !description || !price || !category || !tag || !vendor) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all required fields.",
+      });
+    }
 
     // Check if category exists
     const existingCategory = await Category.findById(category);
@@ -28,10 +44,9 @@ const addProductController = async (req, res) => {
 
     let images = [];
     if (req.files && req.files.length > 0) {
-      // Upload each file to Cloudinary
       for (const file of req.files) {
         const cloudinaryResult = await uploadOnCloudinary(file.path);
-        if (cloudinaryResult && cloudinaryResult.secure_url) {
+        if (cloudinaryResult?.secure_url) {
           images.push(cloudinaryResult.secure_url);
         }
       }
@@ -45,12 +60,12 @@ const addProductController = async (req, res) => {
       sizes,
       category,
       tag,
-      vendor
+      vendor,
     });
 
     await newProduct.save();
 
-    // Optionally push to category's product list
+    // Push product ID to category
     existingCategory.products.push(newProduct._id);
     await existingCategory.save();
 
@@ -60,13 +75,14 @@ const addProductController = async (req, res) => {
       product: newProduct,
     });
   } catch (err) {
-    console.error("Error in addProductController:", err);
+    console.error("❌ Error in addProductController:", err);
     res.status(500).json({
       success: false,
       message: "Server error. Could not add product.",
     });
   }
 };
+
 
 // GET /api/products/:productId
 const getProductById = asyncHandler(async (req, res) => {
