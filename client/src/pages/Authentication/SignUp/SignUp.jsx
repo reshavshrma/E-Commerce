@@ -11,7 +11,6 @@ const Signup = () => {
     email: "",
     phone: "",
     password: "",
-    agreeToTerms: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -20,13 +19,14 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value, // ✅ this line updates the actual field
     }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,9 +37,6 @@ const Signup = () => {
       ["name", "email", "phone", "password"]
     );
 
-    if (!formData.agreeToTerms) {
-      validationErrors.agreeToTerms = "You must agree to the terms.";
-    }
 
     if (Object.keys(validationErrors).length > 0) {
       return setErrors(validationErrors);
@@ -53,7 +50,7 @@ const Signup = () => {
         { withCredentials: true }
       );
       console.log("User registered:", res.data);
-      navigate("/");
+      navigate("/auth/successfully");
     } catch (err) {
       setServerError(err.response?.data?.message || "Registration failed. Try again.");
     } finally {
@@ -116,8 +113,6 @@ const Signup = () => {
               type="checkbox"
               name="agreeToTerms"
               id="agreeToTerms"
-              checked={formData.agreeToTerms}
-              onChange={handleChange}
               className="mt-1"
             />
             <label htmlFor="agreeToTerms" className="text-gray-600">

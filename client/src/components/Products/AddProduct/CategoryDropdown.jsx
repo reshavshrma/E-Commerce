@@ -6,25 +6,23 @@ const CategoryDropdown = ({ value, onChange }) => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/category` , {withCredentials : true})
-      
-      
+      .get(`${import.meta.env.VITE_API_URL}/api/category`, { withCredentials: true })
       .then((res) => {
         console.log(res.data);
-        
-        setCategories(res.data.data.categories || []) })
+        setCategories(res.data.data.categories || []);
+      })
       .catch(() => setCategories([]));
   }, []);
 
   return (
     <div>
-      <label className="block font-medium mb-1">Select Category</label>
+      <label className="block font-medium mb-2 text-gray-700">Select Category</label>
       <select
         name="category"
         value={value}
         onChange={onChange}
         required
-        className="w-full border rounded p-2"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
       >
         <option value="">Select...</option>
         {categories.map((cat) => (

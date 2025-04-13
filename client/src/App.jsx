@@ -1,4 +1,8 @@
-import React from "react"
+import  React from 'react';
+import {useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { useUser } from './components/UserContext/userContext';
 import Home from "./pages/Home"
 import {Routes , Route} from "react-router-dom";
 import About from "./pages/Navigation/About/About";
@@ -35,12 +39,55 @@ import UserWishlists from "./pages/User/UserWishLists";
 import PrivateRoute from "./components/UserContext/PrivateRoute";
 import IsAdmin from "./components/UserContext/IsAdmin";
 import AdminRoute from "./components/UserContext/AdminRoute";
+import PageNotFound from "./pages/Loaders/PageNotFound";
+import AuthSuccessPopup from './pages/Loaders/AuthSuccessPopup';
+import SuccessLoader from './pages/Loaders/SuccessLoader';
 
 function App() {
+  const { setUser } = useUser();
+  const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+
+  // Simulate a loading state only for Home and Admin Dashboard pages
+  useEffect(() => {
+    const targetPaths = ["/", "/admin"];
+    if (targetPaths.includes(location.pathname)) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 2500);
+
+      return () => clearTimeout(timer); // Cleanup the timer on unmount
+    } else {
+      setIsLoading(false);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, [setUser]);
 
 
   return (
     <>
+     {isLoading ? (
+        // Display loading animation while isLoading is true
+        <div className="loading-page flex flex-col justify-center gap-6 items-center h-screen">
+          <DotLottieReact
+            src="https://lottie.host/e32980de-2d5a-4f0c-96ae-853d398fecab/qJq4lBxhtz.lottie"
+            loop
+            autoplay
+            className="w-40 h-40"
+          />
+          <p className="uppercase text-lg font-bold text-gray-900 animate-pulse py-2">
+            Loading...
+          </p>
+        </div>
+      ) : 
+      (
       <Routes>
     <Route path="/" element={<Home/>} />
     <Route path="/about" element={<About/>} />
@@ -101,8 +148,12 @@ function App() {
           </Route>
             <Route path="/vendor" element={<AllVendors />} />
             <Route path="/categories" element={<AllCategories />} />
-
+              {/* 404 Page Not Found Route */}
+          <Route path="/auth/successfully" element={<AuthSuccessPopup />} />
+          <Route path="/saved/successfully" element={<SuccessLoader />} />
+          <Route path="*" element={<PageNotFound />} />
       </Routes>
+      )}
     </>
   )
 }

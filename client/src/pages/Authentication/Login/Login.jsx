@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
 import InputField from "./InputField";
-import { useUser } from "../../../components/UserContext/UserContext";
+import { useUser } from "../../../components/UserContext/userContext";
 import { FaEnvelope } from "react-icons/fa";
 import { BsShieldLockFill } from "react-icons/bs";
 import { validateLoginForm } from "./validateForm";
@@ -43,7 +43,7 @@ const LoginForm = () => {
         setUser(userData);
         localStorage.setItem("user", JSON.stringify(userData));
         setLoginUser({ email: "", password: "" });
-        navigate("/");
+        navigate("/auth/successfully");
       }
     } catch (error) {
       if (error.response?.data?.details) {
@@ -100,7 +100,7 @@ const LoginForm = () => {
           <div className="text-sm text-center text-gray-600">
             Don’t have an account?{" "}
             <NavLink
-              to="/user/register"
+              to="/register"
               className="text-blue-600 hover:underline hover:text-blue-800 transition duration-200"
             >
               Sign Up
