@@ -28,7 +28,7 @@ const Contact = () => {
       const dataSent = { user: user._id, message: contact.message };
       console.log("Data sent:", dataSent);
 
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/v1/navigate/contact`, dataSent, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/navigation/contact`, dataSent, { withCredentials: true });
 
       if (response.status === 200) {
         setContact({ message: "" });
@@ -45,7 +45,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-r from-slate-600 to-slate-800">
+      <div className="border-1 border-gray-300">
         <Navbar />
       </div>
       <div className="text-center">

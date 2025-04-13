@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import VendorCard from "../../components/Vendors/VendorCard.jsx/VendorCard";
-
+import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
 const AllVendors = () => {
   const [vendors, setVendors] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,9 @@ const AllVendors = () => {
       </h1>
 
       {loading ? (
-        <div className="text-center text-blue-600 font-medium">Loading vendors...</div>
+        <div className="flex justify-center items-center mt-10">
+          <SkeletonList/>
+        </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {vendors.map((vendor) => (

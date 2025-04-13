@@ -12,6 +12,7 @@ const InputField = React.memo(({ label, name, type, value, onChange, error, plac
         )}
         <input
           type={type}
+          required
           name={name}
           id={name}
           value={value}

@@ -5,7 +5,7 @@ import UserNavbar from '../../components/Navbars/UserNavbar/UserNavbar';
 import UserProfile from "../../components/User/UserAccount/UserProfile";
 import UserDetailsForm from "../../components/User/UserAccount/UserDetailsForm";
 import UserActions from "../../components/User/UserAccount/UserActions";
-
+import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
 
 const UserAccount = () => {
   const [showUser, setShowUser] = useState(null);
@@ -36,11 +36,13 @@ const UserAccount = () => {
 
   return (
     <>
+    <div className="bg-gray-200">
       <UserNavbar />
+    </div>
       
       {loading ? (
-        <div className="flex justify-center items-center h-[70vh]">
-          <p>Loading...</p> 
+        <div className="flex justify-center items-center mt-10">
+          <SkeletonForm/>
         </div>
       ) : (
         <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row">

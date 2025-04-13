@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import axios from "axios";
-import { useUser } from "../UserContext/UserContext";
+import { useUser } from "../UserContext/userContext";
 import { useNavigate } from "react-router-dom";
 
 const LikeBtn = ({ productId }) => {

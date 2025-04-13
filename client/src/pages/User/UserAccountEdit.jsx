@@ -4,7 +4,7 @@ import axios from "axios";
 import { useUser } from "../../components/UserContext/userContext";
 import UserProfileImage from "../../components/User/UserAccountEdit/UserProfileImage";
 import UserAccountForm from "../../components/User/UserAccountEdit/UserAccountForm";
-
+import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
 const UserAccountEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -86,8 +86,8 @@ const UserAccountEdit = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-100">
-        <p className="text-lg font-semibold">Loading user details...</p>
+      <div className="flex justify-center items-center mt-10 bg-gray-100">
+        <SkeletonForm/>
       </div>
     );
   }

@@ -1,5 +1,4 @@
 import Joi from "joi";
-import { Contact } from "../model/contact.model.js";
 const contactSchemaValidation = Joi.object({
   user: Joi.string()
     .pattern(/^[0-9a-fA-F]{24}$/)

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../components/Products/ProductCard.jsx/ProductCard";
-
+import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
+import NotAvailable from "../Loaders/NotAvailable";
+import Navbar from "../../components/Navbars/Navbar/Navbar";
 const ShowCategory = () => {
   const { id, tag } = useParams();
   const [category, setCategory] = useState({});
@@ -35,15 +37,22 @@ const ShowCategory = () => {
   }, [id, tag]);
 
   return (
+    <>
+    <div className="bg-gray-100">
+<Navbar/>
+    </div>
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[60vh]">
       {loading ? (
-        <div className="flex justify-center items-center h-40">
-          <span className="text-gray-500 text-lg animate-pulse">Loading products...</span>
+        <div className="flex justify-center items-center mt-10">
+          <SkeletonList/>
         </div>
       ) : errorMsg ? (
-        <div className="text-center py-10">
-          <p className="text-red-600 text-lg font-medium">{errorMsg}</p>
-        </div>
+        <div className="col-span-full text-center text-lg font-semibold text-gray-700 mt-10">
+        <NotAvailable 
+  content="No Product Found"
+  tagline="Oops! It looks like no product is no found in this category . Why not explore our amazing collection and add something special to your list?"
+/>
+          </div>
       ) : (
         <>
           <div className="text-center mb-8">
@@ -60,13 +69,17 @@ const ShowCategory = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center text-gray-500 text-lg mt-12">
-              No products found in this category.
-            </div>
+            <div className="col-span-full text-center text-lg font-semibold text-gray-700">
+        <NotAvailable 
+  content="No Product Found"
+  tagline="Oops! It looks like no product is no found in this category . Why not explore our amazing collection and add something special to your list?"
+/>
+          </div>
           )}
         </>
       )}
     </section>
+    </>
   );
 };
 

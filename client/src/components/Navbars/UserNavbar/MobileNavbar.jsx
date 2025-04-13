@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaUserCircle, FaUser, FaBars, FaTimes, FaPaperPlane , FaPowerOff , FaStoreAlt , FaStore, FaTags } from "react-icons/fa";
+import { FaUserCircle, FaUser, FaBars, FaTimes, FaPaperPlane , FaCalendarCheck ,FaPowerOff , FaStoreAlt , FaStore, FaTags } from "react-icons/fa";
 import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-icons/ri";
 import { TiShoppingCart } from "react-icons/ti";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../UserContext/userContext";
-
+import { IoHeartCircleOutline } from "react-icons/io5";
 
 const MobileNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,9 +19,9 @@ const MobileNavbar = () => {
 
   const menuItems = [
     { to: "/admin", label: "Admin Dashboard", tooltip: "Admin" ,icon: <MdAdminPanelSettings />, role: "admin" },
-    { to: "/", label: "My Account", tooltip: "My Account"  , icon: <FaUser />},
-    { to: "wishlists", label: "My Wishlists", tooltip: "Wishlists" ,icon: <FaUser /> },
-    { to: "bookings", label: "My Bookings", tooltip: "Bookings" , icon: <FaUser /> },
+    { to: `/user/${user?._id}/account`, label: "My Account", tooltip: "My Account"  , icon: <FaUser />},
+    { to: `/user/${user?._id}/account/wishlists`, label: "My Wishlists", tooltip: "Wishlists" ,icon: <IoHeartCircleOutline /> },
+    { to: `/user/${user?._id}/account/bookings`, label: "My Bookings", tooltip: "Bookings" , icon: <FaCalendarCheck /> },
   ];
 
   return (

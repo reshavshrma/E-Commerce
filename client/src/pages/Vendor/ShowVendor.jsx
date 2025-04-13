@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import AllCategories from "../../components/Category/AllCategory/AllCategory";
-
+import SkeletonForm from "../../components/LoadingSkeleton/SkeletonForm";
+import Navbar from "../../components/Navbars/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 const ShowVendor = () => {
   const { id } = useParams();
   const [vendor, setVendor] = useState(null);
@@ -32,9 +34,9 @@ const ShowVendor = () => {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center h-[40vh] text-gray-600 text-lg">
-        Loading vendor details...
-      </div>
+      <div className="flex justify-center items-center mt-10">
+          <SkeletonForm/>
+        </div>
     );
 
   if (error)
@@ -46,6 +48,9 @@ const ShowVendor = () => {
 
   return (
     <>
+    <div className="bg-gray-100">
+      <Navbar/>
+    </div>
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-semibold text-gray-800 mb-8 border-b-4 border-indigo-600 inline-block pb-2">
           Vendor Profile
@@ -93,6 +98,9 @@ const ShowVendor = () => {
 
       {/* Categories Section */}
       <AllCategories />
+      <div className="mt-20">
+        <Footer/>
+      </div>
     </>
   );
 };

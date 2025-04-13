@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff , FaStoreAlt , FaStore, FaTags } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes, FaPaperPlane , FaPowerOff , FaStoreAlt , FaStore, FaTags, FaPlane } from "react-icons/fa";
 import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-icons/ri";
 import { TiShoppingCart } from "react-icons/ti";
+import { AiFillProduct } from "react-icons/ai";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../UserContext/userContext";
@@ -20,8 +21,9 @@ const MobileNavbar = () => {
   const menuItems = [
     { to: "/", label: "All Products", icon: <IoHomeSharp /> },
     { to: "/category", label: "Categories", icon: <FaTags /> },
-    { to: "/cart", label: "View Cart", icon: <TiShoppingCart /> },
-    { to: "/vendors", label: "Vendors", icon: <FaStore /> },
+    { to: "/about", label: "About Us", icon: <AiFillProduct /> },
+    { to: "/contact", label: "Contact Us", icon: <FaPaperPlane /> },
+    { to: "/all-vendors", label: "Our Vendors", icon: <FaStore /> },
   ];
 
   return (

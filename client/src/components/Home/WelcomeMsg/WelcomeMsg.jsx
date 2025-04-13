@@ -1,5 +1,5 @@
 import React from 'react'
-import { useUser } from '../../UserContext/UserContext';
+import { useUser } from '../../UserContext/userContext';
 const WelcomeMsg = () => {
     const {user} = useUser();
   return (

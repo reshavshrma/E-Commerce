@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import UserWishlistProductCard from "../../components/User/UserWishlist/UserWishlistProductCard";
-
-
+import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
+import SkeletonList from '../../components/LoadingSkeleton/SkeletonList'
+import NotAvailable from "../Loaders/NotAvailable";
 const UserWishlists = () => {
   const { id } = useParams();
   const [wishlists, setWishlists] = useState([]);
@@ -41,12 +42,16 @@ const UserWishlists = () => {
   if (error) return <div className="text-center">Error !</div>;
 
   return (
+    <>
+  <div className="bg-gray-200">
+    <UserNavbar/>
+  </div>
     <div className="bg-gray-100 min-h-screen">
 
 
       {loading ? (
-        <div className="text-center py-20">
-          <p>Loading...</p>
+        <div className="flex-col justify-center items-center mt-10  md:flex-row">
+         <SkeletonList/>
         </div>
       ) : (
         <div className="overflow-x-hidden">
@@ -58,14 +63,15 @@ const UserWishlists = () => {
                 <UserWishlistProductCard key={product._id} product={product} />
               ))
             ) : (
-              <div className="col-span-full">
-                not availble !
+              <div className="col-span-full text-center text-lg font-semibold text-gray-700">
+              <NotAvailable content={"No Product Found"} tagline={" Oops! It looks like your wishlist is empty . Why not explore our amazing collection and add something special to your list?"} />
               </div>
             )}
           </div>
         </div>
       )}
     </div>
+    </>
   );
 };
 

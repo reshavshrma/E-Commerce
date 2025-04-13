@@ -3,7 +3,7 @@ import InputField from "./InputField";
 import { validateForm } from "./validateForm";
 import { FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../../components/UserContext/userContext";
 const Signup = () => {
   const {setUser} = useUser();
@@ -64,9 +64,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+    <div className="min-h-screen flex items-center justify-center  bg-gradient-to-br from-gray-900 via-gray-800 to-black px-4">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl border border-gray-100">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <h2 className="text-xl sm:text-3xl font-bold text-center text-gray-800 mb-6">
           Create your Account
         </h2>
 
@@ -77,7 +77,7 @@ const Signup = () => {
             type="text"
             value={formData.name}
             onChange={handleChange}
-            placeholder="John Doe"
+            placeholder="enter your full name"
             icon={FaUser}
             error={errors.name}
           />
@@ -87,7 +87,7 @@ const Signup = () => {
             type="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="you@example.com"
+            placeholder="enter your email id"
             icon={FaEnvelope}
             error={errors.email}
           />
@@ -97,7 +97,7 @@ const Signup = () => {
             type="tel"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="1234567890"
+            placeholder="enter your contact no"
             icon={FaPhone}
             error={errors.phone}
           />
@@ -107,7 +107,7 @@ const Signup = () => {
             type="password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="••••••••"
+            placeholder="set 6 digit password"
             icon={FaLock}
             error={errors.password}
           />
@@ -119,6 +119,7 @@ const Signup = () => {
               name="agreeToTerms"
               id="agreeToTerms"
               className="mt-1"
+              required
             />
             <label htmlFor="agreeToTerms" className="text-gray-600">
               I agree to the{" "}
@@ -158,9 +159,9 @@ const Signup = () => {
 
         <p className="text-sm text-center text-gray-500 mt-6">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-blue-600 hover:underline">
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </div>

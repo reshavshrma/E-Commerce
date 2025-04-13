@@ -3,7 +3,7 @@ import { BiSolidPaperPlane } from "react-icons/bi";
 
 const ContactForm = ({ handleInput, handleSubmit, contact, user, loading }) => {
   return (
-    <div className="bg-white shadow-xl rounded-xl p-8 border-t-4 border-green-500" data-aos="fade-down">
+    <div className="bg-white shadow-xl rounded-xl p-8 border-t-4 border-green-500" >
       <h2 className="text-3xl font-bold text-teal-700 mb-6 text-center">Send Us a Message</h2>
       <form className="space-y-5" onSubmit={handleSubmit}>
         <div>

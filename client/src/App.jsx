@@ -42,6 +42,7 @@ import AdminRoute from "./components/UserContext/AdminRoute";
 import PageNotFound from "./pages/Loaders/PageNotFound";
 import AuthSuccessPopup from './pages/Loaders/AuthSuccessPopup';
 import SuccessLoader from './pages/Loaders/SuccessLoader';
+import ContactUsLoader from './pages/Loaders/ContactUsLoader';
 import UserBooking from './pages/User/UserBooking';
 import './App.css';
 function App() {
@@ -91,8 +92,19 @@ function App() {
       (
       <Routes>
     <Route path="/" element={<Home/>} />
+    <Route path="/home" element={<Home/>} />
     <Route path="/about" element={<About/>} />
-    <Route path="/contact" element={<Contact/>} />
+    <Route path="/contact" element={
+<PrivateRoute>
+    <Contact/>
+</PrivateRoute>
+    } />
+    <Route path="/contact/confirmed" element={
+      <PrivateRoute>
+    <ContactUsLoader/>
+      </PrivateRoute>
+    } />
+    
     <Route path="/policies" element={<Policies/>} />
 
     <Route path="/login" element={<Login/>} />
@@ -148,8 +160,11 @@ function App() {
             <Route path="add-vendor" element={<AddVendor />}  />
             <Route path="vendor/:id/account/delete" element={<DeleteVendor />}  />
           </Route>
+            <Route path="/vendors" element={<AllVendors />} />
+            <Route path="/all-vendors" element={<AllVendors />} />
             <Route path="/vendor" element={<AllVendors />} />
             <Route path="/categories" element={<AllCategories />} />
+            <Route path="/category" element={<AllCategories />} />
               {/* 404 Page Not Found Route */}
           <Route path="/auth/successfully" element={<AuthSuccessPopup />} />
           <Route path="/saved/successfully" element={<SuccessLoader />} />

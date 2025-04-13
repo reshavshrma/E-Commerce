@@ -15,6 +15,8 @@ const DesktopNavbar = () => {
 
     { to: "/", label: "Home", tooltip: "Home" },
     { to: "/category", label: "Categories", tooltip: "Categories" },
+    { to: "/about", label: "About", tooltip: "About" },
+    { to: "/contact", label: "Connect", tooltip: "Connect" },
   ];
 
 
@@ -42,12 +44,6 @@ const DesktopNavbar = () => {
             </NavLink>
         </li>
       ))}
-      
-      <li  className="  hover:scale-110 hover:font-semibold">
-            <NavLink to="/cart" className=" flex gap-1 justify-center items-center ">
-               <TiShoppingCart className="flex justify-center items-center text-2xl"/>
-            </NavLink>
-        </li>
 
  <li>
           <NavLink to={user ? `/user/${user._id}/account` : "/login"}>

@@ -57,7 +57,7 @@ const ProductCard = ({ product }) => {
             </span>
           )}
           {product.tag && (
-            <span className="bg-green-600 text-gray-100 px-3 py-1 rounded-full font-medium capitalize">
+            <span className="bg-cyan-600 text-gray-100 px-3 py-1 rounded-full font-medium capitalize">
               {product.tag}
             </span>
           )}

@@ -4,7 +4,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import UserBookingCard from "../../components/User/UserBooking/UserBookingCard";
-
+import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
+import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
+import NotAvailable from "../Loaders/NotAvailable";
 
 const UserBooking = () => {
   const { id } = useParams();
@@ -43,10 +45,16 @@ const UserBooking = () => {
   if (error) return <div className="text-center py-20 text-red-600">{error}</div>;
 
   return (
+    <>
+<div className="bg-gray-200">
+    <UserNavbar/>
+  </div>
     <div className="bg-gray-100 min-h-screen">
 
       {loading ? (
-        <div className="text-center py-20 text-gray-600 text-xl">Loading...</div>
+        <div className="flex-col justify-center items-center mt-10  md:flex-row">
+         <SkeletonList/>
+        </div>
       ) : (
         <div className="overflow-x-hidden">
           <h2 className="text-center text-3xl font-bold text-gray-900 mt-10 mb-6">
@@ -59,14 +67,15 @@ const UserBooking = () => {
                 <UserBookingCard key={product._id} product={product} />
               ))
             ) : (
-              <div className="col-span-full text-center text-gray-500 text-lg">
-                No bookings available.
+              <div className="col-span-full text-center text-lg font-semibold text-gray-700">
+              <NotAvailable content={"No Booking Found"} tagline={" Oops! It looks like your wishlist is empty . Why not explore our amazing collection and add something special to your list?"} />
               </div>
             )}
           </div>
         </div>
       )}
     </div>
+    </>
   );
 };
 

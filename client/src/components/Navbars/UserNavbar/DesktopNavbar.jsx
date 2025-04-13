@@ -16,8 +16,8 @@ const DesktopNavbar = () => {
   const navItems = [
     { to: "/admin", label: "Admin", tooltip: "Admin" },
     { to: `/user/${user?._id}/account`, label: "Account", tooltip: "Account" },
-    { to: "wishlists", label: "Wishlists", tooltip: "Wishlists" },
-    { to: "bookings", label: "Bookings", tooltip: "Bookings" },
+    { to: `/user/${user?._id}/account/wishlists`, label: "Wishlists", tooltip: "Wishlists" },
+    { to: `/user/${user?._id}/account/bookings`, label: "Bookings", tooltip: "Bookings" },
   ];
 
 

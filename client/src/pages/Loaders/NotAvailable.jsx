@@ -2,6 +2,7 @@ import React from 'react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useNavigate } from 'react-router-dom';
 import { IoIosHome } from "react-icons/io";
+import { FaTags } from 'react-icons/fa';
 const NotAvailable = ({content , tagline}) => {
       const navigate = useNavigate();
     
@@ -27,8 +28,8 @@ autoplay
         className="mt-6 flex justify-center items-center gap-2 px-6 py-3 bg-gradient-to-t from-red-600 to-purple-600 text-white text-sm sm:text-base md:text-lg rounded-lg hover:scale-110 transition-all duration-300"
         onClick={() => navigate('/')}
       >
-         Explore Hotels
-        <IoIosHome />
+         Explore Products
+        <FaTags />
       </button>
       </span>
 

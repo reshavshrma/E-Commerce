@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
 import ToggleGender from "../../ToggleGender/ToggleGender";
-
+import SkeletonList from "../../LoadingSkeleton/SkeletonList";
 const AllCategories = () => {
   const [categories, setCategories] = useState([]);
   const [selectedGender, setSelectedGender] = useState("male");
@@ -50,7 +50,9 @@ const AllCategories = () => {
       </div>
 
       {loading && (
-        <p className="text-center text-gray-600 text-lg">Loading categories...</p>
+        <div className="flex justify-center items-center mt-10">
+          <SkeletonList/>
+        </div>
       )}
       {error && (
         <p className="text-center text-red-500 text-lg font-medium">{error}</p>

@@ -1,6 +1,6 @@
 // ContactHeader.js
 import React from 'react';
-import WebsiteLogo from '../../../assets/black-website-logo.png';
+import WebsiteLogo from '../../../assets/white-website-logo.png';
 
 const ContactHeader = () => {
   return (
@@ -9,7 +9,7 @@ const ContactHeader = () => {
       <h1 className="text-5xl font-extrabold text-gray-50 mb-4">Get in Touch</h1>
       <p className="text-lg text-gray-50 max-w-2xl mx-auto leading-relaxed">
         Have questions or need assistance? <br />
-        <span className="font-semibold text-yellow-400">UrbanHaven Hotels</span> is here to help you 24/7.
+        <span className="font-semibold text-yellow-400">The Shopzo</span> is here to help you 24/7.
       </p>
     </div>
   );

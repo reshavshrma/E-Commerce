@@ -11,7 +11,7 @@ const CallToAction = () => {
   Dive into a wide selection of categorized products from verified local vendors. Explore online, book your favorites, and experience the joy of offline shopping with The Shopzo.
 </p>
 <Link to="/">
-  <button className="mt-6 bg-gradient-to-b from-purple-600 to-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-teal-500 transition duration-300 transform hover:scale-105">
+  <button className="mt-6 bg-gradient-to-b from-purple-600 to-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-teal-500 transition duration-300 transform hover:cursor-pointer hover:scale-105">
     Browse Categories
   </button>
 </Link>

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import DeleteProduct from "./DeleteProduct";
-
+import SkeletonCard from "../../components/LoadingSkeleton/SkeletonCard";
+import NotAvailable from "../Loaders/NotAvailable";
+import Navbar from "../../components/Navbars/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 const ShowProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -27,19 +30,26 @@ const ShowProduct = () => {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <p className="text-gray-500 text-lg animate-pulse">Loading product details...</p>
-      </div>
+      <div className="flex justify-center items-center mt-10">
+          <SkeletonList/>
+        </div>
     );
 
   if (!product)
     return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <p className="text-red-600 text-lg font-medium">Product not found.</p>
-      </div>
+      <div className="col-span-full text-center text-lg font-semibold text-gray-700 mt-10">
+      <NotAvailable 
+content="No Product Found"
+tagline="Oops! It looks like no product is no found in this category . Why not explore our amazing collection and add something special to your list?"
+/>
+        </div>
     );
 
   return (
+    <>
+<div className="bg-gray-100">
+  <Navbar/>
+</div>
     <section className="max-w-6xl mx-auto px-6 py-12">
       {/* Product Title */}
       <div className="mb-8 text-center">
@@ -111,6 +121,10 @@ const ShowProduct = () => {
         </button>
       </div>
     </section>
+    <div className="mt-20">
+    <Footer/>
+    </div>
+    </>
   );
 };
 
