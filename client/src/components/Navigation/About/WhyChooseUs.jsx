@@ -7,11 +7,11 @@ const WhyChooseUs = () => {
         Why Choose Us?
       </h2>
       <ul className="text-base sm:text-lg space-y-3 text-gray-600">
-        <li><strong>✅ Seamless Booking:</strong> A hassle-free, secure, and smooth reservation process.</li>
-        <li><strong>🏨 Premium Stays:</strong> Verified accommodations with top-notch amenities.</li>
-        <li><strong>💰 Exclusive Offers:</strong> Best prices, discounts, and loyalty perks.</li>
-        <li><strong>📞 24/7 Support:</strong> Our dedicated team is always here to assist you.</li>
-      </ul>
+  <li><strong>🛍️ Empowering Local Sellers:</strong> We provide a digital storefront for offline vendors to expand their reach.</li>
+  <li><strong>🔍 Easy Product Discovery:</strong> Browse category-wise, view item details, and reserve them before visiting the store.</li>
+  <li><strong>🤝 Trustworthy Offline Purchases:</strong> See product listings online, then buy them offline from verified vendors.</li>
+  <li><strong>📞 Dedicated Support:</strong> Our team is available to ensure both users and vendors enjoy a smooth experience.</li>
+</ul>
     </div>
   );
 };

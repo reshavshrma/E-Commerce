@@ -1,0 +1,60 @@
+
+  
+  /* 🚀 Smooth Scrolling */
+  html {
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+  }
+  
+  /* Prevent scroll bounce on touch devices */
+  body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* 🖊️ Remove number spinner from input fields */
+  input::-webkit-inner-spin-button, 
+  input::-webkit-outer-spin-button {
+    display: none;
+  }
+  
+  /* 📜 Global Scrollbar Styling - Professional & Aesthetic */
+  
+  /* Scrollbar width */
+  ::-webkit-scrollbar {
+    width: 14px; /* Slightly wider for a more luxurious look */
+    height: 14px; /* Same for horizontal scrollbar */
+  }
+  
+  /* Scrollbar Track */
+  ::-webkit-scrollbar-track {
+    background: #f4f4f4; /* Lighter background for a softer look */
+    border-radius: 10px; /* Smooth rounded corners */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Scrollbar Thumb */
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #4f46e5, #9333ea); /* Smooth gradient from blue to purple */
+    border-radius: 12px; /* More rounded corners for smoothness */
+    border: 4px solid #f4f4f4; /* Slight border to create depth effect */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+  }
+  
+  /* Hover effect on Scrollbar Thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #2563eb, #7e22ce); /* Darker gradient on hover */
+    transform: scale(1.1); /* Slight scaling effect for hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Added shadow effect on hover */
+  }
+  
+  /* Scrollbar Corner (where vertical & horizontal bars meet) */
+  ::-webkit-scrollbar-corner {
+    background: #f4f4f4; /* Blends seamlessly with the track */
+  }
+  
+  /* 🎯 Fix for anchor links scrolling too far due to fixed navbar */
+  html, body {
+    scroll-padding-top: 80px; /* Adjust based on navbar height */
+  }
+  

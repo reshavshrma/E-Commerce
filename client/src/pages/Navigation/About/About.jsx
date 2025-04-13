@@ -22,17 +22,17 @@ const About = () => {
           <AboutHeader />
 
           <AboutSection
-            title="Who We Are"
-            text="UrbanHaven is a lifestyle-driven hospitality brand that blends comfort, design, and convenience. We are redefining travel stays by offering a handpicked selection of unique accommodations in prime locations — whether you're seeking urban sophistication or countryside charm."
-            imageUrl="https://media.istockphoto.com/id/1409386345/photo/hotel-lobby.webp?b=1&s=170667a&w=0&k=20&c=yHqlweSt4z3eI3eSHTPrqj6R3rRnM8BeJovKD0v8Hdk="
-          />
+  title="Who We Are"
+  text="At The Shopzo, we're building a bridge between offline vendors and the digital world. Our platform empowers local sellers to showcase their products online by category, making it easy for users to discover, explore, and reserve items—while supporting in-person purchases from trusted nearby stores."
+  imageUrl="https://images.unsplash.com/photo-1556740749-887f6717d7e4"
+/>
 
-          <AboutSection
-            title="Our Vision"
-            text="To be the go-to platform where travelers find more than a room — they find a personal experience. From seamless booking to unmatched customer service, our aim is to make every stay unforgettable."
-            imageUrl="https://media.istockphoto.com/id/1282532707/photo/a-magnificent-hotel-room-in-a-luxury-hotel.webp?b=1&s=170667a&w=0&k=20&c=ZlnEPQyN9n0aGpKjEkOH2XKmJ20g_d-5vwL_Mop9EFQ="
-            reverse
-          />
+<AboutSection
+  title="Our Mission"
+  text="Our mission is to bring visibility to authentic, offline businesses and create a seamless browsing experience for customers. We envision a world where technology uplifts traditional commerce, making local shopping efficient, personalized, and community-driven."
+  imageUrl="https://images.unsplash.com/photo-1556740749-887f6717d7e4"
+  reverse
+/>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-16">
             <div className="order-2 md:order-1">
@@ -40,7 +40,7 @@ const About = () => {
             </div>
             <div className="overflow-hidden rounded-2xl shadow-lg order-1 md:order-2">
               <img
-                src="https://images.unsplash.com/photo-1576675783365-00f22c5a277e"
+                src="https://images.unsplash.com/photo-1556740749-887f6717d7e4"
                 alt="Why Choose Us"
                 className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
               />

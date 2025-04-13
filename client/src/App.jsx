@@ -43,7 +43,7 @@ import PageNotFound from "./pages/Loaders/PageNotFound";
 import AuthSuccessPopup from './pages/Loaders/AuthSuccessPopup';
 import SuccessLoader from './pages/Loaders/SuccessLoader';
 import UserBooking from './pages/User/UserBooking';
-
+import './App.css';
 function App() {
   const { setUser } = useUser();
   const [isLoading, setIsLoading] = useState(false);
