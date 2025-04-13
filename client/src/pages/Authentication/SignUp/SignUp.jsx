@@ -4,8 +4,9 @@ import { validateForm } from "./validateForm";
 import { FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { useUser } from "../../../components/UserContext/userContext";
 const Signup = () => {
+  const {setUser} = useUser();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -49,6 +50,10 @@ const Signup = () => {
         formData,
         { withCredentials: true }
       );
+      // After successful registration, update the UserContext immediately
+    const { user } = res.data.data; // Assuming the user data is here
+    setUser(user);  // Directly update the user context
+    console.log("User registered:", res.data);
       console.log("User registered:", res.data);
       navigate("/auth/successfully");
     } catch (err) {

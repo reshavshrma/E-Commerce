@@ -9,7 +9,9 @@ const AllVendors = () => {
   useEffect(() => {
     const fetchVendors = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/vendor/all-vendors`);
+        const  {data}  = await axios.get(`${import.meta.env.VITE_API_URL}/api/vendor/all-vendors`);
+        console.log("res of vendor" , data.data.image);
+        
         setVendors(data.data);
       } catch (error) {
         console.error("Failed to fetch vendors:", error);

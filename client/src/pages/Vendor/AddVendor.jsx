@@ -19,11 +19,22 @@ const AddVendor = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
-      setFormData({ ...formData, image: files[0] });
+      const file = files[0];
+      setFormData({ ...formData, image: file });
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImagePreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        setImagePreview(null);
+      }
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -54,7 +65,7 @@ const AddVendor = () => {
     }
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/vendor/add-vendor`, payload, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/add-vendor`, payload, {
         withCredentials: true, // if using cookies
       });
 
@@ -72,7 +83,7 @@ const AddVendor = () => {
         country: "",
         image: null,
       });
-      navigate('/');
+      navigate('/saved/successfully');
     } catch (err) {
       console.error("Error adding vendor:", err);
       setMessage(err?.response?.data?.message || "Failed to add vendor.");
@@ -82,65 +93,71 @@ const AddVendor = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Add New Vendor</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-4">
+    <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg space-y-6">
+      <h2 className="text-3xl font-semibold text-center mb-6">Add New Vendor</h2>
+      <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6">
         {/* Basic Inputs */}
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
+            required
+          />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
+            required
+          />
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
+            required
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
+            required
+          />
+        </div>
+
         <input
           type="password"
           name="password"
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
           required
         />
 
         {/* Address Inputs */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <input
             type="text"
             name="area"
             placeholder="Area"
             value={formData.area}
             onChange={handleChange}
-            className="w-full border p-2 rounded"
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
             required
           />
           <input
@@ -149,16 +166,19 @@ const AddVendor = () => {
             placeholder="City"
             value={formData.city}
             onChange={handleChange}
-            className="w-full border p-2 rounded"
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
             required
           />
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <input
             type="text"
             name="pincode"
             placeholder="Pincode"
             value={formData.pincode}
             onChange={handleChange}
-            className="w-full border p-2 rounded"
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
             required
           />
           <input
@@ -167,19 +187,20 @@ const AddVendor = () => {
             placeholder="State"
             value={formData.state}
             onChange={handleChange}
-            className="w-full border p-2 rounded"
-            required
-          />
-          <input
-            type="text"
-            name="country"
-            placeholder="Country"
-            value={formData.country}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
+            className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
             required
           />
         </div>
+
+        <input
+          type="text"
+          name="country"
+          placeholder="Country"
+          value={formData.country}
+          onChange={handleChange}
+          className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
+          required
+        />
 
         {/* File Upload */}
         <input
@@ -187,14 +208,22 @@ const AddVendor = () => {
           name="image"
           accept="image/*"
           onChange={handleChange}
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-blue-500 transition duration-300"
         />
-
-        {/* Submit */}
+{imagePreview && (
+  <div className="w-full flex justify-center">
+    <img
+      src={imagePreview}
+      alt="Preview"
+      className="max-w-xs max-h-60 mt-4 rounded-md border border-gray-300 shadow-md"
+    />
+  </div>
+)}
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+          className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transition duration-300"
         >
           {loading ? "Submitting..." : "Add Vendor"}
         </button>
@@ -202,7 +231,7 @@ const AddVendor = () => {
 
       {/* Message */}
       {message && (
-        <p className="mt-4 text-center text-sm text-red-500">{message}</p>
+        <p className="text-center text-sm text-red-500 mt-4">{message}</p>
       )}
     </div>
   );
