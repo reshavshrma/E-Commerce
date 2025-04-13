@@ -12,8 +12,7 @@ const DesktopNavbar = () => {
 
 
   const navItems = [
-    { to: "/admin", label: "Admin", tooltip: "Admin" },
-    { to: "/vendor", label: "Vendor", tooltip: "Vendor" },
+
     { to: "/", label: "Home", tooltip: "Home" },
     { to: "/category", label: "Categories", tooltip: "Categories" },
   ];
@@ -22,7 +21,20 @@ const DesktopNavbar = () => {
 
   return (
     <ul className=" hidden capitalize lg:flex absolute right-9 gap-9 items-center" data-aos="fade-up">
-
+{user?.role === "admin" && (
+        <li>
+            <NavLink to="/admin/dashboard" className="hover:text-yellow-500  hover:font-semibold">
+              Admin
+            </NavLink>
+        </li>
+      )}
+{user?.role === "vendor" && (
+        <li>
+            <NavLink to="/admin/dashboard" className="hover:text-yellow-500  hover:font-semibold">
+              Vendor
+            </NavLink>
+        </li>
+      )}
       {navItems.map(({ to, label, tooltip }) => (
         <li key={to} className="  hover:scale-110 hover:font-semibold">
             <NavLink to={to} className="hover:text-black  ">
