@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useUser } from "../../components/UserContext/UserContext";
+import { useUser } from "../../components/UserContext/userContext";
 import UserProfileImage from "../../components/User/UserAccountEdit/UserProfileImage";
 import UserAccountForm from "../../components/User/UserAccountEdit/UserAccountForm";
 

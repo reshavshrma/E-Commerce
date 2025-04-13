@@ -42,6 +42,7 @@ import AdminRoute from "./components/UserContext/AdminRoute";
 import PageNotFound from "./pages/Loaders/PageNotFound";
 import AuthSuccessPopup from './pages/Loaders/AuthSuccessPopup';
 import SuccessLoader from './pages/Loaders/SuccessLoader';
+import UserBooking from './pages/User/UserBooking';
 
 function App() {
   const { setUser } = useUser();
@@ -113,6 +114,7 @@ function App() {
     <Route path="/user/:id/account" element={<UserAccount />}  />
     <Route path="/user/:id/account/edit" element={<UserAccountEdit />}  />
     <Route path="/user/:id/account/wishlists" element={<UserWishlists />}  />
+    <Route path="/user/:id/account/bookings" element={<UserBooking />}  />
 
     <Route path="/admin/dashboard" element={
       <PrivateRoute>

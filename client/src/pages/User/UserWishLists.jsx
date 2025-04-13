@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import UserWishlistProductCard from "../../components/User/UserWishlist/UserWishlistProductCard";
-import Navbar from "../../components/Navbars/Navbar/Navbar";
+
 
 const UserWishlists = () => {
   const { id } = useParams();
@@ -42,7 +42,7 @@ const UserWishlists = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <Navbar />
+
 
       {loading ? (
         <div className="text-center py-20">

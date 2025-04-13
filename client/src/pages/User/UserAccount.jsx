@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../../components/Navbars/Navbar/Navbar";
+import UserNavbar from '../../components/Navbars/UserNavbar/UserNavbar';
 import UserProfile from "../../components/User/UserAccount/UserProfile";
 import UserDetailsForm from "../../components/User/UserAccount/UserDetailsForm";
 import UserActions from "../../components/User/UserAccount/UserActions";
@@ -36,7 +36,7 @@ const UserAccount = () => {
 
   return (
     <>
-      <Navbar />
+      <UserNavbar />
       
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">

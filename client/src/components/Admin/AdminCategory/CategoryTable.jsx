@@ -1,7 +1,7 @@
 import React from "react";
 import CategoryRow from "./CategoryRow";
 
-const CategoryTable = ({ categories }) => {
+const CategoryTable = ({ categories, onEdit, onDelete }) => {
   return (
     <div className="overflow-x-auto bg-white shadow-xl rounded-xl">
       <table className="min-w-full text-sm md:text-base border border-gray-200">
@@ -11,11 +11,17 @@ const CategoryTable = ({ categories }) => {
             <th className="px-4 py-3 border">Title</th>
             <th className="px-4 py-3 border">Category ID</th>
             <th className="px-4 py-3 border">Tag</th>
+            <th className="px-4 py-3 border">Actions</th>
           </tr>
         </thead>
         <tbody>
           {categories.map((category) => (
-            <CategoryRow key={category._id} category={category} />
+            <CategoryRow
+              key={category._id}
+              category={category}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
           ))}
         </tbody>
       </table>

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../../components/Navbars/Navbar/Navbar'
+import UserNavbar from '../../components/Navbars/UserNavbar/UserNavbar';
 
 
 const UserHome = () => {
   return (
     <div>
-    <Navbar/>
+    <UserNavbar/>
       <div className="w-full mt-10" data-aos="fade-up">
                 <Outlet />
               </div>

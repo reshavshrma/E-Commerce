@@ -270,4 +270,69 @@ const deleteUserAccount = asyncHandler(async (req, res) => {
   }
 });
 
-export { userAccountDetails  , getUserWishlists , toggleProductWishlist , editUserDetails , deleteUserAccount};
+const getUserBookings = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).json(
+      new ApiError(400, "User ID is required!")
+    );
+  }
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json(
+      new ApiError(400, "Invalid User ID!", "Failed to fetch user bookings.")
+    );
+  }
+
+  const user = await User.findById(id).populate({
+    path: "bookings",
+    model: "Product",
+    populate: {
+      path: "category vendor",
+      select: "title name", // customize as needed
+    },
+  });
+
+  if (!user || !user.bookings.length) {
+    return res.status(200).json(
+      new ApiResponse(200, [], "No bookings found for this user.")
+    );
+  }
+
+  return res.status(200).json(
+    new ApiResponse(200, user.bookings, "User bookings fetched successfully.")
+  );
+});
+
+const cancelUserBooking = asyncHandler(async (req, res) => {
+  const { userId, productId } = req.params;
+
+  // Validate input
+  if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).json(new ApiError(400, "Invalid User ID"));
+  }
+
+  if (!productId || !mongoose.Types.ObjectId.isValid(productId)) {
+    return res.status(400).json(new ApiError(400, "Invalid Booking/Product ID"));
+  }
+
+  // Find user
+  const user = await User.findById(userId);
+  if (!user || !user.bookings.includes(productId)) {
+    return res.status(404).json(new ApiError(404, "Booking not found for this user"));
+  }
+
+  // Remove booking from user
+  await User.findByIdAndUpdate(userId, { $pull: { bookings: productId } });
+
+  // Remove user from product's bookings
+  await Product.findByIdAndUpdate(productId, { $pull: { bookings: userId } });
+
+  console.log(`Booking with productId ${productId} cancelled for user ${userId}`);
+
+  return res.status(200).json(
+    new ApiResponse(200, {}, "Booking cancelled successfully.")
+  );
+});
+export { userAccountDetails  , getUserWishlists , toggleProductWishlist , editUserDetails , deleteUserAccount , getUserBookings , cancelUserBooking};

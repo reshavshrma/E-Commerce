@@ -6,7 +6,7 @@ import {userSchemaValidation} from '../test/user.validator.js' ;
 import {userEditValidationSchema} from '../test/userEdit.validator.js' ;
 import { loginUserValidation } from '../test/login.validator.js';
 import { createNewUser , loginUser , logOutUser , checkAuthentication } from '../controller/userAuth.controller.js';
-import {userAccountDetails , getUserWishlists , toggleProductWishlist , editUserDetails , deleteUserAccount} from "../controller/user.controller.js";
+import {userAccountDetails , getUserWishlists , toggleProductWishlist , editUserDetails , deleteUserAccount, getUserBookings , cancelUserBooking} from "../controller/user.controller.js";
 const router = express.Router();
 
 
@@ -50,7 +50,12 @@ router
 
 router
      .route('/:id/account/bookings')
-     .get();
+     .get(isLoggedIn , getUserBookings);
+
+router
+      .route('/:userId/:productId')
+      .delete( isLoggedIn, cancelUserBooking);
+
 
 router
      .route('/:id/account/edit')

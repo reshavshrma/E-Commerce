@@ -1,3 +1,5 @@
+// components/User/UserBookings/UserBookingCard.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
@@ -5,7 +7,7 @@ import ShareBtn from "../../ShareBtn/ShareBtn";
 import LikeBtn from "../../LikeBtn/LikeBtn";
 import { useUser } from "../../UserContext/userContext";
 
-const UserWishlistProductCard = ({ product }) => {
+const UserBookingCard = ({ product }) => {
   const { user } = useUser();
 
   return (
@@ -49,7 +51,7 @@ const UserWishlistProductCard = ({ product }) => {
           </Link>
           <Link to={`/product/${product._id}/buy`} className="w-full">
             <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all">
-              Buy <FaShoppingBag />
+              Book Again <FaShoppingBag />
             </button>
           </Link>
         </div>
@@ -58,4 +60,4 @@ const UserWishlistProductCard = ({ product }) => {
   );
 };
 
-export default UserWishlistProductCard;
+export default UserBookingCard;
