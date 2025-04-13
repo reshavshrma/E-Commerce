@@ -31,7 +31,7 @@ const ShowProduct = () => {
   if (loading)
     return (
       <div className="flex justify-center items-center mt-10">
-          <SkeletonList/>
+          <SkeletonCard/>
         </div>
     );
 

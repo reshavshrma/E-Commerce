@@ -8,10 +8,13 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from './middleware/passport.middleware.js';
-
+import path from 'path';
+import { fileURLToPath } from 'url';
 const app = express();
 const isProduction = process.env.NODE_ENV === 'production';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 //  Set trust proxy before session middleware
 app.set("trust proxy", 1);  // Required for Render & secure cookies
 
@@ -58,10 +61,10 @@ app.use((req, res, next) => {
     next();
 });
 
+const clientBuildPath = path.join(__dirname, 'public');
+app.use(express.static(clientBuildPath));
 
-app.get("/" , (req , res) => {
-    res.status(200).json({"message" : "Everything working well ! Lets Go !"})
-})
+
 
 import userRouter from "./router/user.router.js";
 import vendorRouter from "./router/vendor.router.js";

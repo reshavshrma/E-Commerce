@@ -5,6 +5,7 @@ import ProductCard from "../../components/Products/ProductCard.jsx/ProductCard";
 import SkeletonList from "../../components/LoadingSkeleton/SkeletonList";
 import NotAvailable from "../Loaders/NotAvailable";
 import Navbar from "../../components/Navbars/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 const ShowCategory = () => {
   const { id, tag } = useParams();
   const [category, setCategory] = useState({});
@@ -79,6 +80,9 @@ const ShowCategory = () => {
         </>
       )}
     </section>
+    <div className="mt-10">
+      <Footer/>
+    </div>
     </>
   );
 };

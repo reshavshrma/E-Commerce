@@ -48,7 +48,12 @@ const productSchema = new Schema(
       enum: ["male", "female"],
       required: [true, "Tag (male or female) is required"],
     },
-
+wishlists: [
+  {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+],
     vendor: [
       {
         type: Schema.Types.ObjectId,
