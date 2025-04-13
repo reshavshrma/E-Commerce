@@ -82,4 +82,12 @@ app.use('/api/product' , productRouter);
 app.use('/api/navigation' , navigationRouter);
 
 
+// ✅ React Router Fix - Serves index.html for unhandled routes
+app.use((req, res, next) => {
+    if (req.path.startsWith("/api/")) {
+        return next(); // Let API routes handle requests
+    }
+    res.sendFile(path.join(clientBuildPath, "index.html"));
+});
+
 export { app };

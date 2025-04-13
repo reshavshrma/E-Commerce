@@ -7,7 +7,7 @@ import Home from "./pages/Home"
 import {Routes , Route} from "react-router-dom";
 import About from "./pages/Navigation/About/About";
 import Contact from "./pages/Navigation/Contact/Contact";
-import Policies from "./components/Navigation/Policies/Policies";
+import Policies from './pages/Navigation/Policies/Policies';
 import Login from "./pages/Authentication/Login/Login";
 import SignUp from "./pages/Authentication/SignUp/SignUp";
 import Logout from "./components/Logout/Logout";
@@ -122,11 +122,31 @@ function App() {
     <Route path="/vendor/:id/account/edit" element={<EditVendor />}  />
 
     <Route path="/category/:id/:tag/products" element={<ShowCategory />}  />
-    <Route path="/user/:id/account/delete" element={<UserAccountDelete />}  />
-    <Route path="/user/:id/account" element={<UserAccount />}  />
-    <Route path="/user/:id/account/edit" element={<UserAccountEdit />}  />
-    <Route path="/user/:id/account/wishlists" element={<UserWishlists />}  />
-    <Route path="/user/:id/account/bookings" element={<UserBooking />}  />
+    <Route path="/user/:id/account/delete" element={
+      <PrivateRoute>
+      <UserAccountDelete />
+      </PrivateRoute>
+}  />
+    <Route path="/user/:id/account" element={
+      <PrivateRoute>
+      <UserAccount />
+      </PrivateRoute>
+      }  />
+    <Route path="/user/:id/account/edit" element={
+      <PrivateRoute>
+      <UserAccountEdit />
+      </PrivateRoute>
+      }  />
+    <Route path="/user/:id/account/wishlists" element={
+      <PrivateRoute>
+      <UserWishlists />
+      </PrivateRoute>
+      }  />
+    <Route path="/user/:id/account/bookings" element={
+      <PrivateRoute>
+      <UserBooking />
+      </PrivateRoute>
+      }  />
 
     <Route path="/admin/dashboard" element={
       <PrivateRoute>
@@ -166,8 +186,13 @@ function App() {
             <Route path="/categories" element={<AllCategories />} />
             <Route path="/category" element={<AllCategories />} />
               {/* 404 Page Not Found Route */}
-          <Route path="/auth/successfully" element={<AuthSuccessPopup />} />
-          <Route path="/saved/successfully" element={<SuccessLoader />} />
+          <Route path="/auth/successfully" element={
+            <AuthSuccessPopup />} />
+          <Route path="/saved/successfully" element={
+            <PrivateRoute>
+            <SuccessLoader />
+            </PrivateRoute>
+            } />
           <Route path="*" element={<PageNotFound />} />
       </Routes>
       )}
