@@ -4,7 +4,7 @@ import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 
 const VendorCard = ({ vendor }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 w-[25rem] mx-auto group">
+    <div className="bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 w-full mx-auto group">
       {/* Vendor Image */}
       <div className="h-64 w-full overflow-hidden rounded-t-3xl">
         <img

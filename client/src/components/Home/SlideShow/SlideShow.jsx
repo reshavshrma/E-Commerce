@@ -40,7 +40,14 @@ const Slideshow = () => {
   };
 
   return (
+    <>
+      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-t from-fuchsia-500 to-gray-600 text-center mb-10 mt-12 ">
+  Explore our Top Collections
+</h1>
+    
     <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+   
+
       <div className="relative w-full h-80 sm:h-[400px] md:h-[550px] lg:h-[650px]">
         {images.map((image, index) => (
           <img
@@ -83,6 +90,7 @@ const Slideshow = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

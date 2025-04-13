@@ -31,6 +31,12 @@ const Home = () => {
       <div className='my-20'>
         <SlideShow/>
       </div>
+      <div className='my-20'>
+        <AllVendors/>
+      </div>
+      <div className='my-20'>
+        <ScrollComponent/>
+      </div>
       <div className='my-20  flex flex-col flex-wrap justify-evenly items-center sm:flex-row gap-6 sm:gap-3 py-10 px-5 sm:px-5'>
     <Counter start={0} end={300} duration={2000} value="Users Registered" color="blue" icon={<FaUsers className="text-blue-500 text-2xl md:text-3xl lg:text-5xl" />}/>
     <Counter start={0} end={100} duration={2000} value="Vendors Listed" color="red" icon={<FaStore className="text-red-500 text-2xl md:text-3xl lg:text-5xl" />}/>
@@ -38,15 +44,11 @@ const Home = () => {
     <Counter start={0} end={600} duration={2000} value="Products Available" color="orange" icon={<FaBoxOpen className="text-orange-500 text-2xl md:text-3xl lg:text-5xl" />}/>
     <Counter start={0} end={100} duration={2000} value="Booking Accomplished" color="green" icon={<FaClipboardList className="text-green-500 text-2xl md:text-3xl lg:text-5xl" />}/>
       </div>
-      <div className='my-20'>
-        <ScrollComponent/>
-      </div>
+
       <div className='my-20'>
         <FAQs/>
       </div>
-      <div className='my-20'>
-        <AllVendors/>
-      </div>
+
       <div className='mt-20'>
         <Footer/>
       </div>
