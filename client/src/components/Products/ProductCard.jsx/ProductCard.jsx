@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white border border-gray-100 shadow-md hover:shadow-xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] group w-full sm:max-w-sm mx-auto">
+    <div className="bg-white border border-gray-200 shadow-lg hover:shadow-2xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] w-full sm:max-w-[320px] mx-auto">
       {/* Image Section */}
       <div className="relative">
         {/* Share Button */}
@@ -32,14 +32,14 @@ const ProductCard = ({ product }) => {
         <img
           src={product.images[0]}
           alt={product.title}
-          className="w-full h-60 object-cover group-hover:brightness-95 transition-all duration-300"
+          className="w-full h-60 object-cover group-hover:brightness-90 transition-all duration-300"
         />
       </div>
 
       {/* Content Section */}
-      <div className="p-4 sm:p-5 space-y-2">
+      <div className="p-4 sm:p-6 space-y-3">
         {/* Title */}
-        <h2 className="text-lg sm:text-xl font-semibold text-gray-900 line-clamp-1">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900 line-clamp-2">
           {product.title}
         </h2>
 
@@ -50,26 +50,26 @@ const ProductCard = ({ product }) => {
         </p>
 
         {/* Category and Tag */}
-        <div className="flex flex-wrap gap-2 text-sm mt-2">
+        <div className="flex flex-wrap gap-3 text-sm mt-2">
           {product.category?.title && (
-            <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">
+            <span className="bg-teal-600 text-gray-100 px-3 py-1 rounded-full font-medium">
               {product.category.title}
             </span>
           )}
           {product.tag && (
-            <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium capitalize">
+            <span className="bg-green-600 text-gray-100 px-3 py-1 rounded-full font-medium capitalize">
               {product.tag}
             </span>
           )}
         </div>
 
-        {/* View Button */}
+        {/* Checkout Button */}
         <div className="pt-4">
           <button
             onClick={() => navigate(`/product/${product._id}`)}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow transition duration-200 hover:scale-[1.03]"
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:bg-gradient-to-r hover:from-blue-700 hover:to-indigo-800 text-white font-semibold py-2 rounded-lg shadow-md transition duration-200 transform hover:scale-105 hover:cursor-pointer"
           >
-            View Now
+            Checkout
           </button>
         </div>
       </div>

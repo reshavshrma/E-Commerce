@@ -62,15 +62,6 @@ const AllCategories = () => {
           <CategoryCard key={category._id} category={category} />
         ))}
       </div>
-
-      <div className="text-center">
-        <button
-          onClick={() => navigate("/categories")}
-          className="inline-block px-6 py-3 rounded-full bg-green-600 text-white text-base sm:text-lg font-semibold hover:bg-green-700 transition-all duration-300 shadow-md"
-        >
-          View All Categories
-        </button>
-      </div>
     </section>
   );
 };

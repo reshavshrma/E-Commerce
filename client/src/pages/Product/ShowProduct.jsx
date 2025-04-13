@@ -42,58 +42,56 @@ const ShowProduct = () => {
   return (
     <section className="max-w-6xl mx-auto px-6 py-12">
       {/* Product Title */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
-          {product.title}
-        </h1>
-        <p className="text-gray-600 text-lg max-w-3xl">
+      <div className="mb-8 text-center">
+        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">{product.title}</h1>
+        <p className="text-gray-600 text-lg max-w-3xl mx-auto">
           {product.description}
         </p>
       </div>
 
       {/* Gallery */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+      <div className="flex justify-center items-center gap-6 mb-12">
         {product.images.map((img, idx) => (
           <div
             key={idx}
-            className="rounded-2xl overflow-hidden border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 group"
+            className="rounded-xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <img
               src={img}
               alt={`Product ${idx + 1}`}
-              className="h-64 w-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+              className="h-64 w-[30rem] object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
             />
           </div>
         ))}
       </div>
 
       {/* Product Meta Info */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {/* Price */}
-        <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-          <p className="text-gray-500 mb-1">Price</p>
-          <p className="text-2xl font-bold text-indigo-600">₹{product.price}</p>
+        <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+          <p className="text-gray-500 mb-1 text-sm">Price</p>
+          <p className="text-2xl font-semibold text-indigo-600">₹{product.price}</p>
         </div>
 
         {/* Sizes */}
-        <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-          <p className="text-gray-500 mb-1">Sizes</p>
+        <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+          <p className="text-gray-500 mb-1 text-sm">Sizes</p>
           <p className="text-base text-gray-700">
-            {product.sizes?.length > 0 ? product.sizes.join(", ") : "N/A"}
+            {product.sizes?.length > 0 ? product.sizes.join(" , ") : "N/A"}
           </p>
         </div>
 
         {/* Tag */}
-        <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-          <p className="text-gray-500 mb-1">Tag</p>
-          <span className="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-semibold capitalize">
+        <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+          <p className="text-gray-500 mb-1 text-sm">Tag</p>
+          <span className="inline-block bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full font-semibold capitalize">
             {product.tag}
           </span>
         </div>
 
         {/* Category */}
-        <div className="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-          <p className="text-gray-500 mb-1">Category</p>
+        <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+          <p className="text-gray-500 mb-1 text-sm">Category</p>
           <p className="text-base text-gray-800 font-medium">
             {product.category?.title}
             <span className="text-sm text-gray-500 ml-1">
@@ -103,9 +101,14 @@ const ShowProduct = () => {
         </div>
       </div>
 
-      {/* Delete Product Button */}
-      <div className="mt-12">
-        <DeleteProduct productId={product._id} />
+      {/* Action Buttons */}
+      <div className="flex justify-center gap-6 mt-8">
+        <button
+          className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 transition duration-200"
+          onClick={() => alert("Added to Cart!")} // Example, replace with actual functionality
+        >
+          Add to Cart
+        </button>
       </div>
     </section>
   );
