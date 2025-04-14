@@ -24,6 +24,7 @@ const allowedOrigins = [
     `${process.env.FRONTEND_URL}`,
     'https://shopzo-website.onrender.com',
     'https://shopzo.com',
+     'https://www.shopzo.com',
   ];
   
   const corsSessionOption = {
