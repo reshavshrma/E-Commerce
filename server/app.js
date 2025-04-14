@@ -23,7 +23,6 @@ app.set('trust proxy', 1);
 // Middleware setup
 const allowedOrigins = [
   'http://localhost:5173',
-  `${process.env.FRONTEND_URL}`,
   'https://shopzo-website.onrender.com',
   'https://shopzo.com',
   'https://www.shopzo.com',
@@ -70,7 +69,11 @@ app.use(passport.session());
 
 // Serve static files from the public folder
 const clientBuildPath = path.join(__dirname, 'public');
-app.use(express.static(clientBuildPath));
+app.use(express.static(clientBuildPath, {
+    setHeaders: (res, path) => {
+      console.log('Serving static file:', path); // Log all served files
+    }
+  }));
 
 // Routing for API requests
 import userRouter from './router/user.router.js';
