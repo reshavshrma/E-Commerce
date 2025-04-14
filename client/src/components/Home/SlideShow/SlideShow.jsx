@@ -6,7 +6,7 @@ const images = [
 
   "https://media-hosting.imagekit.io/5c298a81f65844e9/couple-fashion.jpg?Expires=1839072431&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=ZkcXNBk~XjicdM-4jwL61JMFD~wn8T02-S51PHlbBR7Wn-zOd1QvzHb5uSyDBuhquS7F1s7zbX1edJ9~hwv-vC2-Gl-OEhBqAmox8JYoMvyqF5~CZ2iiLjFyrWTsdIqgMKnYCqh8dAFm2RfF~I64piCdoIz2ch-ISFxar5BogBW3QeYqE~nJJadIHqBze1CAdjwQncvKul0dddGjXYbmuoUksCNQ9dZ3hkzQm8mqjRz3SLyQMtljTSBLPplABJ02qDf2IlAIfp3rWTkc-0vvh9DnvRczosaMIfgHLwNDrLaerVGYLdreFAcrAobAVBJCQHH6cPvwEPKTwf8cUaFmpg__",
 
-  "https://media-hosting.imagekit.io/f26a4b7130e748cf/men-design.jpg?Expires=1839072505&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=V8SlkiVdkqmd78aQwYR2qsT2ygHxxwCAdhl3MEdoktTMHxlO1IAS3wmM6iuAwlQgTJCjFnkLzwKHbhUfEy4D-y7E-Zxe3bzvyulwOjqpFNNgGr0Mh6qTPcELPGR1WIcsH~Y1EjjmxFSCYrOe1NnEg6WtOASZ--BECgjDL1NkCoe9utrekC~ACjzn0LkVnGtaakqAUMRJzuazr~jnUjFFUiGQPtgkfrK0y2OwgsvVXYkxM7wIkoWjYmRHdjF0AEy29MnS0n4s7e9TQ6xIjbs9S7ZBEU7BzusMddHti4DbE-HICroprnWwO8-PvMuoLRSGVJzCdErMXTBnSYLZrj6tLQ__",
+  "https://media-hosting.imagekit.io/abbc2f4475c5444d/ethnic-lady.png?Expires=1839158662&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=uodk3H-bmvQ--A3yJwTwzbJmsiU5weAvLobjPO-Me~E1NbvTX-pWbKARWklKk2wSTFsprCVhJB6A68nlC9C10qrJBj8otTsSqlUPmAfmAcznmeARxHCw-xgYTug0B~vbKVL6QmBMxAxEN4qMjpAZnsgsyeerduScYEcKR0s23ojockEEB9RT2t05SQo9cDE-AXj9Hpn2bkvwY9nJ1MuhYafgHrEoxo0ABHs~6YI4U0lXEiNinLU~edwsEUSybU2VEobr~pYZtq3UO5IYaR0ePf92BoIE07PoOQ0muoOk8IECF0hvkRuAXc6NIZj1uQJnnNFxN6rzuRNELbyUKthvKg__",
  
   "https://media-hosting.imagekit.io/473c5d2e48a347cc/girl-croptop.jpg?Expires=1839072636&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=xhKaTq56Ays7DD0dV~hh-hbtTzXXIVKPDw2FJ-b03cenIjMWujEWwVCCRUt3vBhmSGknY1T468ifzH7i3qXXX4JEeiXwQzkHqJSF~M8rWh-6e6295eT~PjObKL3pHdZFm3HK6HPW9WMs5a7fCAPA0LY0OeYl0NiLjkJ5l8ng9zKNuQy3zZo4pkLPitAxX9s2X-bNnrjDFr7px0BvlovJRYHnO9TLzrHLju1Psfs0pqun8IzdcOfPYLCvLUu3RN~H-5J3tjl6xaSaha5TxE4XlH~YBlx9MNepp4S7S6ntLxQH95PYw84Jt8lupsnvEuZ5sTJiUmbFPSVN00SOUZjGKQ__" ,
 
@@ -41,11 +41,11 @@ const Slideshow = () => {
 
   return (
     <>
-      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-t from-fuchsia-500 to-gray-600 text-center mb-10 mt-12 ">
+      <h1 className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-red-500 to-gray-700 text-center mb-10 mt-12 ">
   Explore our Top Collections
 </h1>
     
-    <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+    <div className="relative w-[90%] max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-lg">
    
 
       <div className="relative w-full h-80 sm:h-[400px] md:h-[550px] lg:h-[650px]">

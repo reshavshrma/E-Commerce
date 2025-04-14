@@ -59,7 +59,7 @@ const AllCategories = () => {
       )}
 
       {/* Responsive Category Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto mb-12 px-2 sm:px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl ml-2 mx-auto mb-12 px-2 sm:px-0">
         {filteredCategories.map((category) => (
           <CategoryCard key={category._id} category={category} />
         ))}

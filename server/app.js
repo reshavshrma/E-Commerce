@@ -19,13 +19,26 @@ const __dirname = path.dirname(__filename);
 app.set("trust proxy", 1);  // Required for Render & secure cookies
 
 // Middleware setup
-const corsSessionOption = {
-    origin: process.env.FRONTEND_URL,
+const allowedOrigins = [
+    'http://localhost:5173',
+    `${process.env.FRONTEND_URL}`,
+    'https://shopzo-website.onrender.com',
+    'https://shopzo.com',
+  ];
+  
+  const corsSessionOption = {
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS policy: No access from origin ${origin}`), false);
+      }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 200,
-};
+  };
 
 const expressSessionOption = {
     secret: process.env.EXPRESS_SESSION_SECRET,

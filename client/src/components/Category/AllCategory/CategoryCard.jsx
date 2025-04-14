@@ -5,9 +5,9 @@ const CategoryCard = ({ category }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative group w-full bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+    <div className="relative group w-[95%] bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
       {/* Image Container */}
-      <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-72 xl:h-80 overflow-hidden">
+      <div className="relative w-full h-80 lg:h-72 xl:h-80 overflow-hidden">
         <img
           src={category.image}
           alt={category.title}

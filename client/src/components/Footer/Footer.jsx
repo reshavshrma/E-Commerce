@@ -25,12 +25,12 @@ const Footer = () => {
         {/* 🔗 Links Section */}
         <div className="text-center sm:text-left">
           <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
+          <ul className=" text-sm flex justify-center items-center flex-wrap md:space-y-2 sm:flex-col sm:items-start sm:ml-2 gap-3">
             {["Home", "Vendors", "About", "Contact", "Categories", "Policies"].map((item, i) => (
               <li key={i}>
                 <NavLink
                   to={`/${item.toLowerCase()}`}
-                  className="hover:text-blue-400 transition-colors duration-300"
+                  className="hover:text-blue-400 transition-colors duration-300 "
                 >
                   {item}
                 </NavLink>
@@ -76,11 +76,6 @@ const Footer = () => {
                 icon: GrInstagram,
                 url: "https://www.instagram.com/shobhiitttt_fs?igsh=MWVjdWxqbm0wYzMyMg==",
                 hover: "hover:bg-pink-600",
-              },
-              {
-                icon: FaGithub,
-                url: "#",
-                hover: "hover:bg-gray-700",
               },
             ].map(({ icon: Icon, url, hover }, i) => (
               <a
