@@ -24,8 +24,8 @@ app.set('trust proxy', 1);
 const allowedOrigins = [
   'http://localhost:5173',
   'https://shopzo-website.onrender.com',
-  'https://shopzo.com',
-  'https://www.shopzo.com',
+  'https://theshopzo.com',
+  'https://www.theshopzo.com',
 ];
 
 const corsSessionOption = {
