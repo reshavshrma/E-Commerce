@@ -8,7 +8,6 @@ import ContactHeader from '../../../components/Navigation/Contact/ContactHeader'
 import ContactInfo from '../../../components/Navigation/Contact/ContactInfo';
 import ContactForm from '../../../components/Navigation/Contact/ContactForm';
 import ContactFooter from '../../../components/Navigation/Contact/ContactFooter';
-import ErrorPopup from '../../../components/Popups/ErrorPopUp';
 
 const Contact = () => {
   const { user } = useUser();
