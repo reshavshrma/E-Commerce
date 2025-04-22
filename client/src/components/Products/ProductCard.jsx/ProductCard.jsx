@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRupeeSign } from "react-icons/fa";
 import ShareBtn from "../../ShareBtn/ShareBtn";
-import { useUser } from "../../UserContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 import LikeBtn from "../../LikeBtn/LikeBtn";
 
 const ProductCard = ({ product }) => {

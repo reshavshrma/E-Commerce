@@ -1,7 +1,7 @@
 // Contact.js (Main Page)
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../../components/UserContext/userContext';
+import { useUser } from '../../../components/UserContext/UserContext';
 import axios from 'axios';
 import Navbar from '../../../components/Navbars/Navbar/Navbar';
 import Footer from '../../../components/Footer/Footer';

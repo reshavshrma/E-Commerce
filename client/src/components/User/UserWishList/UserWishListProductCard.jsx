@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import ShareBtn from "../../ShareBtn/ShareBtn";
 import LikeBtn from "../../LikeBtn/LikeBtn";
-import { useUser } from "../../UserContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 
 const UserWishlistProductCard = ({ product }) => {
   const { user } = useUser();

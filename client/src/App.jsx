@@ -2,7 +2,7 @@ import  React from 'react';
 import {useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { useUser } from './components/UserContext/userContext';
+import { useUser } from './components/UserContext/UserContext';
 import Home from "./pages/Home"
 import {Routes , Route} from "react-router-dom";
 import About from "./pages/Navigation/About/About";

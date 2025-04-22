@@ -5,7 +5,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { FaPowerOff } from "react-icons/fa6";
 import { RiShieldUserLine } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
-import { useUser } from "../../UserContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 import { BsBuildingFillAdd } from "react-icons/bs";
 import { AiFillFileAdd } from "react-icons/ai";
 const DesktopNavbar = () => {

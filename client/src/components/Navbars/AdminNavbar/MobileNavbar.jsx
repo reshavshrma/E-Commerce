@@ -6,7 +6,7 @@ import { RiQuestionAnswerFill, RiShieldUserLine, RiArticleFill } from "react-ico
 import { TiShoppingCart } from "react-icons/ti";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
-import { useUser } from "../../UserContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 
 
 const MobileNavbar = () => {

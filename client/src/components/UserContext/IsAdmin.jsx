@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from "./userContext";
+import { useUser } from "./UserContext";
 
 
 const IsAdmin = ({ children }) => {

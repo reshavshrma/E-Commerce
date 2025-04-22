@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../UserContext/userContext";
+import { useUser } from "../UserContext/UserContext";
 import SkeletonForm from '../LoadingSkeleton/SkeletonForm'
 const Logout = () => {
   const { setUser } = useUser();

@@ -7,7 +7,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { AiFillProduct } from "react-icons/ai";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { PiUserCirclePlusBold } from "react-icons/pi";
-import { useUser } from "../../UserContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 
 
 const MobileNavbar = () => {

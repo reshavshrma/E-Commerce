@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from "./userContext";
+import { useUser } from "./UserContext";
 import AdminDashboard from "../../pages/Admin/AdminDashboard";
 
 const AdminRoute = () => {

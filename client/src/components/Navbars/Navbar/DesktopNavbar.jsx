@@ -5,7 +5,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { FaPowerOff } from "react-icons/fa6";
 import { RiShieldUserLine } from "react-icons/ri";
 import { PiUserCirclePlusBold } from "react-icons/pi";
-import { useUser } from "../../UserContext/userContext";
+import { useUser } from "../../UserContext/UserContext";
 const DesktopNavbar = () => {
   const { user} = useUser();
   const navigate = useNavigate();

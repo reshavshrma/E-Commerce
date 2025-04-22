@@ -1,7 +1,7 @@
+// components/UserContext/UserContext.jsx
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-// Create context
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -16,13 +16,11 @@ export const UserProvider = ({ children }) => {
 
   const fetchAuthStatus = async () => {
     console.log("📡 Fetching user authentication status...");
-
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/user/auth`,
         { withCredentials: true }
       );
-
       if (response.data.isAuthenticated) {
         console.log("✅ User is authenticated:", response.data.user);
         setUser(response.data.user);
@@ -62,5 +60,4 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the UserContext
 export const useUser = () => useContext(UserContext);

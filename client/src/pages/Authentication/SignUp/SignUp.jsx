@@ -4,7 +4,7 @@ import { validateForm } from "./validateForm";
 import { FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useUser } from "../../../components/UserContext/userContext";
+import { useUser } from "../../../components/UserContext/UserContext";
 const Signup = () => {
   const {setUser} = useUser();
   const [formData, setFormData] = useState({

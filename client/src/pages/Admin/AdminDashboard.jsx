@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useUser } from "../../components/UserContext/userContext";
+import { useUser } from "../../components/UserContext/UserContext";
 import AdminStat from "../../components/Admin/AdminDashboard/AdminStat";
 import AdminInfo from "../../components/Admin/AdminDashboard/AdminInfo";
 
