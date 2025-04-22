@@ -1,4 +1,3 @@
-// Contact.js (Main Page)
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../../components/UserContext/UserContext';
@@ -41,7 +40,6 @@ const Contact = () => {
       setLoading(false);
     }
   };
-
 
   return (
     <>
