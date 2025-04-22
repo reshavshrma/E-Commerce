@@ -9,8 +9,8 @@ const CategoryCard = ({ category }) => {
       {/* Image Container */}
       <div className="relative w-full h-80 lg:h-72 xl:h-80 overflow-hidden">
         <img
-          src={category.image}
-          alt={category.title}
+          src={category.ImageURL}
+          alt={category.Title}
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
         />
 

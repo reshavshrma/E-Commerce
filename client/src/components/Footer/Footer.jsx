@@ -52,7 +52,7 @@ const Footer = () => {
               href="mailto: theshopzo.team@gmail.com"
               className="text-blue-400 hover:underline"
             >
-              theshopzo.team@gmail.com
+              help.shopzo@gmail.com
             </a>
           </p>
         </div>
@@ -112,7 +112,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-cyan-400 hover:underline transition"
           >
-            Shobhit Srivastava
+            Reshav Sharma
           </a>
         </p>
       </div>

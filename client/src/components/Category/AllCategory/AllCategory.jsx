@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
 import ToggleGender from "../../ToggleGender/ToggleGender";
 import SkeletonList from "../../LoadingSkeleton/SkeletonList";
+
 const AllCategories = () => {
   const [categories, setCategories] = useState([]);
   const [selectedGender, setSelectedGender] = useState("male");
@@ -32,9 +33,16 @@ const AllCategories = () => {
     fetchCategories();
   }, []);
 
-  const filteredCategories = categories.filter(
-    (category) => category.tag.toLowerCase() === selectedGender
-  );
+  const filteredCategories = categories.filter((category) => {
+    // Check if category.tag exists and is a valid string
+    if (!category?.tag || typeof category.tag !== 'string') {
+      console.warn("⚠️ Missing or invalid tag in category:", category);
+      return false;
+    }
+  
+    return category.tag.toLowerCase() === selectedGender;
+  });
+  
 
   return (
     <section className="py-12 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
@@ -51,9 +59,10 @@ const AllCategories = () => {
 
       {loading && (
         <div className="flex justify-center items-center mt-10">
-          <SkeletonList/>
+          <SkeletonList />
         </div>
       )}
+
       {error && (
         <p className="text-center text-red-500 text-lg font-medium">{error}</p>
       )}

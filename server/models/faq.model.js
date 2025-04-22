@@ -1,19 +1,43 @@
+// import mongoose from "mongoose";
+// const Schema  = mongoose.Schema; 
+
+// const faqSchema = new Schema (
+//     {
+//         title : {
+//             type:String,
+//             required: true,
+//         },
+//         solution:{
+//             type:String,
+//             required: true,
+//         },
+//     } ,
+//     { timestamps : true});
+
+// const Faq = new mongoose.model ("Faq", faqSchema);
+
+// export  {Faq} ;
+
 import mongoose from "mongoose";
-const Schema  = mongoose.Schema; 
 
-const faqSchema = new Schema (
+const Schema = mongoose.Schema;
+
+// Define the FAQ schema
+const faqSchema = new Schema(
     {
-        title : {
-            type:String,
-            required: true,
+        title: {
+            type: String,
+            required: true,  // The title of the FAQ is mandatory
         },
-        solution:{
-            type:String,
-            required: true,
+        solution: {
+            type: String,
+            required: true,  // The solution to the FAQ is mandatory
         },
-    } ,
-    { timestamps : true});
+    },
+    { timestamps: true }  // Automatically adds createdAt and updatedAt
+);
 
-const Faq = new mongoose.model ("Faq", faqSchema);
+// Create the model based on the schema
+const Faq = new mongoose.model("Faq", faqSchema);
 
-export  {Faq} ;
+export { Faq };  // Export the Faq model to be used in other files

@@ -12,24 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aniket-sriv-0810/shopzo_website.git"
+    "url": "git+https://github.com/reshavshrma/E-Commerce.git"
   },
   "keywords": [
     "MERN",
     "backend"
   ],
-  "author": "Aniket Srivastava",
+  "author": "Reshav Sharma",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aniket-sriv-0810/shopzo_website/issues"
+    "url": "https://github.com/reshavshrma/E-Commerce/issues"
   },
-  "homepage": "https://github.com/aniket-sriv-0810/shopzo_website#readme",
+  "homepage": "https://github.com/reshavshrma/E-Commerce#readme",
   "dependencies": {
     "cloudinary": "^2.6.0",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "joi": "^17.13.3",
