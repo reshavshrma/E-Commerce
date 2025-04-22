@@ -1,9 +1,9 @@
-// vite.config.js
-const { defineConfig } = require('vite');
-const react = require('@vitejs/plugin-react');
-const tailwindcss = require('@tailwindcss/vite');
+// vite.config.js (using ES module syntax)
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-module.exports = defineConfig({
+export default defineConfig({
   base: '/',
   plugins: [react(), tailwindcss()],
   build: {
