@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import UserWishlistProductCard from "../../components/User/UserWishlist/UserWishlistProductCard";
+// import UserWishlistProductCard from "../../components/User/UserWishlist/UserWishlistProductCard";
 import UserNavbar from "../../components/Navbars/UserNavbar/UserNavbar";
 import SkeletonList from '../../components/LoadingSkeleton/SkeletonList'
 import NotAvailable from "../Loaders/NotAvailable";
